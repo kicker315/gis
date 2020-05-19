@@ -7,6 +7,7 @@ buildscript {
         targetSdkVersion = 28
 
         // App dependencies
+        multidexVersion = '2.0.0'
         appCompatVersion = '1.1.0'
         constraintLayoutVersion = '2.0.0-beta3'
         coreTestingVersion = '2.0.0'
@@ -31,6 +32,8 @@ buildscript {
         uiAutomatorVersion = '2.2.0'
         viewPagerVersion = '1.0.0'
         workVersion = '2.1.0'
+        arcgis = '10.2.9'
+        autosize = '1.2.1'
     }
 
     repositories {
@@ -53,6 +56,9 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven {
+            url 'https://esri.bintray.com/arcgis'
+        }
     }
 }
 

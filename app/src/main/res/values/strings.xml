@@ -1,3 +1,92 @@
 <resources>
     <string name="app_name">莱西</string>
+
+    <string name="txt_login_title">用户登录</string>
+    <string name="please_input_user_name">请输入用户名</string>
+    <string name="please_input_password">请输入密码</string>
+    <string name="txt_login">登录</string>
+    <string name="txt_remember_password">记住密码</string>
+    <string name="txt_change_password">修改密码</string>
+
+    <string name="txt_map">地图</string>
+    <string name="txt_layer">图层</string>
+    <string name="txt_query">查询</string>
+    <string name="txt_analyst">分析</string>
+    <string name="txt_setting">设置</string>
+    <string name="txt_x_coord">x坐标：</string>
+    <string name="txt_y_coord">y坐标：</string>
+
+    <string name="txt_draw_layer">绘制图层</string>
+    <string name="txt_media">多媒体</string>
+    <string name="txt_transparent">透明度</string>
+    <string name="txt_cancel_select">取消选择</string>
+    <string name="txt_clear_mark">清除</string>
+    <string name="txt_all_map">全图</string>
+    <string name="txt_location">定位</string>
+
+    <string name="txt_choose">选择</string>
+    <string name="txt_draw">绘制</string>
+    <string name="txt_tools">工具</string>
+    <string name="txt_screenshot">截图</string>
+    <string name="txt_screenshot_manager">截图管理</string>
+    <string name="txt_search_xy">坐标查询</string>
+    <string name="txt_distance">距离</string>
+    <string name="txt_area">面积</string>
+
+    <string name="txt_confirm">确认</string>
+
+    <string name="txt_shp_manager">矢量图层管理</string>
+    <string name="txt_tpk_manager">栅格地图管理</string>
+    <string name="txt_add">添加</string>
+    <string name="txt_visibility">可见性</string>
+    <string name="txt_visible">可见</string>
+    <string name="txt_zoom">缩放</string>
+    <string name="txt_attr">属性</string>
+    <string name="txt_remove">移除</string>
+    <string name="txt_thumbnail">缩略图</string>
+    <string name="txt_archives">档案</string>
+    <string name="txt_archives_detail">档案详情</string>
+    <string name="txt_archives_history">档案历史记录</string>
+    <string name="txt_field_name">字段名</string>
+    <string name="txt_field_alias">字段别名</string>
+    <string name="txt_field_type">字段类型</string>
+    <string name="txt_create_time">创建时间</string>
+    <string name="txt_update_time">修改时间</string>
+
+    <string name="txt_choose_file">选择文件</string>
+    <string name="txt_query_statistics">查询统计</string>
+    <string name="txt_compare_analyst">比对分析</string>
+
+    <string name="txt_simple_search">简单查询</string>
+    <string name="txt_condition_search">条件查询</string>
+    <string name="txt_layer_manager">图层管理</string>
+    <string name="txt_visible_fields">显示字段</string>
+    <string name="txt_fields">字段</string>
+    <string name="txt_operate">操作符</string>
+    <string name="txt_range">值域</string>
+    <string name="please_select_layer">请选择图层</string>
+    <string name="please_select_visible_fields">请选择显示字段</string>
+    <string name="please_select_operate">请选择操作符</string>
+    <string name="please_select_range">请选择值域</string>
+    <string name="tip_multiselect_up_to_6">最多选择六个显示字段</string>
+    <string name="tip_range_cant_be_null">值域不允许为空</string>
+
+    <string name="txt_search_result">查询结果</string>
+    <string name="txt_search">查询</string>
+
+    <string name="txt_data_edit">数据编辑</string>
+    <string name="txt_data_delete">数据删除</string>
+    <string name="txt_data_export">数据导出</string>
+    <string name="txt_location_to_map">定位到地图</string>
+
+    <string name="txt_base_layer">基础图层</string>
+    <string name="please_select_base_layer">请选择基础图层</string>
+    <string name="txt_compare_layer">比对图层</string>
+    <string name="please_select_compare_layer">请选择比对图层</string>
+    <string name="txt_compare_type">比对类型</string>
+    <string name="please_select_compare_type">请选择比对类型</string>
+    <string name="tip_only_support_base_layer_is_supply">当前仅支持基础图层为供地</string>
+    <string name="tip_only_support_compare_layer_is_disposal">当前仅支持比对图层为批地</string>
+    <string name="txt_compare_result">比对结果</string>
+
 </resources>
