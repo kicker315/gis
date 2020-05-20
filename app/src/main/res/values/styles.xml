@@ -10,4 +10,109 @@
         <item name="colorControlHighlight">@color/ripple_light_grey</item>
     </style>
 
+    <style name="checkbox_lm" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checkbox_style</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
+    <!-- ToolBar菜单样式 -->
+    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="actionMenuTextColor">@color/white</item> <!--  颜色-->
+        <item name="android:textSize">18sp</item> <!--  字体大小-->
+    </style>
+
+    <!-- toolbar -->
+    <style name="toolbar_style" parent="ToolbarTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:elevation">@dimen/toolbar_elevation</item>
+    </style>
+
+    <!-- 主页面 tab栏 -->
+    <style name="rb_tab" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingStart">6dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingEnd">6dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="elevation">@dimen/elevation_normal</item>
+        <item name="android:textColor">@drawable/tab_text_color_checked</item>
+    </style>
+
+    <!-- map fragment 右部栏 -->
+    <style name="rb_operation" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:button">@null</item>
+        <item name="android:background">@drawable/tab_tools_bg_color_checked</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textColor">@drawable/tab_tools_text_color_checked</item>
+        <item name="android:textSize">10sp</item>
+
+    </style>
+
+    <!-- map fragment 二级栏  -->
+    <style name="rb_suboperation" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:button">@null</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@drawable/tab_text_color_checked</item>
+    </style>
+
+    <!-- map fragment 底部栏 -->
+    <style name="rb_bottombar" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@drawable/tab_text_color_checked</item>
+    </style>
+
+    <!-- 图层管理页面 操作按钮 -->
+    <style name="rb_layermanager_operate">
+        <item name="android:button">@null</item>
+        <item name="android:background">@drawable/shape_corner_bottombar</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">@color/tab_text_color_press</item>
+        <item name="android:paddingStart">15dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingEnd">15dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:layout_marginStart">8dp</item>
+    </style>
+
+    <!-- 定位、查询、导出、数据编辑、数据删除等按钮 -->
+    <style name="btn_other" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/tab_text_color_press</item>
+        <item name="android:background">@drawable/shape_project_open</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingStart">15dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingEnd">15dp</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
+
+    <!-- 搜索结果中显示字段 -->
+    <style name="tv_field" parent="Widget.AppCompat.TextView">
+        <item name="android:gravity">center</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
 </resources>

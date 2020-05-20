@@ -6,8 +6,20 @@
     app:startDestination="@id/main_fragment">
     <fragment
         android:id="@+id/main_fragment"
-        android:name="com.zydcc.zrdc.MainFragment"
+        android:name="com.zydcc.zrdc.ui.MainFragment"
         tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_main_fragment_to_sys_fragment"
+            app:destination="@id/sys_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/sys_fragment"
+        android:name="com.zydcc.zrdc.ui.sys.SysFragment"
+        tools:layout="@layout/fragment_sys">
 
     </fragment>
 </navigation>

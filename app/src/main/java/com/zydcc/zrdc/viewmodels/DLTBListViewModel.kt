@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.zydcc.zrdc.data.DLTBRepository
-import com.zydcc.zrdc.MainFragment
+import com.zydcc.zrdc.ui.MainFragment
 import com.zydcc.zrdc.data.DLTB
 
 /**

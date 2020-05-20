@@ -4,7 +4,9 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import com.zydcc.zrdc.data.AppDatabase
 import com.zydcc.zrdc.data.DLTBRepository
+import com.zydcc.zrdc.ui.mapmode.Map
 import com.zydcc.zrdc.viewmodels.DLTBListViewModelFactory
+import com.zydcc.zrdc.ui.mapmode.MapViewModelFactory
 
 /**
  * =======================================
@@ -23,6 +25,10 @@ object InjectorUtils {
     fun provideDLTBListViewModelFactory(fragment: Fragment): DLTBListViewModelFactory {
         val repository = getDLTBRepository(fragment.requireContext())
         return DLTBListViewModelFactory(repository, fragment)
+    }
+
+    fun providerMapViewModelFactory(view:Map,fragment: Fragment): MapViewModelFactory {
+        return MapViewModelFactory(view,fragment)
     }
 
 
