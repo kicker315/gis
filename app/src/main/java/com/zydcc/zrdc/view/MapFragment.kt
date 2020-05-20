@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.esri.arcgisruntime.ArcGISRuntimeEnvironment
 import com.esri.arcgisruntime.mapping.ArcGISMap
 import com.esri.arcgisruntime.mapping.Basemap
@@ -49,6 +50,7 @@ class MapFragment: Fragment(), MapOperate {
         binding = FragmentMapBinding.inflate(inflater, container, false)
         context ?: return binding?.root
         binding!!.viewModel = viewModel
+        binding!!.baseView = this
         initMap()
         dealError()
         initBDLocation()
@@ -100,6 +102,11 @@ class MapFragment: Fragment(), MapOperate {
         viewModel.onErrorCallback = {
             Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun navToMedia() {
+        val navDirections =  MainFragmentDirections.actionMainFragmentToMediaFragment()
+        findNavController().navigate(navDirections)
     }
 
     override fun onLocation() {

@@ -5,6 +5,10 @@
     <data>
 
         <variable
+            name="baseView"
+            type="com.zydcc.zrdc.interfaces.MapOperate" />
+
+        <variable
             name="viewModel"
             type="com.zydcc.zrdc.viewmodels.MapViewModel" />
     </data>
@@ -81,6 +85,7 @@
                 android:layout_height="54dp"
                 android:drawableTop="@drawable/rb_media"
                 android:text="@string/txt_media"
+                android:onClick="@{()->baseView.navToMedia()}"
                  />
 
             <RadioButton

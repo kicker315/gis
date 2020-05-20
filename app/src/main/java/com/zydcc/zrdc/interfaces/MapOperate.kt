@@ -9,6 +9,10 @@ import com.zydcc.zrdc.base.BaseView
  * ========================================
  */
 interface MapOperate : BaseView {
+
+    // 跳转到媒体页面
+    fun navToMedia()
+
     // 定位到当前位置
     fun onLocation()
 }

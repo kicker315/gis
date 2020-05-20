@@ -8,6 +8,6 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tool_bar"
             style="@style/toolbar_style"
-            app:title="@string/txt_setting"/>
+            app:title="@string/txt_media"/>
     </LinearLayout>
 </layout>

@@ -15,6 +15,20 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_main_fragment_to_media_fragment"
+            app:destination="@id/media_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/screenshot_manager_fragment"
+            app:destination="@id/screenshotManagerFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/sys_fragment"
@@ -22,4 +36,12 @@
         tools:layout="@layout/fragment_sys">
 
     </fragment>
+    <fragment
+        android:id="@+id/media_fragment"
+        android:name="com.zydcc.zrdc.view.MediaFragment"
+        tools:layout="@layout/fragment_media"/>
+    <fragment
+        android:id="@+id/screenshotManagerFragment"
+        android:name="com.zydcc.zrdc.view.ScreenshotManagerFragment"
+        android:label="ScreenshotManagerFragment" />
 </navigation>

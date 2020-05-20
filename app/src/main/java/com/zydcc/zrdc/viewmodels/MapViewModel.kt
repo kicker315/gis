@@ -10,6 +10,7 @@ import com.esri.arcgisruntime.geometry.Point
 import com.esri.arcgisruntime.geometry.SpatialReferences
 import com.zydcc.zrdc.interfaces.MapOperate
 import com.zydcc.zrdc.utilities.PositionUtil
+import com.zydcc.zrdc.view.MainFragmentDirections
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
@@ -93,7 +94,6 @@ class MapViewModel internal constructor(
     fun extend() {
         mView.onLocation()
     }
-
 
 
 }
