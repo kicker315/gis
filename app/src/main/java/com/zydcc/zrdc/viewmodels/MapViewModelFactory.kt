@@ -1,10 +1,11 @@
-package com.zydcc.zrdc.ui.mapmode
+package com.zydcc.zrdc.viewmodels
 
 import android.os.Bundle
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
+import com.zydcc.zrdc.interfaces.MapOperate
 
 /**
  * =======================================
@@ -13,7 +14,7 @@ import androidx.savedstate.SavedStateRegistryOwner
  * ========================================
  */
 class MapViewModelFactory(
-    private val view: Map,
+    private val view: MapOperate,
     owner: SavedStateRegistryOwner,
     defaultArgs: Bundle? = null
 ): AbstractSavedStateViewModelFactory(owner, defaultArgs) {
@@ -24,6 +25,6 @@ class MapViewModelFactory(
         modelClass: Class<T>,
         handle: SavedStateHandle
     ): T {
-        return MapViewModel(view,handle) as T
+        return MapViewModel(view, handle) as T
     }
 }

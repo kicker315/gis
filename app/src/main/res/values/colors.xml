@@ -17,6 +17,7 @@
     <color name="white_translucent_light">#66FFFFFF</color>
     <color name="white_translucent_dark">#99FFFFFF</color>
     <color name="translucent">#0000</color>
+    <color name="grey_translucent">#808799a3</color><!-- 灰色透明背景 80%透明 -->
     <color name="primary_text">#444444</color>
     <color name="secondary_text">#757575</color>
 

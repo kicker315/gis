@@ -1,4 +1,4 @@
-package com.zydcc.zrdc.ui.sys
+package com.zydcc.zrdc.view
 
 import android.os.Bundle
 import android.view.LayoutInflater

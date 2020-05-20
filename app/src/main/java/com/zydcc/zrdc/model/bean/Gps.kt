@@ -1,4 +1,4 @@
-package com.zydcc.zrdc.model
+package com.zydcc.zrdc.model.bean
 
 /**
  * =======================================

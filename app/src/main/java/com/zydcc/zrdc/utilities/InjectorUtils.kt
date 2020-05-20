@@ -1,12 +1,8 @@
 package com.zydcc.zrdc.utilities
 
-import android.content.Context
 import androidx.fragment.app.Fragment
-import com.zydcc.zrdc.data.AppDatabase
-import com.zydcc.zrdc.data.DLTBRepository
-import com.zydcc.zrdc.ui.mapmode.Map
-import com.zydcc.zrdc.viewmodels.DLTBListViewModelFactory
-import com.zydcc.zrdc.ui.mapmode.MapViewModelFactory
+import com.zydcc.zrdc.interfaces.MapOperate
+import com.zydcc.zrdc.viewmodels.MapViewModelFactory
 
 /**
  * =======================================
@@ -16,19 +12,8 @@ import com.zydcc.zrdc.ui.mapmode.MapViewModelFactory
  */
 object InjectorUtils {
 
-    private fun getDLTBRepository(context: Context): DLTBRepository {
-        return DLTBRepository.getInstance(
-            AppDatabase.getInstance(context.applicationContext).dltbDao()
-        )
-    }
-
-    fun provideDLTBListViewModelFactory(fragment: Fragment): DLTBListViewModelFactory {
-        val repository = getDLTBRepository(fragment.requireContext())
-        return DLTBListViewModelFactory(repository, fragment)
-    }
-
-    fun providerMapViewModelFactory(view:Map,fragment: Fragment): MapViewModelFactory {
-        return MapViewModelFactory(view,fragment)
+    fun providerMapViewModelFactory(view: MapOperate, fragment: Fragment): MapViewModelFactory {
+        return MapViewModelFactory(view, fragment)
     }
 
 

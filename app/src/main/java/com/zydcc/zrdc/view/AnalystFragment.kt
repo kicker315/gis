@@ -1,30 +1,28 @@
-package com.zydcc.zrdc.ui.layer
+package com.zydcc.zrdc.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.zydcc.zrdc.databinding.FragmentLayerBinding
+import com.zydcc.zrdc.databinding.FragmentAnalystBinding
 
 /**
  * =======================================
- * Layer
- * Create by ningsikai 2020/5/19:1:42 PM
+ * 分析Fragment
+ * Create by ningsikai 2020/5/19:1:45 PM
  * ========================================
  */
-class LayerFragment : Fragment() {
-
+class AnalystFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentLayerBinding.inflate(inflater, container, false)
+        val binding = FragmentAnalystBinding.inflate(inflater, container, false)
         context ?: return binding.root
         return binding.root
     }
-
 
 }

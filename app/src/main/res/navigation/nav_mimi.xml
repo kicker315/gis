@@ -6,7 +6,7 @@
     app:startDestination="@id/main_fragment">
     <fragment
         android:id="@+id/main_fragment"
-        android:name="com.zydcc.zrdc.ui.MainFragment"
+        android:name="com.zydcc.zrdc.view.MainFragment"
         tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_main_fragment_to_sys_fragment"
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/sys_fragment"
-        android:name="com.zydcc.zrdc.ui.sys.SysFragment"
+        android:name="com.zydcc.zrdc.view.SysFragment"
         tools:layout="@layout/fragment_sys">
 
     </fragment>

@@ -1,4 +1,4 @@
-package com.zydcc.zrdc.ui.mapmode
+package com.zydcc.zrdc.view
 
 import android.os.Bundle
 import android.util.Log
@@ -14,8 +14,10 @@ import com.esri.arcgisruntime.mapping.Basemap
 import com.esri.arcgisruntime.mapping.view.Graphic
 import com.esri.arcgisruntime.mapping.view.GraphicsOverlay
 import com.esri.arcgisruntime.symbology.Symbol
+import com.zydcc.zrdc.interfaces.MapOperate
 import com.zydcc.zrdc.base.App
 import com.zydcc.zrdc.databinding.FragmentMapBinding
+import com.zydcc.zrdc.viewmodels.MapViewModel
 import com.zydcc.zrdc.utilities.InjectorUtils
 import java.lang.Exception
 
@@ -25,7 +27,7 @@ import java.lang.Exception
  * Create by ningsikai 2020/5/19:1:40 PM
  * ========================================
  */
-class MapFragment: Fragment(), Map {
+class MapFragment: Fragment(), MapOperate {
 
     private var binding: FragmentMapBinding ?= null
     // 定位点图标
@@ -46,8 +48,8 @@ class MapFragment: Fragment(), Map {
     ): View? {
         binding = FragmentMapBinding.inflate(inflater, container, false)
         context ?: return binding?.root
-        binding!!.callback = this
-            initMap()
+        binding!!.viewModel = viewModel
+        initMap()
         dealError()
         initBDLocation()
         return binding!!.root

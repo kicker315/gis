@@ -1,4 +1,4 @@
-package com.zydcc.zrdc.ui.query
+package com.zydcc.zrdc.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
