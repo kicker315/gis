@@ -1,9 +1,11 @@
 package com.zydcc.zrdc.viewmodels
 
+import android.util.Log
 import android.view.View
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.databinding.ObservableInt
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -13,6 +15,8 @@ import com.esri.arcgisruntime.geometry.GeometryEngine
 import com.esri.arcgisruntime.geometry.Point
 import com.esri.arcgisruntime.geometry.SpatialReferences
 import com.zydcc.zrdc.R
+import com.zydcc.zrdc.data.CodeBrush
+import com.zydcc.zrdc.data.CodeBrushRepository
 import com.zydcc.zrdc.interfaces.MapOperate
 import com.zydcc.zrdc.model.bean.LocationData
 import com.zydcc.zrdc.utilities.PositionUtil
@@ -28,6 +32,7 @@ import java.text.DecimalFormat
  * ========================================
  */
 class MapViewModel internal constructor(
+    repository: CodeBrushRepository,
     view: MapOperate,
     private val savedStateHandle: SavedStateHandle
 ): ViewModel() {
@@ -117,6 +122,11 @@ class MapViewModel internal constructor(
     fun click(view: View) {
         when (view.id) {
 
+            R.id.rb_code_brush -> {
+
+                mView.showCodeBrushList(codeBrushList)
+            }
+
             R.id.rb_all_map -> {
                 resetSubOperate()
                 resetMainOperate.set(true)
@@ -153,5 +163,6 @@ class MapViewModel internal constructor(
         clearSubOperateChecked.set(true)
     }
 
+    val codeBrushList: LiveData<List<CodeBrush>> = repository.getCodeBrushList()
 
 }

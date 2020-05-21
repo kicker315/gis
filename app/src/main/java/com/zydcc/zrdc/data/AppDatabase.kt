@@ -6,6 +6,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.zydcc.zrdc.utilities.DATABASE_NAME
+import com.zydcc.zrdc.utilities.DATABASE_PATH
 import com.zydcc.zrdc.works.ImportDatabaseWorker
 
 /**
@@ -14,10 +15,11 @@ import com.zydcc.zrdc.works.ImportDatabaseWorker
  * Create by ningsikai 2020/5/18:2:56 PM
  * ========================================
  */
-@Database(entities = [DLTB::class], version = 1, exportSchema = false)
+@Database(entities = [DLTB::class, CodeBrush::class], version = 1, exportSchema = true)
 @TypeConverters(Converters::class)
 abstract class AppDatabase: RoomDatabase() {
     abstract fun dltbDao(): DLTBDao
+    abstract fun codeBrushDao(): CodeBrushDao
 
     companion object {
         // For singleton instantiation
@@ -32,11 +34,13 @@ abstract class AppDatabase: RoomDatabase() {
 
         private fun buildDatabase(context: Context): AppDatabase {
             return Room.databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME)
+                .createFromAsset(DATABASE_PATH)
                 .addCallback(object: RoomDatabase.Callback() {
                     override fun onCreate(db: SupportSQLiteDatabase) {
                         super.onCreate(db)
-                        val request = OneTimeWorkRequestBuilder<ImportDatabaseWorker>().build()
-                        WorkManager.getInstance(context).enqueue(request)
+                        // 做一些数据迁移的工作
+//                        val request = OneTimeWorkRequestBuilder<ImportDatabaseWorker>().build()
+//                        WorkManager.getInstance(context).enqueue(request)
                     }
                 })
                 .build()

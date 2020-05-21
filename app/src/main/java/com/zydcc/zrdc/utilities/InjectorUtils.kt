@@ -1,6 +1,9 @@
 package com.zydcc.zrdc.utilities
 
+import android.content.Context
 import androidx.fragment.app.Fragment
+import com.zydcc.zrdc.data.AppDatabase
+import com.zydcc.zrdc.data.CodeBrushRepository
 import com.zydcc.zrdc.interfaces.MapOperate
 import com.zydcc.zrdc.viewmodels.MapViewModelFactory
 
@@ -12,8 +15,15 @@ import com.zydcc.zrdc.viewmodels.MapViewModelFactory
  */
 object InjectorUtils {
 
+    private fun getCodeBrushRepository(context: Context): CodeBrushRepository {
+        return CodeBrushRepository.getInstance(
+            AppDatabase.getInstance(context.applicationContext).codeBrushDao()
+        )
+    }
+
     fun providerMapViewModelFactory(view: MapOperate, fragment: Fragment): MapViewModelFactory {
-        return MapViewModelFactory(view, fragment)
+        val repository = getCodeBrushRepository(fragment.requireContext())
+        return MapViewModelFactory(repository, view, fragment)
     }
 
 

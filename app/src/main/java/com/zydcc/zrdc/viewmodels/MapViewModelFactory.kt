@@ -5,6 +5,7 @@ import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
+import com.zydcc.zrdc.data.CodeBrushRepository
 import com.zydcc.zrdc.interfaces.MapOperate
 
 /**
@@ -14,6 +15,7 @@ import com.zydcc.zrdc.interfaces.MapOperate
  * ========================================
  */
 class MapViewModelFactory(
+    private val codeBrushRepository: CodeBrushRepository,
     private val view: MapOperate,
     owner: SavedStateRegistryOwner,
     defaultArgs: Bundle? = null
@@ -25,6 +27,6 @@ class MapViewModelFactory(
         modelClass: Class<T>,
         handle: SavedStateHandle
     ): T {
-        return MapViewModel(view, handle) as T
+        return MapViewModel(codeBrushRepository, view, handle) as T
     }
 }

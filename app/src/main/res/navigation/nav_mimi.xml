@@ -43,5 +43,6 @@
     <fragment
         android:id="@+id/screenshotManagerFragment"
         android:name="com.zydcc.zrdc.view.ScreenshotManagerFragment"
-        android:label="ScreenshotManagerFragment" />
+        android:label="ScreenshotManagerFragment"
+        tools:layout="@layout/fragment_screenshot_manager"/>
 </navigation>

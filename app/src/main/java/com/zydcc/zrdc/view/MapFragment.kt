@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.esri.arcgisruntime.ArcGISRuntimeEnvironment
 import com.esri.arcgisruntime.mapping.ArcGISMap
@@ -17,6 +19,7 @@ import com.esri.arcgisruntime.mapping.view.GraphicsOverlay
 import com.esri.arcgisruntime.symbology.Symbol
 import com.zydcc.zrdc.interfaces.MapOperate
 import com.zydcc.zrdc.base.App
+import com.zydcc.zrdc.data.CodeBrush
 import com.zydcc.zrdc.databinding.FragmentMapBinding
 import com.zydcc.zrdc.viewmodels.MapViewModel
 import com.zydcc.zrdc.utilities.InjectorUtils
@@ -119,6 +122,13 @@ class MapFragment: Fragment(), MapOperate {
         binding!!.rbLocation.isChecked = false
         isLocation = true
         App.locationService?.start()
+    }
+
+    override fun showCodeBrushList(data: LiveData<List<CodeBrush>>) {
+        data.observe(viewLifecycleOwner,
+            Observer { codes ->
+                Log.d("code", codes.toString())
+            })
     }
 
     override fun showToast(type: Int, msg: String?) {

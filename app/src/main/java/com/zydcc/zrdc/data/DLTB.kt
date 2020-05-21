@@ -15,6 +15,6 @@ data class DLTB(
     @PrimaryKey @ColumnInfo(name="id") val id: Int,
     val zdmc: String,
     val zddm: String,
-    val zdlx: String,
+    val zdlx: String?,
     val sfxs: Int = 1
 )

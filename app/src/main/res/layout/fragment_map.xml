@@ -152,6 +152,7 @@
                 style="@style/rb_bottombar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="@{viewModel::click}"
                 android:drawableTop="@drawable/rb_brush"
                 android:text="@string/txt_code_brush" />
 
