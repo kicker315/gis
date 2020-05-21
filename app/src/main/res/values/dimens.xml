@@ -8,6 +8,6 @@
     <dimen name="margin_extra_small">4dp</dimen>
     <dimen name="padding_normal">8dp</dimen>
     <dimen name="padding_small">4dp</dimen>
-    <dimen name="elevation_normal">5dp</dimen>
+    <dimen name="elevation_normal">2dp</dimen>
     <dimen name="toolbar_elevation">5dp</dimen>
 </resources>

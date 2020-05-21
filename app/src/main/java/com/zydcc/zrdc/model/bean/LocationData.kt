@@ -1,5 +1,7 @@
 package com.zydcc.zrdc.model.bean
 
+import androidx.databinding.ObservableField
+
 /**
  * =======================================
  * 位置信息
@@ -7,8 +9,8 @@ package com.zydcc.zrdc.model.bean
  * ========================================
  */
 data class LocationData(
-    var longitude: String = "",
-    var latitude: String = "",
-    var x: String = "",
-    var y: String = ""
+    var longitude: ObservableField<String>,
+    var latitude: ObservableField<String>,
+    var x: ObservableField<String>,
+    var y: ObservableField<String>
 )

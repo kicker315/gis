@@ -1,5 +1,9 @@
 package com.zydcc.zrdc.viewmodels
 
+import android.view.View
+import androidx.databinding.ObservableBoolean
+import androidx.databinding.ObservableField
+import androidx.databinding.ObservableInt
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -8,9 +12,12 @@ import com.baidu.location.BDLocation
 import com.esri.arcgisruntime.geometry.GeometryEngine
 import com.esri.arcgisruntime.geometry.Point
 import com.esri.arcgisruntime.geometry.SpatialReferences
+import com.zydcc.zrdc.R
 import com.zydcc.zrdc.interfaces.MapOperate
+import com.zydcc.zrdc.model.bean.LocationData
 import com.zydcc.zrdc.utilities.PositionUtil
 import com.zydcc.zrdc.view.MainFragmentDirections
+import kotlinx.android.synthetic.main.fragment_map.view.*
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
@@ -32,13 +39,23 @@ class MapViewModel internal constructor(
     // 当前坐标
     var currentPt: Point? = null
 
+    // 重置主操作栏状态
+    var resetMainOperate = ObservableBoolean(true)
+    // 选择操作栏状态
+    var chooseOperateIsGone = ObservableBoolean(true)
+    // 绘制操作栏状态
+    var drawOperateIsGone = ObservableBoolean(true)
+    // 工具状态栏状态
+    var toolOperateIsGone = ObservableBoolean(true)
+
+
+
+
+
     // 百度回调监听
     var bdListener = MyBDLocationListener()
 
-    var currentLatitude = MutableLiveData<String>()
-    var currentLongitude = MutableLiveData<String>()
-    var currentX = MutableLiveData<String>()
-    var currentY = MutableLiveData<String>()
+    var locationData = LocationData(ObservableField(""), ObservableField(""), ObservableField(""), ObservableField(""))
 
 
     var onLocationCallback: (Point) -> Unit =  {}
@@ -63,13 +80,13 @@ class MapViewModel internal constructor(
                 val point =
                     when(layerCode) {
                         0 -> {
-                            currentLatitude.postValue( df.format(d2))
-                            currentLongitude.postValue(df.format(d1))
+                            locationData.latitude.set(df.format(d2))
+                            locationData.longitude.set(df.format(d1))
                             Point(d1, d2, SpatialReferences.getWgs84())
                         }
                         1 -> {
-                            currentLatitude.value = df.format(latitude)
-                            currentLongitude.value = df.format(longitude)
+                            locationData.latitude.set(df.format(latitude))
+                            locationData.longitude.set(df.format(longitude))
                             Point(longitude, latitude, SpatialReferences.getWgs84())
                         }
                         else -> null
@@ -78,8 +95,8 @@ class MapViewModel internal constructor(
                 currentPt = p.extent.center
                 currentPt?.let {
                     // 定位
-                    currentX.postValue(df.format(it.x))
-                    currentY.postValue(df.format(it.y))
+                    locationData.x.set(df.format(it.x))
+                    locationData.y.set(df.format(it.y))
                     onLocationCallback.invoke(it)
                 }
             } else {
@@ -93,6 +110,43 @@ class MapViewModel internal constructor(
 
     fun extend() {
         mView.onLocation()
+    }
+
+    fun click(view: View) {
+        when (view.id) {
+
+            R.id.rb_all_map -> {
+                resetMainOperate.set(true)
+                resetSubOperate()
+            }
+
+            R.id.rb_choose -> {
+                resetSubOperate()
+                resetMainOperate.set(false)
+                chooseOperateIsGone.set(false)
+
+            }
+            R.id.rb_draw -> {
+                resetSubOperate()
+                resetMainOperate.set(false)
+                drawOperateIsGone.set(false)
+            }
+            R.id.rb_tools -> {;
+                resetSubOperate()
+                resetMainOperate.set(false)
+                toolOperateIsGone.set(false)
+            }
+            R.id.rb_confirm_info -> {
+                resetSubOperate()
+                resetMainOperate.set(false)
+            }
+        }
+    }
+
+    private fun resetSubOperate() {
+        chooseOperateIsGone.set(true)
+        drawOperateIsGone.set(true)
+        toolOperateIsGone.set(true)
     }
 
 

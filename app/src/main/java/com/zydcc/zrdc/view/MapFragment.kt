@@ -57,6 +57,7 @@ class MapFragment: Fragment(), MapOperate {
         return binding!!.root
     }
 
+
     // 初始化地图
     private fun initMap() {
         // 去水印
@@ -106,6 +107,11 @@ class MapFragment: Fragment(), MapOperate {
 
     override fun navToMedia() {
         val navDirections =  MainFragmentDirections.actionMainFragmentToMediaFragment()
+        findNavController().navigate(navDirections)
+    }
+
+    override fun navToScreenshotManager() {
+        val navDirections = MainFragmentDirections.actionScreenshotManagerFragment()
         findNavController().navigate(navDirections)
     }
 

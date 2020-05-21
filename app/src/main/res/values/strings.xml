@@ -17,21 +17,43 @@
     <string name="txt_y_coord">y坐标：</string>
 
     <string name="txt_draw_layer">绘制图层</string>
+    <string name="txt_project_manager">工程管理</string>
     <string name="txt_media">多媒体</string>
     <string name="txt_transparent">透明度</string>
-    <string name="txt_cancel_select">取消选择</string>
+    <string name="txt_track">轨迹</string>
+    <string name="txt_rolling">漫游</string>
     <string name="txt_clear_mark">清除</string>
+    <string name="txt_cancel_choose">取消选择</string>
+    <string name="txt_attr_brush">属性刷</string>
+    <string name="txt_code_brush">编码刷</string>
+
     <string name="txt_all_map">全图</string>
+    <string name="txt_current_location">当前位置</string>
     <string name="txt_location">定位</string>
 
     <string name="txt_choose">选择</string>
+    <string name="txt_single_selection">单选</string>
+    <string name="txt_multi_selection">多选</string>
     <string name="txt_draw">绘制</string>
+    <string name="txt_makepoint_gps">GPS采点</string>
+    <string name="txt_makepoint_cont">连续采点</string>
+    <string name="txt_makepoint_cross">十字采点</string>
+    <string name="txt_makepoint_xy">坐标采点</string>
+    <string name="txt_make_surface">画面</string>
+    <string name="txt_make_freehand_polygon">流状面</string>
+    <string name="txt_done_draw">完成确认</string>
+    <string name="txt_cancel_draw">取消</string>
+    <string name="txt_point_cancel">撤销</string>
+    <string name="txt_point_recover">恢复</string>
     <string name="txt_tools">工具</string>
     <string name="txt_screenshot">截图</string>
     <string name="txt_screenshot_manager">截图管理</string>
-    <string name="txt_search_xy">坐标查询</string>
+    <string name="txt_copy_feature">图形复制</string>
+    <string name="txt_get_xy">坐标查询</string>
     <string name="txt_distance">距离</string>
     <string name="txt_area">面积</string>
+    <string name="txt_point_edit">节点编辑</string>
+    <string name="txt_get_color">颜色拾取</string>
 
     <string name="txt_confirm">确认</string>
 
@@ -88,5 +110,6 @@
     <string name="tip_only_support_base_layer_is_supply">当前仅支持基础图层为供地</string>
     <string name="tip_only_support_compare_layer_is_disposal">当前仅支持比对图层为批地</string>
     <string name="txt_compare_result">比对结果</string>
+
 
 </resources>

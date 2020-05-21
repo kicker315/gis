@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.zydcc.zrdc.databinding.FragmentScreenshotManagerBinding
 
 /**
@@ -21,6 +22,9 @@ class ScreenshotManagerFragment : Fragment() {
     ): View? {
         val binding = FragmentScreenshotManagerBinding.inflate(inflater, container, false)
         context?: return binding.root
+        binding.toolBar.setNavigationOnClickListener {view ->
+            view.findNavController().navigateUp()
+        }
         return binding.root
     }
 }

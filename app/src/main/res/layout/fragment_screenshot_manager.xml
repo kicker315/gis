@@ -6,6 +6,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tool_bar"
             style="@style/toolbar_style"
             app:title="@string/txt_screenshot_manager"/>
     </LinearLayout>
