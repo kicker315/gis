@@ -40,7 +40,9 @@ class MapViewModel internal constructor(
     var currentPt: Point? = null
 
     // 重置主操作栏状态
-    var resetMainOperate = ObservableBoolean(true)
+    var resetMainOperate = ObservableBoolean(false)
+    // 重置次操作栏状态
+    var clearSubOperateChecked = ObservableBoolean(false)
     // 选择操作栏状态
     var chooseOperateIsGone = ObservableBoolean(true)
     // 绘制操作栏状态
@@ -116,37 +118,39 @@ class MapViewModel internal constructor(
         when (view.id) {
 
             R.id.rb_all_map -> {
-                resetMainOperate.set(true)
                 resetSubOperate()
+                resetMainOperate.set(true)
             }
 
             R.id.rb_choose -> {
                 resetSubOperate()
-                resetMainOperate.set(false)
                 chooseOperateIsGone.set(false)
 
             }
             R.id.rb_draw -> {
                 resetSubOperate()
-                resetMainOperate.set(false)
                 drawOperateIsGone.set(false)
+
             }
             R.id.rb_tools -> {;
                 resetSubOperate()
-                resetMainOperate.set(false)
                 toolOperateIsGone.set(false)
             }
             R.id.rb_confirm_info -> {
                 resetSubOperate()
-                resetMainOperate.set(false)
+
             }
         }
     }
 
     private fun resetSubOperate() {
+        // 先重置
+        clearSubOperateChecked.set(false)
         chooseOperateIsGone.set(true)
         drawOperateIsGone.set(true)
         toolOperateIsGone.set(true)
+        resetMainOperate.set(false)
+        clearSubOperateChecked.set(true)
     }
 
 

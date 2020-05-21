@@ -260,7 +260,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/rl_main_operate"
             app:layout_constraintTop_toTopOf="parent"
-            app:clearCheck="@{viewModel.resetMainOperate}"
+            app:clearCheck="@{viewModel.clearSubOperateChecked}"
             app:isGone="@{viewModel.chooseOperateIsGone}">
 
             <RadioButton
@@ -299,7 +299,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:gravity="center"
-                app:clearCheck="@{viewModel.resetMainOperate}">
+                app:clearCheck="@{viewModel.clearSubOperateChecked}">
 
                 <RadioButton
                     android:id="@+id/rb_makepoint_gps"
@@ -407,7 +407,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/rl_main_operate"
             app:layout_constraintTop_toTopOf="parent"
-            app:clearCheck="@{viewModel.resetMainOperate}"
+            app:clearCheck="@{viewModel.clearSubOperateChecked}"
             app:isGone="@{viewModel.toolOperateIsGone}">
 
             <RadioButton
