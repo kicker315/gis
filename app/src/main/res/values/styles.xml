@@ -77,6 +77,18 @@
         <item name="android:textColor">@drawable/tab_text_color_pressed</item>
     </style>
 
+    <!-- 绘图 操作栏 -->
+    <style name="rb_editbox" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@drawable/tab_text_color_pressed</item>
+    </style>
+
     <!-- 图层管理页面 操作按钮 -->
     <style name="rb_layermanager_operate">
         <item name="android:button">@null</item>

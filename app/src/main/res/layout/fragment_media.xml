@@ -1,13 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout
+
+    <data>
+        <variable
+            name="callback"
+            type="com.zydcc.zrdc.view.MediaFragment.Callback" />
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tool_bar"
             style="@style/toolbar_style"
-            app:title="@string/txt_media"/>
-    </LinearLayout>
+            app:title="@string/txt_media" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/title_tab"
+            android:layout_width="400dp"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_centerHorizontal="true"
+            android:elevation="6dp"
+            app:tabTextColor="@color/primary_text"/>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/rg_bottom"
+            android:layout_below="@id/tool_bar" />
+
+        <RadioGroup
+            android:id="@+id/rg_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white_translucent_light"
+            android:elevation="2dp">
+            <RadioButton
+                android:id="@+id/rb_media_camera"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="true"
+                android:drawableTop="@drawable/rb_media_camera"
+                android:gravity="center"
+                android:paddingHorizontal="6dp"
+                android:paddingVertical="3dp"
+                android:paddingLeft="6dp"
+                android:paddingTop="3dp"
+                android:paddingRight="6dp"
+                android:paddingBottom="3dp"
+                android:text="@string/txt_media_camera"
+                android:textColor="@drawable/tab_text_color_pressed"
+                android:textSize="@dimen/textsize_normal" />
+
+            <RadioButton
+                android:id="@+id/rb_media_video"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@drawable/rb_media_video"
+                android:gravity="center"
+                android:paddingHorizontal="6dp"
+                android:paddingVertical="3dp"
+                android:paddingLeft="6dp"
+                android:paddingTop="3dp"
+                android:paddingRight="6dp"
+                android:paddingBottom="3dp"
+                android:text="@string/txt_media_record"
+                android:textColor="@drawable/tab_text_color_pressed"
+                android:textSize="@dimen/textsize_normal" />
+
+            <RadioButton
+                android:id="@+id/rb_media_record"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@drawable/rb_media_record"
+                android:gravity="center"
+                android:paddingHorizontal="6dp"
+                android:paddingVertical="3dp"
+                android:paddingLeft="6dp"
+                android:paddingTop="3dp"
+                android:paddingRight="6dp"
+                android:paddingBottom="3dp"
+                android:text="@string/txt_media_record"
+                android:textColor="@drawable/tab_text_color_pressed"
+                android:textSize="@dimen/textsize_normal" />
+
+            <RadioButton
+                android:id="@+id/rb_media_draw"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@drawable/rb_media_draw"
+                android:gravity="center"
+                android:paddingHorizontal="6dp"
+                android:paddingVertical="3dp"
+                android:paddingLeft="6dp"
+                android:paddingTop="3dp"
+                android:paddingRight="6dp"
+                android:paddingBottom="3dp"
+                android:text="@string/txt_media_draw"
+                android:onClick="@{() -> callback.navToDraft()}"
+                android:textColor="@drawable/tab_text_color_pressed"
+                android:textSize="@dimen/textsize_normal" />
+        </RadioGroup>
+    </RelativeLayout>
 </layout>

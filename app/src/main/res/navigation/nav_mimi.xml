@@ -39,10 +39,23 @@
     <fragment
         android:id="@+id/media_fragment"
         android:name="com.zydcc.zrdc.view.MediaFragment"
-        tools:layout="@layout/fragment_media"/>
+        tools:layout="@layout/fragment_media">
+        <action
+            android:id="@+id/action_media_to_draw"
+            app:destination="@id/draw_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
     <fragment
         android:id="@+id/screenshotManagerFragment"
         android:name="com.zydcc.zrdc.view.ScreenshotManagerFragment"
         android:label="ScreenshotManagerFragment"
         tools:layout="@layout/fragment_screenshot_manager"/>
+    <fragment
+        android:id="@+id/draw_fragment"
+        android:name="com.zydcc.zrdc.view.DrawFragment"
+        android:label="DrawFragment"
+        tools:layout="@layout/fragment_draw"/>
 </navigation>

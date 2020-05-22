@@ -83,6 +83,10 @@ dependencies {
     implementation "com.esri.arcgisruntime:arcgis-android:$arcgisVersion"
     implementation "me.jessyan:autosize:$rootProject.autosize"
     implementation files('libs/BaiduLBS_Android.jar')
+    // free draw
+    implementation files('libs/freedrawview-1.1.2.aar')
+    // 颜色拾取
+    implementation files('libs/colorpicker.aar')
 
     // Testing dependencies
     androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"

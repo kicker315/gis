@@ -163,6 +163,6 @@ class MapViewModel internal constructor(
         clearSubOperateChecked.set(true)
     }
 
-    val codeBrushList: LiveData<List<CodeBrush>> = repository.getCodeBrushList()
+    private val codeBrushList: LiveData<List<CodeBrush>> = repository.getCodeBrushList()
 
 }

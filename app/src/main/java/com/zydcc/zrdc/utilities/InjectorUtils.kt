@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import com.zydcc.zrdc.data.AppDatabase
 import com.zydcc.zrdc.data.CodeBrushRepository
 import com.zydcc.zrdc.interfaces.MapOperate
+import com.zydcc.zrdc.viewmodels.DrawViewModelFactory
 import com.zydcc.zrdc.viewmodels.MapViewModelFactory
 
 /**
@@ -26,5 +27,8 @@ object InjectorUtils {
         return MapViewModelFactory(repository, view, fragment)
     }
 
+    fun providerDrawViewModelFactory(): DrawViewModelFactory {
+        return DrawViewModelFactory()
+    }
 
 }

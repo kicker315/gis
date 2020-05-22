@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="callback"
+            type="com.zydcc.zrdc.view.DrawFragment.Callback" />
+        <variable
+            name="viewModel"
+            type="com.zydcc.zrdc.viewmodels.DrawViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tool_bar"
+            style="@style/toolbar_style"
+            app:title="@string/txt_draw_free" />
+
+        <com.rm.freedrawview.FreeDrawView
+            android:id="@+id/free_draw_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/bottom"
+            android:layout_below="@id/tool_bar"
+            android:background="@color/white"
+            app:paintAlpha="255"
+            app:paintColor="@{viewModel.currentBackgroundColor}"
+            app:paintWidth="2dp"
+            app:resizeBehaviour="crop" />
+
+        <RelativeLayout
+            android:id="@+id/bottom"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#fff1f1f1"
+            android:elevation="@dimen/elevation_normal"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical">
+
+                <RadioButton
+                    style="@style/rb_editbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/btn_draw_pen"
+                    android:text="@string/txt_draw_pen_size"
+                    android:textColor="@drawable/tab_text_color_pressed" />
+
+                <SeekBar
+                    android:id="@+id/slider_thickness"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp" />
+
+                <RadioButton
+                    style="@style/rb_editbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/btn_draw_color"
+                    android:text="@string/txt_draw_pen_color"
+                    android:textColor="@drawable/tab_text_color_pressed" />
+
+                <TextView
+                    android:id="@+id/tv_color"
+                    android:layout_width="25dp"
+                    android:layout_height="15dp"
+                    android:onClick="@{()->callback.changeColor()}"
+                    app:backgroundColor="@{viewModel.currentBackgroundColor}" />
+            </LinearLayout>
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_cancel"
+                    style="@style/rb_editbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/btn_draw_cancel"
+                    android:text="@string/txt_draw_cancel"
+                    android:onClick="@{()-> callback.undoLast()}"
+                    android:textColor="@drawable/tab_text_color_pressed" />
+
+                <RadioButton
+                    android:id="@+id/rb_recover"
+                    style="@style/rb_editbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/btn_draw_recover"
+                    android:text="@string/txt_recover"
+                    android:onClick="@{()-> callback.redoLast()}"
+                    android:textColor="@drawable/tab_text_color_pressed" />
+
+                <RadioButton
+                    android:id="@+id/rb_clear"
+                    style="@style/rb_editbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/btn_draw_clear"
+                    android:text="@string/txt_clear"
+                    android:onClick="@{()->callback.clear()}"
+                    android:textColor="@drawable/tab_text_color_pressed" />
+
+                <RadioButton
+                    android:id="@+id/rb_save"
+                    style="@style/rb_editbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/btn_draw_done"
+                    android:text="@string/txt_save"
+                    android:textColor="@drawable/tab_text_color_pressed" />
+            </RadioGroup>
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

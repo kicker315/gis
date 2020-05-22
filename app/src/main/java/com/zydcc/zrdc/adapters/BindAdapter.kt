@@ -3,6 +3,7 @@ package com.zydcc.zrdc.adapters
 import android.view.View
 import android.widget.RadioGroup
 import androidx.databinding.BindingAdapter
+import com.rm.freedrawview.FreeDrawView
 
 /**
  * =======================================
@@ -25,4 +26,14 @@ fun bindClearCheck(view: RadioGroup, isClear: Boolean) {
     if (isClear) {
         view.clearCheck()
     }
+}
+
+@BindingAdapter("backgroundColor")
+fun bindBackgroundColor(view: View, color: Int) {
+    view.setBackgroundColor(color)
+}
+
+@BindingAdapter("paintColor")
+fun bindPaintColor(view: FreeDrawView, color: Int) {
+    view.paintColor = color
 }
