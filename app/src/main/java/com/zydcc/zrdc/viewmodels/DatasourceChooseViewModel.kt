@@ -22,7 +22,7 @@ class DatasourceChooseViewModel : ViewModel() {
 
     val viewStateLiveData: LiveData<DatasourceViewState> = _viewStateLiveData
 
-    var suffix = ".tpk"
+    var suffix = "tpk"
 
 
 

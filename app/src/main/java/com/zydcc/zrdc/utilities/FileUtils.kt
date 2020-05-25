@@ -159,11 +159,11 @@ object FileUtils {
         val files = dir.listFiles()
         if (files != null && files.isNotEmpty()) {
             for (file in files) {
-                if (file.name.toUpperCase(Locale.ROOT).endsWith(suffix.toUpperCase(Locale.ROOT))) {
+                if (file.name.toUpperCase().endsWith(suffix.toUpperCase())) {
                     list.add(file)
                 }
                 if (file.isDirectory) {
-                    list.addAll(listFilesInDirWithFilter(file, suffix)!!)
+                    list.addAll(listFilesInDirWithFilter(file, suffix))
                 }
             }
         }

@@ -8,6 +8,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
@@ -51,13 +52,14 @@ class DatasourceChooseFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentDatasourceChooseBinding.inflate(inflater, container, false)
+        context ?: return binding.root
         binding.apply {
 
             toolBar.setOnClickListener {
                 dismiss()
             }
             RecyclerViewDivider.with(requireContext())
-                .color(R.color.white_translucent_dark)
+                .color(ContextCompat.getColor(requireContext(), R.color.white_translucent_dark))
                 .size(1)
                 .build()
                 .addTo(rcvFiles)
