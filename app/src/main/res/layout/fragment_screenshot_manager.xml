@@ -9,5 +9,10 @@
             android:id="@+id/tool_bar"
             style="@style/toolbar_style"
             app:title="@string/txt_screenshot_manager"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_pics"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
     </LinearLayout>
 </layout>

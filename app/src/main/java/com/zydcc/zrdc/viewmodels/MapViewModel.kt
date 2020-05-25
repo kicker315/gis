@@ -1,14 +1,13 @@
 package com.zydcc.zrdc.viewmodels
 
+import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.databinding.ObservableInt
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
+import androidx.savedstate.SavedStateRegistryOwner
 import com.baidu.location.BDAbstractLocationListener
 import com.baidu.location.BDLocation
 import com.esri.arcgisruntime.geometry.GeometryEngine
@@ -165,4 +164,22 @@ class MapViewModel internal constructor(
 
     private val codeBrushList: LiveData<List<CodeBrush>> = repository.getCodeBrushList()
 
+}
+
+
+class MapViewModelFactory(
+    private val codeBrushRepository: CodeBrushRepository,
+    private val view: MapOperate,
+    owner: SavedStateRegistryOwner,
+    defaultArgs: Bundle? = null
+): AbstractSavedStateViewModelFactory(owner, defaultArgs) {
+
+    @Suppress("UNCHECKED_CAST")
+    override fun <T : ViewModel?> create(
+        key: String,
+        modelClass: Class<T>,
+        handle: SavedStateHandle
+    ): T {
+        return MapViewModel(codeBrushRepository, view, handle) as T
+    }
 }

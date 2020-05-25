@@ -3,6 +3,8 @@ package com.zydcc.zrdc.adapters
 import android.view.View
 import android.widget.RadioGroup
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.fondesa.recyclerviewdivider.RecyclerViewDivider
 import com.rm.freedrawview.FreeDrawView
 
 /**
@@ -37,3 +39,11 @@ fun bindBackgroundColor(view: View, color: Int) {
 fun bindPaintColor(view: FreeDrawView, color: Int) {
     view.paintColor = color
 }
+
+//@BindingAdapter("customDivider")
+//fun bindRecycleViewDivider(view: RecyclerView, size: Int) {
+//    RecyclerViewDivider.with(view.context)
+//        .size(size)
+//        .build()
+//        .addTo(view)
+//}

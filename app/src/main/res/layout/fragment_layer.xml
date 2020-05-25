@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
-    <View
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="callback"
+            type="com.zydcc.zrdc.view.LayerFragment.Callback" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <include
+                android:id="@+id/headerview_shp"
+                layout="@layout/headerview_layer_manager_shp"
+                app:callback="@{callback}"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcv_shp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <include
+                android:id="@+id/headerview_tpk"
+                layout="@layout/headerview_layer_manager_tpk"
+                app:callback="@{callback}"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcv_tpk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>

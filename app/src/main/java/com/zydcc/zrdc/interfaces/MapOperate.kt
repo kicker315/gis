@@ -12,6 +12,7 @@ import com.zydcc.zrdc.data.CodeBrush
  */
 interface MapOperate : BaseView {
 
+
     // 跳转到媒体页面
     fun navToMedia()
 

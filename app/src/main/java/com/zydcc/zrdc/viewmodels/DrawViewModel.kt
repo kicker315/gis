@@ -3,6 +3,8 @@ package com.zydcc.zrdc.viewmodels
 import android.graphics.Color
 import androidx.databinding.ObservableInt
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 
 /**
  * =======================================
@@ -13,5 +15,14 @@ import androidx.lifecycle.ViewModel
 class DrawViewModel : ViewModel() {
 
     var currentBackgroundColor = ObservableInt(Color.BLACK)
+
+
+}
+
+class DrawViewModelFactory(): ViewModelProvider.Factory {
+    @Suppress("UNCHECKED_CAST")
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        return DrawViewModel() as T
+    }
 
 }

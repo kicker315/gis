@@ -15,11 +15,12 @@ import com.zydcc.zrdc.works.ImportDatabaseWorker
  * Create by ningsikai 2020/5/18:2:56 PM
  * ========================================
  */
-@Database(entities = [DLTB::class, CodeBrush::class], version = 1, exportSchema = false)
+@Database(entities = [DLTB::class, CodeBrush::class, Datasource::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase: RoomDatabase() {
     abstract fun dltbDao(): DLTBDao
     abstract fun codeBrushDao(): CodeBrushDao
+    abstract fun datasourceDao(): DatasourceDao
 
     companion object {
         // For singleton instantiation

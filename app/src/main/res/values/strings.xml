@@ -60,6 +60,7 @@
 
     <string name="txt_shp_manager">矢量图层管理</string>
     <string name="txt_tpk_manager">栅格地图管理</string>
+    <style name="txt_choose_file">选择文件</style>
     <string name="txt_add">添加</string>
     <string name="txt_visibility">可见性</string>
     <string name="txt_visible">可见</string>
