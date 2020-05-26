@@ -41,6 +41,8 @@ class DatasourceChooseFragment : DialogFragment() {
 
     private var suffix = "shp"
 
+    var onDatasourceSelector: (FileItem) -> Unit = {}
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -75,7 +77,8 @@ class DatasourceChooseFragment : DialogFragment() {
            refreshDatasource()
        }
        mAdapter.onClickListener = { it ->
-           Toast.makeText(requireContext(), it.title, Toast.LENGTH_SHORT).show()
+           onDatasourceSelector.invoke(it)
+           dismiss()
        }
    }
 

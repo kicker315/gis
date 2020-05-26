@@ -16,9 +16,6 @@ interface DatasourceDao {
     fun getShpDatasourceList(): LiveData<List<Datasource>>
 
     @Query("SELECT * FROM data_source WHERE type = 1 ORDER BY id")
-    fun getGeoDatasourceList(): LiveData<List<Datasource>>
-
-    @Query("SELECT * FROM data_source WHERE type = 2 ORDER BY id")
     fun getTpkDatasourceList(): LiveData<List<Datasource>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

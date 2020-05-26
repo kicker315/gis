@@ -10,8 +10,6 @@ class DatasourceRepository private constructor(private val dao: DatasourceDao) {
 
     fun getShpDatasourceList() = dao.getShpDatasourceList()
 
-    fun getGeoDatasourceList() = dao.getGeoDatasourceList()
-
     fun getTpkDatasourceList() = dao.getTpkDatasourceList()
 
     suspend fun insert(datasource: Datasource) {

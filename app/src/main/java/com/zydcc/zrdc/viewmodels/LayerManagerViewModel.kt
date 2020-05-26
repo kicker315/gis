@@ -20,8 +20,6 @@ class LayerManagerViewModel(
     val shpDatasourceList: LiveData<List<Datasource>> =
         repository.getShpDatasourceList()
 
-    val geoDatasourceList: LiveData<List<Datasource>> =
-        repository.getGeoDatasourceList()
 
     val tpkDatasourceList: LiveData<List<Datasource>> =
         repository.getTpkDatasourceList()

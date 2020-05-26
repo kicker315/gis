@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModel
 import com.zydcc.zrdc.adapters.ShpManagerAdapter
 import com.zydcc.zrdc.adapters.TpkManagerAdapter
 import com.zydcc.zrdc.core.ext.observe
+import com.zydcc.zrdc.data.Datasource
 import com.zydcc.zrdc.databinding.FragmentLayerBinding
 import com.zydcc.zrdc.utilities.InjectorUtils
 import com.zydcc.zrdc.utilities.IntentConstants
@@ -54,6 +55,10 @@ class LayerFragment : Fragment() {
                         val bundle = Bundle()
                         bundle.putString(IntentConstants.SUFFIX, "shp")
                         mShpChooseDialog?.arguments = bundle
+                        mShpChooseDialog?.onDatasourceSelector = {
+                            val datasource = Datasource(it.title, it.path, 0)
+                            viewModel.addDatasource(datasource)
+                        }
                     }
                     mShpChooseDialog!!.show(activity!!.supportFragmentManager, "shp")
                 }
@@ -64,6 +69,10 @@ class LayerFragment : Fragment() {
                         val bundle = Bundle()
                         bundle.putString(IntentConstants.SUFFIX, "tpk")
                         mTpkChooseDialog?.arguments = bundle
+                        mTpkChooseDialog?.onDatasourceSelector = {
+                            val datasource = Datasource(it.title, it.path, 1)
+                            viewModel.addDatasource(datasource)
+                        }
                     }
                     mTpkChooseDialog!!.show(activity!!.supportFragmentManager, "tpk")
                 }
@@ -80,8 +89,28 @@ class LayerFragment : Fragment() {
 
     private fun binds() {
 
+        mShpManagerAdapter.attrListener = {
 
-        observe(viewModel.geoDatasourceList) { last ->
+        }
+
+        mShpManagerAdapter.removeListener = {
+            viewModel.deleteDatasource(it)
+        }
+
+
+        mTpkManagerAdapter.removeListener = {
+            viewModel.deleteDatasource(it)
+        }
+
+        mTpkManagerAdapter.thumbnailListener = {
+
+        }
+
+        mTpkManagerAdapter.zoomListener = {
+
+        }
+
+        observe(viewModel.shpDatasourceList) { last ->
             mShpManagerAdapter.submitList(last)
         }
         observe(viewModel.tpkDatasourceList) { last ->

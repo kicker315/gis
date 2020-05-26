@@ -27,9 +27,20 @@ class ShpManagerAdapter : ListAdapter<Datasource, RecyclerView.ViewHolder>(ShpDi
         (holder as ViewHolder).bind(tpk)
     }
 
-    class ViewHolder(
+    inner class ViewHolder(
         private val binding: ItemLayerManagerShpBinding
     ): RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.setAttrListener {
+                attrListener.invoke(binding.entity!!)
+            }
+
+            binding.setRemoveListener {
+                removeListener.invoke(binding.entity!!)
+            }
+        }
+
         fun bind(item: Datasource) {
             binding.apply {
                 entity = item
@@ -38,6 +49,8 @@ class ShpManagerAdapter : ListAdapter<Datasource, RecyclerView.ViewHolder>(ShpDi
         }
     }
 
+    var removeListener: (Datasource) -> Unit = {}
+    var attrListener: (Datasource) -> Unit = {}
 
 }
 

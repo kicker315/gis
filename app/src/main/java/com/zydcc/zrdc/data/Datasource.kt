@@ -14,7 +14,7 @@ import androidx.room.PrimaryKey
 data class Datasource(
     val name: String,
     val path: String,
-    val type: Int // 0 shp 1 geo 2 tpk
+    val type: Int // 0 shp 1 tpk
 ) {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name="id")

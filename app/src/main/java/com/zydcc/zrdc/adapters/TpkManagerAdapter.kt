@@ -28,9 +28,24 @@ class TpkManagerAdapter : ListAdapter<Datasource, RecyclerView.ViewHolder>(TpkDi
         (holder as ViewHolder).bind(tpk)
     }
 
-    class ViewHolder(
+    inner class ViewHolder(
         private val binding: ItemLayerManagerTpkBinding
     ): RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.setRemoveListener {
+                removeListener.invoke(binding.entity!!)
+            }
+
+            binding.setZoomListener {
+                zoomListener.invoke(binding.entity!!)
+            }
+
+            binding.setThumbnailListener {
+                thumbnailListener.invoke(binding.entity!!)
+            }
+        }
+
         fun bind(item: Datasource) {
             binding.apply {
                 entity = item
@@ -38,6 +53,10 @@ class TpkManagerAdapter : ListAdapter<Datasource, RecyclerView.ViewHolder>(TpkDi
             }
         }
     }
+
+    var removeListener: (Datasource) -> Unit = {}
+    var zoomListener: (Datasource) -> Unit = {}
+    var thumbnailListener: (Datasource) -> Unit = {}
 
 
 }
