@@ -4,7 +4,6 @@ import android.graphics.Color
 import androidx.databinding.ObservableInt
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
 
 /**
  * =======================================
@@ -16,6 +15,13 @@ class DrawViewModel : ViewModel() {
 
     var currentBackgroundColor = ObservableInt(Color.BLACK)
 
+    
+
+    companion object {
+        private val ALPHA_STEP = 1
+        private val ALPHA_MAX = 255
+        private val ALPHA_MIN = 0
+    }
 
 }
 

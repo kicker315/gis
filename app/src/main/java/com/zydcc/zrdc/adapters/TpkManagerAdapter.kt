@@ -1,35 +1,37 @@
 package com.zydcc.zrdc.adapters
 
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.zydcc.zrdc.databinding.ItemFileListBinding
-import com.zydcc.zrdc.model.bean.FileItem
+import com.zydcc.zrdc.data.Datasource
+import com.zydcc.zrdc.databinding.ItemLayerManagerTpkBinding
 
 /**
  * =======================================
- * 文件列表
- * Create by ningsikai 2020/5/25:11:58 AM
+ *
+ * Create by ningsikai 2020/5/26:8:33 AM
  * ========================================
  */
-class FileListAdapter: ListAdapter<FileItem, RecyclerView.ViewHolder>(DiffCallback()) {
+class TpkManagerAdapter : ListAdapter<Datasource, RecyclerView.ViewHolder>(TpkDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ViewHolder(
-            ItemFileListBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+            ItemLayerManagerTpkBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val dltb = getItem(position)
-        (holder as ViewHolder).bind(dltb)
+        val tpk = getItem(position)
+        (holder as ViewHolder).bind(tpk)
     }
 
     class ViewHolder(
-        private val binding: ItemFileListBinding
+        private val binding: ItemLayerManagerTpkBinding
     ): RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: FileItem) {
+        fun bind(item: Datasource) {
             binding.apply {
                 entity = item
                 executePendingBindings()
@@ -37,15 +39,16 @@ class FileListAdapter: ListAdapter<FileItem, RecyclerView.ViewHolder>(DiffCallba
         }
     }
 
+
 }
 
-private class DiffCallback: DiffUtil.ItemCallback<FileItem>() {
+private class TpkDiffCallback: DiffUtil.ItemCallback<Datasource>() {
 
-    override fun areItemsTheSame(oldItem: FileItem, newItem: FileItem): Boolean {
+    override fun areItemsTheSame(oldItem: Datasource, newItem: Datasource): Boolean {
         return oldItem.path == newItem.path
     }
 
-    override fun areContentsTheSame(oldItem: FileItem, newItem: FileItem): Boolean {
+    override fun areContentsTheSame(oldItem: Datasource, newItem: Datasource): Boolean {
         return oldItem == newItem
     }
 

@@ -6,7 +6,6 @@ import com.zydcc.zrdc.data.AppDatabase
 import com.zydcc.zrdc.data.CodeBrushRepository
 import com.zydcc.zrdc.data.DatasourceRepository
 import com.zydcc.zrdc.interfaces.MapOperate
-import com.zydcc.zrdc.viewmodels.DatasourceChooseViewModelFactory
 import com.zydcc.zrdc.viewmodels.DrawViewModelFactory
 import com.zydcc.zrdc.viewmodels.LayerManagerViewModelFactory
 import com.zydcc.zrdc.viewmodels.MapViewModelFactory
@@ -45,9 +44,7 @@ object InjectorUtils {
         return LayerManagerViewModelFactory(repository)
     }
 
-    fun providerDatasourceChooseViewModelFactory(fragment: Fragment): DatasourceChooseViewModelFactory {
-        return DatasourceChooseViewModelFactory()
-    }
+
 
 
 }

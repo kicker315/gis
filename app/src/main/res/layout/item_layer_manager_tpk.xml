@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="entity"
+            type="com.zydcc.zrdc.data.Datasource" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="@dimen/padding_normal"
+        android:background="@color/white">
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@{entity.name}"
+            android:layout_weight="1"
+            />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3">
+            <CheckBox
+                android:id="@+id/cb_visible"
+                android:layout_width="100dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                style="@style/checkbox_lm"
+                android:gravity="center"
+                android:text="@string/txt_visible"
+              />
+        </LinearLayout>
+
+
+
+        <RadioGroup
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/rb_thumbnail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/btn_layer_info"
+                android:gravity="center"
+                android:text="@string/txt_thumbnail"
+                style="@style/rb_layermanager_operate"
+                />
+
+            <RadioButton
+                android:id="@+id/rb_zoom"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/btn_layer_zoom"
+                android:text="@string/txt_zoom"
+                style="@style/rb_layermanager_operate" />
+
+
+
+            <RadioButton
+                android:id="@+id/rb_remove"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/btn_layer_remove"
+                android:gravity="center"
+                android:text="@string/txt_remove"
+                style="@style/rb_layermanager_operate"/>
+        </RadioGroup>
+
+
+    </LinearLayout>
+</layout>

@@ -42,6 +42,7 @@ class DrawFragment: Fragment() {
             view.findNavController().navigateUp()
         }
         initCallback(binding)
+        binds()
         return binding.root
     }
 
@@ -70,6 +71,10 @@ class DrawFragment: Fragment() {
             }
 
         }
+
+    }
+
+    private fun binds() {
 
     }
 

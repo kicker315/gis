@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -22,7 +23,10 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcv_shp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:spanCount="1"
+                tools:listitem="@layout/item_layer_manager_shp"/>
             <include
                 android:id="@+id/headerview_tpk"
                 layout="@layout/headerview_layer_manager_tpk"
@@ -30,7 +34,10 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcv_tpk"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:spanCount="1"
+                tools:listitem="@layout/item_layer_manager_tpk"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

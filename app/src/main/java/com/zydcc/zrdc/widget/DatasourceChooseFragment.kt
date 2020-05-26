@@ -8,24 +8,20 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.AnyThread
+import androidx.annotation.MainThread
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.fondesa.recyclerviewdivider.RecyclerViewDivider
 import com.zydcc.zrdc.R
 import com.zydcc.zrdc.adapters.FileListAdapter
-import com.zydcc.zrdc.core.ext.observe
 import com.zydcc.zrdc.databinding.FragmentDatasourceChooseBinding
 import com.zydcc.zrdc.model.bean.FileItem
 import com.zydcc.zrdc.utilities.DimenUtils
 import com.zydcc.zrdc.utilities.FileUtils
-import com.zydcc.zrdc.utilities.InjectorUtils
-import com.zydcc.zrdc.viewmodels.DatasourceChooseViewModel
-import com.zydcc.zrdc.viewmodels.DatasourceViewState
+import com.zydcc.zrdc.utilities.IntentConstants
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import java.io.File
 
@@ -42,9 +38,7 @@ class DatasourceChooseFragment : DialogFragment() {
     private var mAdapter = FileListAdapter()
     private var mRefreshLayout: SwipeRefreshLayout ?= null
 
-    val viewModel: DatasourceChooseViewModel by viewModels{
-        InjectorUtils.providerDatasourceChooseViewModelFactory(this)
-    }
+    private var suffix = "shp"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -66,16 +60,19 @@ class DatasourceChooseFragment : DialogFragment() {
             rcvFiles.adapter = mAdapter
             mRefreshLayout = swipeRefresh
             binds()
+            mRefreshLayout?.isRefreshing = true
+            refreshDatasource()
         }
         return binding.root
     }
 
 
    private fun binds() {
+
+       suffix = arguments?.getString(IntentConstants.SUFFIX) ?: "shp"
        mRefreshLayout?.setOnRefreshListener {
-           viewModel.refreshDatasource()
+           refreshDatasource()
        }
-       observe(viewModel.viewStateLiveData, this::onNextState)
    }
 
 
@@ -96,11 +93,26 @@ class DatasourceChooseFragment : DialogFragment() {
         }
     }
 
-    private fun onNextState(state: DatasourceViewState) {
-        if (state.isLoading != mRefreshLayout?.isRefreshing) {
-            mRefreshLayout?.isEnabled = state.isLoading
+    private fun refreshDatasource() {
+        GlobalScope.launch {
+            val data = getData(suffix)
+            mRefreshLayout?.post {
+                mRefreshLayout?.isRefreshing = false
+                mRefreshLayout?.isEnabled = false
+                mAdapter.submitList(data)
+            }
         }
-        mAdapter.submitList(state.pagedList)
+
+    }
+
+    private  fun getData(suffix: String): List<FileItem> {
+
+        val files = FileUtils.listFilesInDirWithFilter(File(Environment.getExternalStorageDirectory().absolutePath + "/莱西一张图/"), suffix)
+        val data = mutableListOf<FileItem>()
+        for (file in files) {
+            data.add(FileItem(file.name, file.absolutePath))
+        }
+        return data
     }
 
 }

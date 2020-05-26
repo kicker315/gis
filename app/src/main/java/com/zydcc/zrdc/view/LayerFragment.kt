@@ -8,8 +8,13 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
+import com.zydcc.zrdc.adapters.ShpManagerAdapter
+import com.zydcc.zrdc.adapters.TpkManagerAdapter
+import com.zydcc.zrdc.core.ext.observe
 import com.zydcc.zrdc.databinding.FragmentLayerBinding
 import com.zydcc.zrdc.utilities.InjectorUtils
+import com.zydcc.zrdc.utilities.IntentConstants
+import com.zydcc.zrdc.viewmodels.LayerManagerViewModel
 import com.zydcc.zrdc.widget.DatasourceChooseFragment
 
 /**
@@ -20,13 +25,18 @@ import com.zydcc.zrdc.widget.DatasourceChooseFragment
  */
 class LayerFragment : Fragment() {
 
-    val viewModel: ViewModel by viewModels {
+    val viewModel: LayerManagerViewModel by viewModels {
         InjectorUtils.providerLayerManagerModelFactory(this)
     }
 
 
-    private var mGeoChooseDialog: DatasourceChooseFragment ?= null
+    private var mShpChooseDialog: DatasourceChooseFragment ?= null
     private var mTpkChooseDialog: DatasourceChooseFragment ?= null
+
+    // 矢量图层管理适配器
+    private var mShpManagerAdapter = ShpManagerAdapter()
+    // 栅格图层管理适配器
+    private var mTpkManagerAdapter = TpkManagerAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,23 +49,44 @@ class LayerFragment : Fragment() {
         binding.apply {
             callback = object : Callback {
                 override fun addShp() {
-                    if (mGeoChooseDialog == null) {
-                        mGeoChooseDialog = DatasourceChooseFragment()
+                    if (mShpChooseDialog == null) {
+                        mShpChooseDialog = DatasourceChooseFragment()
+                        val bundle = Bundle()
+                        bundle.putString(IntentConstants.SUFFIX, "shp")
+                        mShpChooseDialog?.arguments = bundle
                     }
-                    mGeoChooseDialog!!.show(activity!!.supportFragmentManager, "geo")
+                    mShpChooseDialog!!.show(activity!!.supportFragmentManager, "shp")
                 }
 
                 override fun addTpk() {
                     if (mTpkChooseDialog == null) {
                         mTpkChooseDialog = DatasourceChooseFragment()
+                        val bundle = Bundle()
+                        bundle.putString(IntentConstants.SUFFIX, "tpk")
+                        mTpkChooseDialog?.arguments = bundle
                     }
                     mTpkChooseDialog!!.show(activity!!.supportFragmentManager, "tpk")
                 }
 
             }
+            rcvShp.adapter = mShpManagerAdapter
+            rcvTpk.adapter = mTpkManagerAdapter
         }
 
+        binds()
+
         return binding.root
+    }
+
+    private fun binds() {
+
+
+        observe(viewModel.geoDatasourceList) { last ->
+            mShpManagerAdapter.submitList(last)
+        }
+        observe(viewModel.tpkDatasourceList) { last ->
+            mTpkManagerAdapter.submitList(last)
+        }
     }
 
     interface Callback {

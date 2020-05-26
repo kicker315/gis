@@ -9,3 +9,7 @@ package com.zydcc.zrdc.utilities
 const val DATABASE_NAME = "dic.db"
 const val DATABASE_PATH = "database/dic.db"
 const val DLTB_DATA_FILENAME = "DLTB.json"
+
+object IntentConstants {
+    const val SUFFIX = "suffix"
+}

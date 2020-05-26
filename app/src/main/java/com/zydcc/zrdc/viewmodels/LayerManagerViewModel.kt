@@ -1,9 +1,8 @@
 package com.zydcc.zrdc.viewmodels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import com.zydcc.zrdc.core.ext.postNext
+import com.zydcc.zrdc.core.ext.setNext
 import com.zydcc.zrdc.data.Datasource
 import com.zydcc.zrdc.data.DatasourceRepository
 import kotlinx.coroutines.launch
@@ -27,6 +26,7 @@ class LayerManagerViewModel(
     val tpkDatasourceList: LiveData<List<Datasource>> =
         repository.getTpkDatasourceList()
 
+
     // 添加数据源
     fun addDatasource(datasource: Datasource) {
         viewModelScope.launch {
@@ -34,7 +34,17 @@ class LayerManagerViewModel(
         }
     }
 
+    // 删除数据源
+    fun deleteDatasource(datasource: Datasource) {
+        viewModelScope.launch {
+            repository.remove(datasource)
+        }
+    }
+
 }
+
+
+
 
 class LayerManagerViewModelFactory(private val repository: DatasourceRepository): ViewModelProvider.Factory {
 
