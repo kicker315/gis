@@ -8,6 +8,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.AnyThread
 import androidx.annotation.MainThread
 import androidx.core.content.ContextCompat
@@ -72,6 +73,9 @@ class DatasourceChooseFragment : DialogFragment() {
        suffix = arguments?.getString(IntentConstants.SUFFIX) ?: "shp"
        mRefreshLayout?.setOnRefreshListener {
            refreshDatasource()
+       }
+       mAdapter.onClickListener = { it ->
+           Toast.makeText(requireContext(), it.title, Toast.LENGTH_SHORT).show()
        }
    }
 

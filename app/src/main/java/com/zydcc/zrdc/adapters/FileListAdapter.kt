@@ -26,9 +26,16 @@ class FileListAdapter: ListAdapter<FileItem, RecyclerView.ViewHolder>(DiffCallba
         (holder as ViewHolder).bind(dltb)
     }
 
-    class ViewHolder(
+    inner class ViewHolder(
         private val binding: ItemFileListBinding
     ): RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.setClickListener {
+                onClickListener.invoke(binding.entity!!)
+            }
+        }
+
         fun bind(item: FileItem) {
             binding.apply {
                 entity = item
@@ -36,6 +43,8 @@ class FileListAdapter: ListAdapter<FileItem, RecyclerView.ViewHolder>(DiffCallba
             }
         }
     }
+
+    var onClickListener: (FileItem) -> Unit = {}
 
 }
 
