@@ -8,16 +8,13 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.annotation.AnyThread
-import androidx.annotation.MainThread
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.fondesa.recyclerviewdivider.RecyclerViewDivider
 import com.zydcc.zrdc.R
 import com.zydcc.zrdc.adapters.FileListAdapter
-import com.zydcc.zrdc.databinding.FragmentDatasourceChooseBinding
+import com.zydcc.zrdc.databinding.DialogDatasourceChooseBinding
 import com.zydcc.zrdc.model.bean.FileItem
 import com.zydcc.zrdc.utilities.DimenUtils
 import com.zydcc.zrdc.utilities.FileUtils
@@ -32,7 +29,7 @@ import java.io.File
  * Create by ningsikai 2020/5/25:11:03 AM
  * ========================================
  */
-class DatasourceChooseFragment : DialogFragment() {
+class DatasourceChooseDialog : DialogFragment() {
 
 
 
@@ -48,7 +45,7 @@ class DatasourceChooseFragment : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentDatasourceChooseBinding.inflate(inflater, container, false)
+        val binding = DialogDatasourceChooseBinding.inflate(inflater, container, false)
         context ?: return binding.root
         binding.apply {
 

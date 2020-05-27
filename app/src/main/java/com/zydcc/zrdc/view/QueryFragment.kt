@@ -5,7 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.zydcc.zrdc.databinding.FragmentQueryBinding
+import com.zydcc.zrdc.utilities.InjectorUtils
+import com.zydcc.zrdc.viewmodels.QueryStaticsViewModel
 
 /**
  * =======================================
@@ -14,6 +17,10 @@ import com.zydcc.zrdc.databinding.FragmentQueryBinding
  * ========================================
  */
 class QueryFragment: Fragment() {
+
+    val viewModel: QueryStaticsViewModel by viewModels {
+        InjectorUtils.providerQueryStaticsViewModelFactory(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -90,6 +90,7 @@
     <string name="txt_range">值域</string>
     <string name="please_select_layer">请选择图层</string>
     <string name="please_select_visible_fields">请选择显示字段</string>
+    <string name="please_select_fields">请选择字段</string>
     <string name="please_select_operate">请选择操作符</string>
     <string name="please_select_range">请选择值域</string>
     <string name="tip_multiselect_up_to_6">最多选择六个显示字段</string>

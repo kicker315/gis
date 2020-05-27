@@ -17,11 +17,6 @@ class DrawViewModel : ViewModel() {
 
     
 
-    companion object {
-        private val ALPHA_STEP = 1
-        private val ALPHA_MAX = 255
-        private val ALPHA_MIN = 0
-    }
 
 }
 

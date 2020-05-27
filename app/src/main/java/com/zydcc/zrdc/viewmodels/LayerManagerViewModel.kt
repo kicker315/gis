@@ -3,6 +3,8 @@ package com.zydcc.zrdc.viewmodels
 import androidx.lifecycle.*
 import com.zydcc.zrdc.core.ext.postNext
 import com.zydcc.zrdc.core.ext.setNext
+import com.zydcc.zrdc.data.DLTB
+import com.zydcc.zrdc.data.DLTBRepository
 import com.zydcc.zrdc.data.Datasource
 import com.zydcc.zrdc.data.DatasourceRepository
 import kotlinx.coroutines.launch
@@ -14,7 +16,8 @@ import kotlinx.coroutines.launch
  * ========================================
  */
 class LayerManagerViewModel(
-    private val repository: DatasourceRepository
+    private val repository: DatasourceRepository,
+    private val dltbRepository: DLTBRepository
 ): ViewModel() {
 
     val shpDatasourceList: LiveData<List<Datasource>> =
@@ -23,6 +26,9 @@ class LayerManagerViewModel(
 
     val tpkDatasourceList: LiveData<List<Datasource>> =
         repository.getTpkDatasourceList()
+
+    val dltbList: LiveData<List<DLTB>> =
+        dltbRepository.getDLTBList()
 
 
     // 添加数据源
@@ -44,10 +50,13 @@ class LayerManagerViewModel(
 
 
 
-class LayerManagerViewModelFactory(private val repository: DatasourceRepository): ViewModelProvider.Factory {
+class LayerManagerViewModelFactory(
+    private val repository: DatasourceRepository,
+    private var dltbRepository: DLTBRepository
+): ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return LayerManagerViewModel(repository) as T
+        return LayerManagerViewModel(repository, dltbRepository) as T
     }
 }

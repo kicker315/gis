@@ -4,11 +4,13 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import com.zydcc.zrdc.data.AppDatabase
 import com.zydcc.zrdc.data.CodeBrushRepository
+import com.zydcc.zrdc.data.DLTBRepository
 import com.zydcc.zrdc.data.DatasourceRepository
 import com.zydcc.zrdc.interfaces.MapOperate
 import com.zydcc.zrdc.viewmodels.DrawViewModelFactory
 import com.zydcc.zrdc.viewmodels.LayerManagerViewModelFactory
 import com.zydcc.zrdc.viewmodels.MapViewModelFactory
+import com.zydcc.zrdc.viewmodels.QueryStaticsViewModelFactory
 
 /**
  * =======================================
@@ -17,6 +19,12 @@ import com.zydcc.zrdc.viewmodels.MapViewModelFactory
  * ========================================
  */
 object InjectorUtils {
+
+    private fun getDLTBRepository(context: Context): DLTBRepository {
+        return DLTBRepository.getInstance(
+            AppDatabase.getInstance(context.applicationContext).dltbDao()
+        )
+    }
 
     private fun getCodeBrushRepository(context: Context): CodeBrushRepository {
         return CodeBrushRepository.getInstance(
@@ -41,8 +49,15 @@ object InjectorUtils {
 
     fun providerLayerManagerModelFactory(fragment: Fragment): LayerManagerViewModelFactory {
         val repository = getDatasourceRepository(fragment.requireContext())
-        return LayerManagerViewModelFactory(repository)
+        val dltbRepository = getDLTBRepository(fragment.requireContext())
+        return LayerManagerViewModelFactory(repository, dltbRepository)
     }
+
+    fun providerQueryStaticsViewModelFactory(fragment: Fragment): QueryStaticsViewModelFactory {
+        val repository = getDatasourceRepository(fragment.requireContext())
+        return QueryStaticsViewModelFactory(repository)
+    }
+
 
 
 

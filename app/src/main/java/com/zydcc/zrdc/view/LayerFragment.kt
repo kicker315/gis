@@ -4,10 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
 import com.zydcc.zrdc.adapters.ShpManagerAdapter
 import com.zydcc.zrdc.adapters.TpkManagerAdapter
 import com.zydcc.zrdc.core.ext.observe
@@ -16,7 +14,7 @@ import com.zydcc.zrdc.databinding.FragmentLayerBinding
 import com.zydcc.zrdc.utilities.InjectorUtils
 import com.zydcc.zrdc.utilities.IntentConstants
 import com.zydcc.zrdc.viewmodels.LayerManagerViewModel
-import com.zydcc.zrdc.widget.DatasourceChooseFragment
+import com.zydcc.zrdc.widget.DatasourceChooseDialog
 
 /**
  * =======================================
@@ -31,8 +29,8 @@ class LayerFragment : Fragment() {
     }
 
 
-    private var mShpChooseDialog: DatasourceChooseFragment ?= null
-    private var mTpkChooseDialog: DatasourceChooseFragment ?= null
+    private var mShpChooseDialog: DatasourceChooseDialog ?= null
+    private var mTpkChooseDialog: DatasourceChooseDialog ?= null
 
     // 矢量图层管理适配器
     private var mShpManagerAdapter = ShpManagerAdapter()
@@ -51,7 +49,7 @@ class LayerFragment : Fragment() {
             callback = object : Callback {
                 override fun addShp() {
                     if (mShpChooseDialog == null) {
-                        mShpChooseDialog = DatasourceChooseFragment()
+                        mShpChooseDialog = DatasourceChooseDialog()
                         val bundle = Bundle()
                         bundle.putString(IntentConstants.SUFFIX, "shp")
                         mShpChooseDialog?.arguments = bundle
@@ -65,7 +63,7 @@ class LayerFragment : Fragment() {
 
                 override fun addTpk() {
                     if (mTpkChooseDialog == null) {
-                        mTpkChooseDialog = DatasourceChooseFragment()
+                        mTpkChooseDialog = DatasourceChooseDialog()
                         val bundle = Bundle()
                         bundle.putString(IntentConstants.SUFFIX, "tpk")
                         mTpkChooseDialog?.arguments = bundle
