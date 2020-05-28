@@ -12,6 +12,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.esri.arcgisruntime.ArcGISRuntimeEnvironment
+import com.esri.arcgisruntime.data.TileCache
+import com.esri.arcgisruntime.layers.ArcGISTiledLayer
 import com.esri.arcgisruntime.mapping.ArcGISMap
 import com.esri.arcgisruntime.mapping.Basemap
 import com.esri.arcgisruntime.mapping.view.Graphic
@@ -19,6 +21,7 @@ import com.esri.arcgisruntime.mapping.view.GraphicsOverlay
 import com.esri.arcgisruntime.symbology.Symbol
 import com.zydcc.zrdc.interfaces.MapOperate
 import com.zydcc.zrdc.base.App
+import com.zydcc.zrdc.core.ext.observe
 import com.zydcc.zrdc.data.CodeBrush
 import com.zydcc.zrdc.databinding.FragmentMapBinding
 import com.zydcc.zrdc.viewmodels.MapViewModel
@@ -33,9 +36,9 @@ import java.lang.Exception
  */
 class MapFragment: Fragment(), MapOperate {
 
-    private var binding: FragmentMapBinding ?= null
+    lateinit var binding: FragmentMapBinding
     // 定位点图标
-    private var mLocSymbol: Symbol ?= null
+    private var mLocSymbol: Symbol?= null
     //定位点图层
     private var mLocOverlay: GraphicsOverlay? = null
 
@@ -51,13 +54,13 @@ class MapFragment: Fragment(), MapOperate {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMapBinding.inflate(inflater, container, false)
-        context ?: return binding?.root
-        binding!!.viewModel = viewModel
-        binding!!.baseView = this
+        context ?: return binding.root
+        binding.viewModel = viewModel
+        binding.baseView = this
         initMap()
         dealError()
         initBDLocation()
-        return binding!!.root
+        return binding.root
     }
 
 
@@ -66,14 +69,29 @@ class MapFragment: Fragment(), MapOperate {
         // 去水印
         ArcGISRuntimeEnvironment.setLicense("runtimelite,1000,rud8065403504,none,RP5X0H4AH7CLJ9HSX018")
         // 去除版权声明
-        binding!!.mapView.isAttributionTextVisible = false
+        binding.mapView.isAttributionTextVisible = false
         val map = ArcGISMap(Basemap.Type.OPEN_STREET_MAP, 37.432949, 121.497014, 10)
-        binding!!.mapView.map = map
+        binding.mapView.map = map
         mLocOverlay = GraphicsOverlay()
-        binding!!.mapView.graphicsOverlays.add(mLocOverlay)
-        mLocSymbol = binding!!.mapView.locationDisplay.defaultSymbol
-
+        binding.mapView.graphicsOverlays.add(mLocOverlay)
+        mLocSymbol = binding.mapView.locationDisplay.defaultSymbol
+        observe(viewModel.tpkDatasourceList) {
+            binding.mapView.map.basemap.baseLayers.clear()
+            if (it.isNotEmpty()) {
+               resetBaseMap(it[0].path)
+            }
+            mLocOverlay = GraphicsOverlay()
+            binding.mapView.graphicsOverlays.add(mLocOverlay)
+            mLocSymbol = binding.mapView.locationDisplay.defaultSymbol
+        }
     }
+
+    private fun resetBaseMap(path: String) {
+        val tileCache = TileCache(path)
+        val mainArcGISTiledLayer = ArcGISTiledLayer(tileCache)
+        binding.mapView.map.basemap.baseLayers.add(mainArcGISTiledLayer)
+    }
+
 
     // 初始化百度定位
     private fun initBDLocation() {
@@ -87,7 +105,7 @@ class MapFragment: Fragment(), MapOperate {
                         val locGraphic = Graphic(pt, it)
                         mLocOverlay?.graphics?.clear()
                         mLocOverlay?.graphics?.add(locGraphic)
-                        binding!!.mapView.setViewpointCenterAsync(pt, 5000.0)
+                        binding.mapView.setViewpointCenterAsync(pt, 5000.0)
                     }
                     isLocation = false
                     App.locationService?.stop()

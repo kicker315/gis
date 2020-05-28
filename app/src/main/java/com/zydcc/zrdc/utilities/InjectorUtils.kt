@@ -39,8 +39,9 @@ object InjectorUtils {
     }
 
     fun providerMapViewModelFactory(view: MapOperate, fragment: Fragment): MapViewModelFactory {
-        val repository = getCodeBrushRepository(fragment.requireContext())
-        return MapViewModelFactory(repository, view, fragment)
+        val datasourceRepository = getDatasourceRepository(fragment.requireContext())
+        val codeBrushRepository = getCodeBrushRepository(fragment.requireContext())
+        return MapViewModelFactory(datasourceRepository, codeBrushRepository, view, fragment)
     }
 
     fun providerDrawViewModelFactory(): DrawViewModelFactory {

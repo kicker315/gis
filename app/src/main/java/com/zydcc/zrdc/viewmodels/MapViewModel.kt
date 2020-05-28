@@ -16,6 +16,8 @@ import com.esri.arcgisruntime.geometry.SpatialReferences
 import com.zydcc.zrdc.R
 import com.zydcc.zrdc.data.CodeBrush
 import com.zydcc.zrdc.data.CodeBrushRepository
+import com.zydcc.zrdc.data.Datasource
+import com.zydcc.zrdc.data.DatasourceRepository
 import com.zydcc.zrdc.interfaces.MapOperate
 import com.zydcc.zrdc.model.bean.LocationData
 import com.zydcc.zrdc.utilities.PositionUtil
@@ -31,7 +33,8 @@ import java.text.DecimalFormat
  * ========================================
  */
 class MapViewModel internal constructor(
-    repository: CodeBrushRepository,
+    datasourceRepository: DatasourceRepository,
+    codeBrushRepository: CodeBrushRepository,
     view: MapOperate,
     private val savedStateHandle: SavedStateHandle
 ): ViewModel() {
@@ -67,6 +70,13 @@ class MapViewModel internal constructor(
     var onLocationCallback: (Point) -> Unit =  {}
 
     var onErrorCallback: (String) -> Unit = {}
+
+    val shpDatasourceList: LiveData<List<Datasource>> =
+        datasourceRepository.getShpDatasourceList()
+
+
+    val tpkDatasourceList: LiveData<List<Datasource>> =
+        datasourceRepository.getTpkDatasourceList()
 
 
     inner class MyBDLocationListener : BDAbstractLocationListener() {
@@ -162,12 +172,13 @@ class MapViewModel internal constructor(
         clearSubOperateChecked.set(true)
     }
 
-    private val codeBrushList: LiveData<List<CodeBrush>> = repository.getCodeBrushList()
+    private val codeBrushList: LiveData<List<CodeBrush>> = codeBrushRepository.getCodeBrushList()
 
 }
 
 
 class MapViewModelFactory(
+    private val datasourceRepository: DatasourceRepository,
     private val codeBrushRepository: CodeBrushRepository,
     private val view: MapOperate,
     owner: SavedStateRegistryOwner,
@@ -180,6 +191,6 @@ class MapViewModelFactory(
         modelClass: Class<T>,
         handle: SavedStateHandle
     ): T {
-        return MapViewModel(codeBrushRepository, view, handle) as T
+        return MapViewModel(datasourceRepository,codeBrushRepository, view, handle) as T
     }
 }
