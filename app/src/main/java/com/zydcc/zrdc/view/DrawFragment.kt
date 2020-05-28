@@ -4,8 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SeekBar
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat
+import androidx.databinding.adapters.SeekBarBindingAdapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
@@ -22,33 +23,36 @@ import com.zydcc.zrdc.viewmodels.DrawViewModel
  * Create by ningsikai 2020/5/21:4:52 PM
  * ========================================
  */
-class DrawFragment: Fragment() {
+class DrawFragment: Fragment(), SeekBarBindingAdapter.OnProgressChanged {
 
 
     val viewModel: DrawViewModel by viewModels {
         InjectorUtils.providerDrawViewModelFactory()
     }
 
+    lateinit var binding: FragmentDrawBinding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentDrawBinding.inflate(inflater, container, false)
+        binding = FragmentDrawBinding.inflate(inflater, container, false)
         context ?: return  binding.root
 
         binding.viewModel = viewModel
         binding.toolBar.setNavigationOnClickListener {view ->
             view.findNavController().navigateUp()
         }
+        binding.onProgressChanged = this
         initCallback(binding)
-        binds()
         return binding.root
     }
 
     private fun initCallback(binding: FragmentDrawBinding) {
         binding.apply {
-
+            sliderThickness.max = ((THICKNESS_MAX - THICKNESS_MIN) / THICKNESS_STEP)
+            thicknessProgress = ((freeDrawView.paintWidth - THICKNESS_MIN) / THICKNESS_STEP).toInt()
             val freeDrawView = binding.freeDrawView
 
             callback = object: Callback {
@@ -74,9 +78,6 @@ class DrawFragment: Fragment() {
 
     }
 
-    private fun binds() {
-
-    }
 
 
     private fun getColorPickerDialog(): AlertDialog {
@@ -103,6 +104,16 @@ class DrawFragment: Fragment() {
         fun redoLast()
         fun clear()
 
+    }
+
+    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+        binding.freeDrawView.setPaintWidthPx((THICKNESS_MIN + (progress * THICKNESS_STEP)).toFloat())
+    }
+
+    companion object {
+        private const val THICKNESS_STEP = 2
+        private const val THICKNESS_MAX = 80
+        private const val THICKNESS_MIN = 4
     }
 
 }

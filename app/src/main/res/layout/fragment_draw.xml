@@ -6,6 +6,19 @@
         <variable
             name="callback"
             type="com.zydcc.zrdc.view.DrawFragment.Callback" />
+
+        <variable
+            name="maxSize"
+            type="int" />
+
+        <variable
+            name="thicknessProgress"
+            type="int" />
+
+        <variable
+            name="onProgressChanged"
+            type="androidx.databinding.adapters.SeekBarBindingAdapter.OnProgressChanged" />
+
         <variable
             name="viewModel"
             type="com.zydcc.zrdc.viewmodels.DrawViewModel" />
@@ -62,7 +75,9 @@
                     android:layout_height="wrap_content"
                     android:paddingVertical="5dp"
                     android:paddingTop="5dp"
-                    android:paddingBottom="5dp" />
+                    android:paddingBottom="5dp"
+                    android:onProgressChanged="@{onProgressChanged}"
+                    app:progress="@{thicknessProgress}"/>
 
                 <RadioButton
                     style="@style/rb_editbox"
