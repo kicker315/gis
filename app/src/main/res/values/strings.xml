@@ -132,5 +132,20 @@
     <string name="txt_draw_cancel">撤销</string>
 
 
+    <string name="title_app_name">App名称</string>
+    <string name="title_version_code">版本号</string>
+    <string name="title_copyright">版权所有</string>
+    <string name="hit_company">山东正元数字城市建设有限公司</string>
+    <string name="title_org_site">官方网站</string>
+    <string name="hit_org_site">http://www.zydcc.com/</string>
+    <string name="title_it_support">技术支持</string>
+    <string name="hint_it_support_phone">(0535)-8206275 8206266</string>
+    <string name="title_register_state">激活状态</string>
+    <string name="hint_no_register">未激活</string>
+    <string name="txt_setting_sysgps">系统定位设置</string>
+    <string name="txt_location_service">定位服务</string>
+    <string name="txt_bluetooth_device">蓝牙设备</string>
+    <string name="txt_no_connected">未连接</string>
+
 
 </resources>
