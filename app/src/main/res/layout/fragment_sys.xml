@@ -1,13 +1,324 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tool_bar"
             style="@style/toolbar_style"
-            app:title="@string/txt_setting"/>
+            app:title="@string/txt_setting" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:baselineAligned="false">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:elevation="1dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1px"
+                    android:background="@color/white">
+
+                    <LinearLayout
+                        android:id="@+id/setting_gps"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?android:selectableItemBackground"
+                        android:padding="@dimen/padding_normal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:src="@drawable/icon_setting_gps"
+                            android:contentDescription="@string/app_name"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/txt_gps_setting"
+                            android:textSize="@dimen/textsize_normal" />
+                    </LinearLayout>
+
+                    <ImageView
+                        style="@style/setting_right_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@string/app_name"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1px"
+                    android:background="@color/white">
+
+                    <LinearLayout
+                        android:id="@+id/setting_getpoint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?android:selectableItemBackground"
+                        android:padding="@dimen/padding_normal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:src="@drawable/icon_setting_getpoint"
+                            android:contentDescription="@string/app_name"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/txt_getpoint"
+                            android:textSize="@dimen/textsize_normal" />
+                    </LinearLayout>
+
+                    <ImageView
+                        style="@style/setting_right_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@string/app_name"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1px"
+                    android:background="@color/white">
+
+                    <LinearLayout
+                        android:id="@+id/setting_camera"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?android:selectableItemBackground"
+                        android:padding="@dimen/padding_normal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5.0dip"
+                            android:src="@drawable/icon_setting_camer"
+                            android:contentDescription="@string/app_name"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/txt_camara_field"
+                            android:textSize="@dimen/textsize_normal" />
+                    </LinearLayout>
+
+                    <ImageView
+                        style="@style/setting_right_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@string/app_name"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1px"
+                    android:background="@color/white">
+
+                    <LinearLayout
+                        android:id="@+id/setting_difference"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?android:selectableItemBackground"
+                        android:padding="@dimen/padding_normal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:src="@drawable/icon_setting_diffierence"
+                            android:contentDescription="@string/app_name"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/txt_diffrence_setting"
+                            android:textSize="@dimen/textsize_normal" />
+                    </LinearLayout>
+
+                    <ImageView
+                        style="@style/setting_right_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@string/app_name"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1px"
+                    android:background="@color/white">
+
+                    <LinearLayout
+                        android:id="@+id/setting_coordinate"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?android:selectableItemBackground"
+                        android:padding="@dimen/padding_normal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5.0dip"
+                            android:src="@drawable/icon_setting_coordinate"
+                            android:contentDescription="@string/app_name"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/txt_coordinate_sys"
+                            android:textSize="@dimen/textsize_normal" />
+                    </LinearLayout>
+
+                    <ImageView
+                        style="@style/setting_right_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@string/app_name"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1px"
+                    android:background="@color/white">
+
+                    <LinearLayout
+                        android:id="@+id/setting_layertemp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?android:selectableItemBackground"
+                        android:padding="@dimen/padding_normal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="@string/app_name"
+                            android:padding="5dp"
+                            android:src="@drawable/icon_setting_layertemp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/txt_layer_temp"
+                            android:textSize="@dimen/textsize_normal" />
+                    </LinearLayout>
+
+                    <ImageView
+                        style="@style/setting_right_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@string/app_name"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1px"
+                    android:background="@color/white">
+
+                    <LinearLayout
+                        android:id="@+id/setting_grid"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?android:selectableItemBackground"
+                        android:padding="@dimen/padding_normal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:src="@drawable/icon_setting_grid"
+                            android:contentDescription="@string/app_name"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/txt_inquiry_grid"
+                            android:textSize="@dimen/textsize_normal" />
+                    </LinearLayout>
+
+                    <ImageView
+                        style="@style/setting_right_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@string/app_name"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1px"
+                    android:background="@color/white">
+
+                    <LinearLayout
+                        android:id="@+id/setting_us"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?android:selectableItemBackground"
+                        android:padding="@dimen/padding_normal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:src="@drawable/icon_setting_us"
+                            android:contentDescription="@string/app_name"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/txt_about_us"
+                            android:textSize="@dimen/textsize_normal" />
+                    </LinearLayout>
+
+                    <ImageView
+                        style="@style/setting_right_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@string/app_name"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/frame_settingdetail"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6" />
+        </LinearLayout>
     </LinearLayout>
 </layout>

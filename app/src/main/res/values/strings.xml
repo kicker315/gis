@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">莱西</string>
+    <string name="app_ver">1.0</string>
 
     <string name="txt_login_title">用户登录</string>
     <string name="please_input_user_name">请输入用户名</string>
@@ -131,7 +132,7 @@
     <string name="txt_save">保存</string>
     <string name="txt_draw_cancel">撤销</string>
 
-
+    <!-- 设置界面 -->
     <string name="title_app_name">App名称</string>
     <string name="title_version_code">版本号</string>
     <string name="title_copyright">版权所有</string>
@@ -146,6 +147,28 @@
     <string name="txt_location_service">定位服务</string>
     <string name="txt_bluetooth_device">蓝牙设备</string>
     <string name="txt_no_connected">未连接</string>
+    <string name="txt_difference_mode">差分数据解析方式</string>
+    <string name="txt_difference_state">连接状态</string>
+    <string name="txt_difference_pwd">差分密码</string>
+    <string name="please_input_pwd">输入密码</string>
+    <string name="txt_different_url">NTRIP地址</string>
+    <string name="please_input_ip">输入IP地址</string>
+    <string name="txt_difference_port">NTRIP端口</string>
+    <string name="please_input_port">输入端口</string>
+    <string name="txt_difference_account">差分账号</string>
+    <string name="please_input_different_account">输入差分账号</string>
+    <string name="txt_camara_field">拍照字段</string>
+    <string name="txt_diffrence_setting">差分设置</string>
+    <string name="txt_coordinate_sys">坐标系统</string>
+    <string name="txt_layer_temp">图层模板</string>
+    <string name="txt_inquiry_grid">调查表格</string>
+    <string name="txt_about_us">关于我们</string>
+    <string name="txt_getpoint">连续采点</string>
+    <string name="txt_gps_setting">GPS设置</string>
+    <string name="txt_coord_xy">XY坐标</string>
+    <string name="txt_lon_lati">经纬度</string>
+    <string name="txt_time">时间</string>
+    <string name="txt_direct">方向</string>
 
 
 </resources>

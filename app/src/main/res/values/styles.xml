@@ -138,5 +138,11 @@
         <item name="android:textSize">10sp</item>
     </style>
 
+    <style name="setting_right_arrow">
+        <item name="android:src">@drawable/icon_arrow_right</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:padding">15dp</item>
+
+    </style>
 
 </resources>
