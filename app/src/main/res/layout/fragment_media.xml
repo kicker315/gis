@@ -5,7 +5,7 @@
     <data>
         <variable
             name="callback"
-            type="com.zydcc.zrdc.view.MediaFragment.Callback" />
+            type="com.zydcc.zrdc.view.media.MediaFragment.Callback" />
     </data>
 
     <RelativeLayout

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="callback"
-            type="com.zydcc.zrdc.view.DrawFragment.Callback" />
+            type="com.zydcc.zrdc.view.freedraw.DrawFragment.Callback" />
 
         <variable
             name="maxSize"

@@ -2,10 +2,10 @@ package com.zydcc.zrdc.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.zydcc.zrdc.view.MediaCameraFragment
-import com.zydcc.zrdc.view.MediaDrawFragment
-import com.zydcc.zrdc.view.MediaRecordFragment
-import com.zydcc.zrdc.view.MediaVideoFragment
+import com.zydcc.zrdc.view.media.MediaCameraFragment
+import com.zydcc.zrdc.view.media.MediaDrawFragment
+import com.zydcc.zrdc.view.media.MediaRecordFragment
+import com.zydcc.zrdc.view.media.MediaVideoFragment
 
 /**
  * =======================================

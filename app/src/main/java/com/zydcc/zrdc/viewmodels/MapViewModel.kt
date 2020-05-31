@@ -21,8 +21,6 @@ import com.zydcc.zrdc.data.DatasourceRepository
 import com.zydcc.zrdc.interfaces.MapOperate
 import com.zydcc.zrdc.model.bean.LocationData
 import com.zydcc.zrdc.utilities.PositionUtil
-import com.zydcc.zrdc.view.MainFragmentDirections
-import kotlinx.android.synthetic.main.fragment_map.view.*
 import java.math.RoundingMode
 import java.text.DecimalFormat
 

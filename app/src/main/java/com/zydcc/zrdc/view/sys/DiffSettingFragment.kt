@@ -1,27 +1,30 @@
-package com.zydcc.zrdc.view
+package com.zydcc.zrdc.view.sys
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.zydcc.zrdc.databinding.FragmentMediaCameraBinding
+import com.zydcc.zrdc.databinding.FragmentSettingDiffrentBinding
 
 /**
  * =======================================
- *
- * Create by ningsikai 2020/5/21:5:20 PM
+ * 差分设置界面
+ * Create by ningsikai 2020/5/31:11:15 AM
  * ========================================
  */
-class MediaCameraFragment: Fragment() {
+class DiffSettingFragment: Fragment() {
+
+    private lateinit var binding: FragmentSettingDiffrentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentMediaCameraBinding.inflate(inflater, container, false)
+        binding = FragmentSettingDiffrentBinding.inflate(inflater, container, false)
         context ?: return binding.root
         return binding.root
     }
+
 }

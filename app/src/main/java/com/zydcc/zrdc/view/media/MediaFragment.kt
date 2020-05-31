@@ -1,4 +1,4 @@
-package com.zydcc.zrdc.view
+package com.zydcc.zrdc.view.media
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +11,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.zydcc.zrdc.R
 import com.zydcc.zrdc.adapters.*
 import com.zydcc.zrdc.databinding.FragmentMediaBinding
-import com.zydcc.zrdc.utilities.PositionUtil
 
 /**
  * =======================================
@@ -49,7 +48,8 @@ class MediaFragment: Fragment() {
             callback = object: Callback {
 
                 override fun navToDraft() {
-                    val navDirections =  MediaFragmentDirections.actionMediaToDraw()
+                    val navDirections =
+                        MediaFragmentDirections.actionMediaToDraw()
                     findNavController().navigate(navDirections)
                 }
 

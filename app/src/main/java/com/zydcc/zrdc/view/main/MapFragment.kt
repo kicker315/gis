@@ -1,4 +1,4 @@
-package com.zydcc.zrdc.view
+package com.zydcc.zrdc.view.main
 
 import android.os.Bundle
 import android.util.Log
@@ -127,12 +127,14 @@ class MapFragment: Fragment(), MapOperate {
     }
 
     override fun navToMedia() {
-        val navDirections =  MainFragmentDirections.actionMainFragmentToMediaFragment()
+        val navDirections =
+            MainFragmentDirections.actionMainFragmentToMediaFragment()
         findNavController().navigate(navDirections)
     }
 
     override fun navToScreenshotManager() {
-        val navDirections = MainFragmentDirections.actionScreenshotManagerFragment()
+        val navDirections =
+            MainFragmentDirections.actionScreenshotManagerFragment()
         findNavController().navigate(navDirections)
     }
 

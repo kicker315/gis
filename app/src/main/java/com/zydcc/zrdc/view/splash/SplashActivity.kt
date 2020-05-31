@@ -1,15 +1,14 @@
-package com.zydcc.zrdc.view
+package com.zydcc.zrdc.view.splash
 
 import android.Manifest
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil.setContentView
 import com.zydcc.zrdc.R
 import com.zydcc.zrdc.core.permission.PermissionX
 import com.zydcc.zrdc.databinding.ActivitySplashBinding
+import com.zydcc.zrdc.view.main.MainActivity
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

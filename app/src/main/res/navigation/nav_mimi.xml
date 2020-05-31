@@ -6,7 +6,7 @@
     app:startDestination="@id/main_fragment">
     <fragment
         android:id="@+id/main_fragment"
-        android:name="com.zydcc.zrdc.view.MainFragment"
+        android:name="com.zydcc.zrdc.view.main.MainFragment"
         tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_main_fragment_to_sys_fragment"
@@ -32,13 +32,13 @@
     </fragment>
     <fragment
         android:id="@+id/sys_fragment"
-        android:name="com.zydcc.zrdc.view.SysFragment"
+        android:name="com.zydcc.zrdc.view.sys.SysFragment"
         tools:layout="@layout/fragment_sys">
 
     </fragment>
     <fragment
         android:id="@+id/media_fragment"
-        android:name="com.zydcc.zrdc.view.MediaFragment"
+        android:name="com.zydcc.zrdc.view.media.MediaFragment"
         tools:layout="@layout/fragment_media">
         <action
             android:id="@+id/action_media_to_draw"
@@ -50,12 +50,12 @@
     </fragment>
     <fragment
         android:id="@+id/screenshotManagerFragment"
-        android:name="com.zydcc.zrdc.view.ScreenshotManagerFragment"
+        android:name="com.zydcc.zrdc.view.main.ScreenshotManagerFragment"
         android:label="ScreenshotManagerFragment"
         tools:layout="@layout/fragment_screenshot_manager"/>
     <fragment
         android:id="@+id/draw_fragment"
-        android:name="com.zydcc.zrdc.view.DrawFragment"
+        android:name="com.zydcc.zrdc.view.freedraw.DrawFragment"
         android:label="DrawFragment"
         tools:layout="@layout/fragment_draw"/>
 </navigation>

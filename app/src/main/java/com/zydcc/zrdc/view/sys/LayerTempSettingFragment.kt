@@ -1,27 +1,29 @@
-package com.zydcc.zrdc.view
+package com.zydcc.zrdc.view.sys
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.zydcc.zrdc.databinding.FragmentMediaVideoBinding
+import com.zydcc.zrdc.databinding.FragmentSettingLayerTempBinding
 
 /**
  * =======================================
- *
- * Create by ningsikai 2020/5/21:5:21 PM
+ * 图层模版
+ * Create by ningsikai 2020/5/31:11:32 AM
  * ========================================
  */
-class MediaVideoFragment : Fragment() {
+class LayerTempSettingFragment : Fragment() {
+
+    private lateinit var binding: FragmentSettingLayerTempBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentMediaVideoBinding.inflate(inflater, container, false)
-        context ?: return binding.root
+        binding = FragmentSettingLayerTempBinding.inflate(inflater, container, false)
         return binding.root
     }
+
 }

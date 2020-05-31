@@ -2,10 +2,10 @@ package com.zydcc.zrdc.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.zydcc.zrdc.view.AnalystFragment
-import com.zydcc.zrdc.view.LayerFragment
-import com.zydcc.zrdc.view.MapFragment
-import com.zydcc.zrdc.view.QueryFragment
+import com.zydcc.zrdc.view.main.AnalystFragment
+import com.zydcc.zrdc.view.main.LayerFragment
+import com.zydcc.zrdc.view.main.MapFragment
+import com.zydcc.zrdc.view.main.QueryFragment
 
 /**
  * =======================================

@@ -1,4 +1,4 @@
-package com.zydcc.zrdc.view
+package com.zydcc.zrdc.view.freedraw
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -55,7 +55,8 @@ class DrawFragment: Fragment(), SeekBarBindingAdapter.OnProgressChanged {
             thicknessProgress = ((freeDrawView.paintWidth - THICKNESS_MIN) / THICKNESS_STEP).toInt()
             val freeDrawView = binding.freeDrawView
 
-            callback = object: Callback {
+            callback = object:
+                Callback {
                 override fun changeColor() {
                     getColorPickerDialog().show()
                 }

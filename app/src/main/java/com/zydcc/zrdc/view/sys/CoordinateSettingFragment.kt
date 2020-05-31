@@ -1,27 +1,28 @@
-package com.zydcc.zrdc.view
+package com.zydcc.zrdc.view.sys
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.zydcc.zrdc.databinding.FragmentAnalystBinding
+import com.zydcc.zrdc.databinding.FragmentSettingCoordinateBinding
 
 /**
  * =======================================
- * 分析Fragment
- * Create by ningsikai 2020/5/19:1:45 PM
+ * 坐标系
+ * Create by ningsikai 2020/5/31:11:34 AM
  * ========================================
  */
-class AnalystFragment : Fragment() {
+class CoordinateSettingFragment : Fragment() {
+
+    private lateinit var binding: FragmentSettingCoordinateBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentAnalystBinding.inflate(inflater, container, false)
-        context ?: return binding.root
+        binding = FragmentSettingCoordinateBinding.inflate(inflater, container, false)
         return binding.root
     }
 

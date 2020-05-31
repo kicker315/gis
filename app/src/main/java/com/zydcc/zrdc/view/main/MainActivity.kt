@@ -1,4 +1,4 @@
-package com.zydcc.zrdc.view
+package com.zydcc.zrdc.view.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

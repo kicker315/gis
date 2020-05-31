@@ -49,10 +49,10 @@
             android:enabled="true"
             android:process=":remote"/>
 
-        <activity android:name=".view.MainActivity"
+        <activity android:name=".view.main.MainActivity"
             android:screenOrientation="landscape">
         </activity>
-        <activity android:name=".view.SplashActivity"
+        <activity android:name=".view.splash.SplashActivity"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

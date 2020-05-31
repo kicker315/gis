@@ -3,7 +3,7 @@
     <data>
         <variable
             name="callback"
-            type="com.zydcc.zrdc.view.LayerFragment.Callback" />
+            type="com.zydcc.zrdc.view.main.LayerFragment.Callback" />
     </data>
     <LinearLayout
         xmlns:tools="http://schemas.android.com/tools"
