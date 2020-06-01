@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="callback"
@@ -8,86 +9,129 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_vertical">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_marginEnd="@dimen/margin_normal">
+        android:layout_marginBottom="1px"
+        android:background="@color/white"
+        android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/txt_tpk_manager"
-                android:layout_toStartOf="@id/btn_add_tpk"
-                android:textColor="@color/primary_text"
-                android:textSize="@dimen/textsize_big" />
-            <TextView
-                android:id="@+id/btn_add_tpk"
-                android:text="@string/txt_add"
-                android:layout_alignParentEnd="true"
-                style="@style/btn_other"
-                android:onClick="@{()->callback.addTpk()}"
-                />
-        </RelativeLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@color/white_translucent_dark"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_normal"
-                android:text="@string/txt_layer_manager"
-                android:layout_weight="1"
-                />
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="3">
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/txt_visibility"/>
-            </LinearLayout>
-            <RadioGroup
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="3">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/txt_thumbnail"
-                    />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/txt_zoom"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/txt_remove"/>
-            </RadioGroup>
-        </LinearLayout>
-        <View
+        <TextView
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="28dp"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:padding="@dimen/padding_normal"
+            android:text="@string/txt_layer_manager"
+            android:textSize="@dimen/textsize_normal" />
+
+        <TextView
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:padding="@dimen/padding_normal"
+            android:text="@string/txt_coord"
+            android:textSize="@dimen/textsize_normal" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
-            android:layout_height="0.5dp"
-            android:background="@color/white_translucent_dark" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_10"
+            android:visibility="invisible">
 
+            <CheckBox
+                style="@style/checkbox_lm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:drawableStart="@null"
+                android:text="@string/txt_visibility"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintWidth_percent="0.33"
+                />
 
+            <CheckBox
+                style="@style/checkbox_lm"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:button="@null"
+                android:drawableStart="@null"
+                android:text="@string/txt_choose"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintWidth_percent="0.33"
+                />
+
+            <CheckBox
+                style="@style/checkbox_lm"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:button="@null"
+                android:drawableStart="@null"
+                android:text="@string/txt_editable"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintWidth_percent="0.33"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <RadioGroup
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="3.0"
+            android:gravity="end"
+            android:orientation="horizontal">
+            <RadioButton
+                style="@style/rb_layermanager_operate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:text="@string/txt_zoom"
+                android:textSize="@dimen/textsize_normal" />
+
+            <RadioButton
+                style="@style/rb_layermanager_operate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:text="@string/txt_attr"
+                android:textSize="@dimen/textsize_normal"
+                android:visibility="gone"/>
+
+            <RadioButton
+                style="@style/rb_layermanager_operate"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:background="@color/white"
+                android:text="@string/txt_render"
+                android:textSize="@dimen/textsize_normal"
+                android:visibility="gone"
+                />
+
+            <RadioButton
+                style="@style/rb_layermanager_operate"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:background="@color/white"
+                android:text="@string/txt_remove"
+                android:textSize="@dimen/textsize_normal" />
+        </RadioGroup>
     </LinearLayout>
 </layout>

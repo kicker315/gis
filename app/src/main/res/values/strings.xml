@@ -63,10 +63,13 @@
     <string name="txt_tpk_manager">栅格地图管理</string>
     <style name="txt_choose_file">选择文件</style>
     <string name="txt_add">添加</string>
+    <string name="txt_coord">坐标系</string>
     <string name="txt_visibility">可见性</string>
     <string name="txt_visible">可见</string>
+    <string name="txt_editable">编辑</string>
     <string name="txt_zoom">缩放</string>
     <string name="txt_attr">属性</string>
+    <string name="txt_render">渲染</string>
     <string name="txt_remove">移除</string>
     <string name="txt_thumbnail">缩略图</string>
     <string name="txt_archives">档案</string>
