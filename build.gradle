@@ -34,7 +34,7 @@ buildscript {
         uiAutomatorVersion = '2.2.0'
         viewPagerVersion = '1.0.0'
         workVersion = '2.3.4'
-        arcgisVersion = '100.6.0'
+        arcgisVersion = '100.3.0'
         autosize = '1.2.1'
         recyclerviewDividerVersion = '3.1.0'
     }

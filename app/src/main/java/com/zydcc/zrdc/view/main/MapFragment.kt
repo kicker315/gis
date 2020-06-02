@@ -1,5 +1,6 @@
 package com.zydcc.zrdc.view.main
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,21 +13,27 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.esri.arcgisruntime.ArcGISRuntimeEnvironment
+import com.esri.arcgisruntime.data.ShapefileFeatureTable
 import com.esri.arcgisruntime.data.TileCache
 import com.esri.arcgisruntime.layers.ArcGISTiledLayer
+import com.esri.arcgisruntime.layers.FeatureLayer
+import com.esri.arcgisruntime.loadable.LoadStatus
 import com.esri.arcgisruntime.mapping.ArcGISMap
 import com.esri.arcgisruntime.mapping.Basemap
+import com.esri.arcgisruntime.mapping.Viewpoint
 import com.esri.arcgisruntime.mapping.view.Graphic
 import com.esri.arcgisruntime.mapping.view.GraphicsOverlay
+import com.esri.arcgisruntime.symbology.SimpleFillSymbol
+import com.esri.arcgisruntime.symbology.SimpleLineSymbol
+import com.esri.arcgisruntime.symbology.SimpleRenderer
 import com.esri.arcgisruntime.symbology.Symbol
-import com.zydcc.zrdc.interfaces.MapOperate
 import com.zydcc.zrdc.base.App
 import com.zydcc.zrdc.core.ext.observe
 import com.zydcc.zrdc.data.CodeBrush
 import com.zydcc.zrdc.databinding.FragmentMapBinding
-import com.zydcc.zrdc.viewmodels.MapViewModel
+import com.zydcc.zrdc.interfaces.MapOperate
 import com.zydcc.zrdc.utilities.InjectorUtils
-import java.lang.Exception
+import com.zydcc.zrdc.viewmodels.MapViewModel
 
 /**
  * =======================================
@@ -67,7 +74,7 @@ class MapFragment: Fragment(), MapOperate {
     // 初始化地图
     private fun initMap() {
         // 去水印
-        ArcGISRuntimeEnvironment.setLicense("runtimelite,1000,rud8065403504,none,RP5X0H4AH7CLJ9HSX018")
+        ArcGISRuntimeEnvironment.setLicense("runtimeadvanced,1000,rud000228325,none,3M10F7PZB0YH463EM164")
         // 去除版权声明
         binding.mapView.isAttributionTextVisible = false
         val map = ArcGISMap(Basemap.Type.OPEN_STREET_MAP, 37.432949, 121.497014, 10)
@@ -84,8 +91,38 @@ class MapFragment: Fragment(), MapOperate {
             binding.mapView.graphicsOverlays.add(mLocOverlay)
             mLocSymbol = binding.mapView.locationDisplay.defaultSymbol
         }
+        observe(viewModel.shpDatasourceList) {
+            if (it.isEmpty()) {
+                return@observe
+            }
+            val shapefileFeatureTable = ShapefileFeatureTable(it[0].path)
+            shapefileFeatureTable.loadAsync()
+            shapefileFeatureTable.addDoneLoadingListener{
+                if (shapefileFeatureTable.loadStatus == LoadStatus.LOADED) {
+                    val featureLayer = FeatureLayer(shapefileFeatureTable)
+                    // create the Symbol
+                    val lineSymbol =
+                        SimpleLineSymbol(SimpleLineSymbol.Style.SOLID, Color.RED, 1.0f)
+                    val fillSymbol =
+                        SimpleFillSymbol(SimpleFillSymbol.Style.NULL, Color.YELLOW, lineSymbol)
+                    // create the Renderer
+                    val renderer = SimpleRenderer(fillSymbol)
+                    // set the Renderer on the Layer
+                    featureLayer.renderer = renderer
+                    featureLayer.selectionWidth = 5.0 // 设置选中颜色
+                    featureLayer.selectionColor = Color.GREEN
+                    binding.mapView.map.operationalLayers.add(featureLayer)
+                    binding.mapView.setViewpointAsync(Viewpoint(featureLayer.fullExtent))
+                } else {
+                    val error =
+                        "Shapefile feature table failed to load: " + shapefileFeatureTable.loadError
+                            .toString()
+                    Toast.makeText(requireContext(), error, Toast.LENGTH_LONG).show()
+                    Log.d("Shapefile", error)
+                }
+            }
+        }
     }
-
     private fun resetBaseMap(path: String) {
         val tileCache = TileCache(path)
         val mainArcGISTiledLayer = ArcGISTiledLayer(tileCache)
@@ -139,7 +176,7 @@ class MapFragment: Fragment(), MapOperate {
     }
 
     override fun onLocation() {
-        binding!!.rbLocation.isChecked = false
+        binding.rbLocation.isChecked = false
         isLocation = true
         App.locationService?.start()
     }
