@@ -37,6 +37,7 @@ buildscript {
         arcgisVersion = '100.3.0'
         autosize = '1.2.1'
         recyclerviewDividerVersion = '3.1.0'
+        kotlin_version = '1.3.71'
     }
 
     repositories {
