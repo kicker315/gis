@@ -1,4 +1,3 @@
 rootProject.name='mimi'
 include ':app'
-include ':arcgis-core-lib'
 include ':utils'

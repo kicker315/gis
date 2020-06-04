@@ -89,6 +89,10 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutinesVersion"
 
+
+
+    api project(':utils')
+
     // gis
     //noinspection GradleDependency
     implementation "com.esri.arcgisruntime:arcgis-android:$arcgisVersion"

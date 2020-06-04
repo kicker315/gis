@@ -1,6 +1,6 @@
 package com.zydcc.zrdc.base
 
-import android.app.Application
+import android.content.Context
 import androidx.multidex.MultiDexApplication
 import com.zydcc.zrdc.location.LocationService
 
@@ -14,12 +14,14 @@ class App : MultiDexApplication() {
 
     override fun onCreate() {
         super.onCreate()
+        APP_CONTEXT = this
         locationService = LocationService(applicationContext)
     }
 
     companion object {
         // 百度定位监听
         var locationService: LocationService? = null
+        var APP_CONTEXT: Context? = null
     }
 
 }
