@@ -57,7 +57,6 @@ android {
 dependencies {
     kapt "androidx.room:room-compiler:$rootProject.roomVersion"
     kapt "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
-    implementation "androidx.multidex:multidex:$rootProject.multidexVersion"
     implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
     //noinspection GradleDependency
@@ -90,8 +89,7 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutinesVersion"
 
 
-
-    api project(':utils')
+    api project(':iframe')
 
     // gis
     //noinspection GradleDependency
