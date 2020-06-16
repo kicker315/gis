@@ -20,6 +20,10 @@ class LayerRepository private constructor(private val dao: LayerDao) {
         dao.delete(layer)
     }
 
+    suspend fun update(layer: Layer) {
+        dao.update(layer)
+    }
+
     companion object {
         // For Single instantiation
         @Volatile private var instance: LayerRepository ?= null

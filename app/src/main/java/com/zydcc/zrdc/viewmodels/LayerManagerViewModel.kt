@@ -43,6 +43,12 @@ class LayerManagerViewModel(
         }
     }
 
+    fun updateDatasource(datasource: Layer) {
+        viewModelScope.launch {
+            repository.update(datasource)
+        }
+    }
+
 }
 
 

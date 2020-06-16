@@ -109,7 +109,7 @@ dependencies {
     // recyclerview divider
     implementation "com.github.fondesa:recycler-view-divider:$rootProject.recyclerviewDividerVersion"
 
-
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
 
     // Testing dependencies
     androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"

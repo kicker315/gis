@@ -1,11 +1,16 @@
 package com.zydcc.zrdc.view.main
 
+import android.animation.ValueAnimator
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.RecyclerView
+import com.chad.library.adapter.base.listener.OnItemDragListener
+import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.zydcc.zrdc.adapters.ShpManagerAdapter
 import com.zydcc.zrdc.adapters.TpkManagerAdapter
 import com.zydcc.zrdc.core.ext.observe
@@ -98,6 +103,9 @@ class LayerFragment : Fragment() {
                 }
 
             }
+            mShpManagerAdapter.draggableModule.isDragEnabled = true
+            mShpManagerAdapter.draggableModule.isSwipeEnabled = false
+            mShpManagerAdapter.draggableModule.setOnItemDragListener(onItemDragListener)
             rcvShp.adapter = mShpManagerAdapter
             rcvTpk.adapter = mTpkManagerAdapter
         }
@@ -130,8 +138,14 @@ class LayerFragment : Fragment() {
 
         }
 
+        var oldSize = -1;
+
         observe(viewModel.shpDatasourceList) { last ->
-            mShpManagerAdapter.submitList(last)
+            if (last.size == oldSize) {
+                return@observe
+            }
+            oldSize = last.size
+            mShpManagerAdapter.setNewInstance(last.toMutableList())
         }
         observe(viewModel.tpkDatasourceList) { last ->
             mTpkManagerAdapter.submitList(last)
@@ -144,6 +158,59 @@ class LayerFragment : Fragment() {
 
         fun addTpk()
 
+    }
+
+    private val onItemDragListener = object: OnItemDragListener {
+
+
+
+        override fun onItemDragStart(viewHolder: RecyclerView.ViewHolder, pos: Int) {
+            // 开始时，item背景色变化，这里使用动画渐变
+            val holder = viewHolder as BaseViewHolder
+            val startColor = Color.WHITE
+            val endColor = Color.rgb(245,245,245)
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                val v = ValueAnimator.ofArgb(startColor, endColor)
+                v.addUpdateListener {
+                    holder.itemView.setBackgroundColor(it.animatedValue as Int)
+                }
+                v.duration = 300
+                v.start()
+            }
+        }
+
+        override fun onItemDragMoving(
+            source: RecyclerView.ViewHolder,
+            from: Int,
+            target: RecyclerView.ViewHolder,
+            to: Int
+        ) {
+
+        }
+
+        override fun onItemDragEnd(viewHolder: RecyclerView.ViewHolder?, pos: Int) {
+            resetShpPosition()
+            // 结束时添加一个背景色渐变
+            val holder = viewHolder as BaseViewHolder
+            val startColor = Color.rgb(245,245,245)
+            val endColor = Color.WHITE
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                val v = ValueAnimator.ofArgb(startColor, endColor)
+                v.addUpdateListener {
+                    holder.itemView.setBackgroundColor(it.animatedValue as Int)
+                }
+                v.duration = 300
+                v.start()
+            }
+        }
+    }
+
+    private fun resetShpPosition() {
+        for (index in 0 until  mShpManagerAdapter.data.size) {
+            val item = mShpManagerAdapter.data[index]
+            item.layerIndex = index
+            viewModel.updateDatasource(item)
+        }
     }
 
 }
