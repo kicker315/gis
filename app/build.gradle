@@ -39,6 +39,10 @@ android {
         jvmTarget = "1.8"
     }
 
+    androidExtensions {
+        experimental = true
+    }
+
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
@@ -57,6 +61,7 @@ android {
 dependencies {
     kapt "androidx.room:room-compiler:$rootProject.roomVersion"
     kapt "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
+    api "androidx.multidex:multidex:$rootProject.multidexVersion"
     implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
     //noinspection GradleDependency
@@ -88,8 +93,9 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutinesVersion"
 
+    // permission
+    implementation "pub.devrel:easypermissions:3.0.0"
 
-    api project(':iframe')
 
     // gis
     //noinspection GradleDependency
@@ -102,6 +108,7 @@ dependencies {
     implementation files('libs/colorpicker.aar')
     // recyclerview divider
     implementation "com.github.fondesa:recycler-view-divider:$rootProject.recyclerviewDividerVersion"
+
 
 
     // Testing dependencies

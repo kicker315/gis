@@ -6,12 +6,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil.setContentView
 import com.zydcc.zrdc.R
-import com.zydcc.zrdc.core.permission.PermissionX
 import com.zydcc.zrdc.databinding.ActivitySplashBinding
 import com.zydcc.zrdc.view.main.MainActivity
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import pub.devrel.easypermissions.AfterPermissionGranted
+import pub.devrel.easypermissions.EasyPermissions
 
 /**
  * =======================================
@@ -19,36 +17,53 @@ import kotlinx.coroutines.launch
  * Create by ningsikai 2020/5/25:9:43 AM
  * ========================================
  */
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView<ActivitySplashBinding>(this, R.layout.activity_splash)
         requirePermission()
+        startActivity(Intent(this, MainActivity::class.java))
     }
 
+    @AfterPermissionGranted(RC_CAMERA_AND_LOCATION)
     private fun requirePermission() {
-        PermissionX.init(this)
-            .permissions(
-                Manifest.permission.READ_PHONE_STATE,
-                Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.RECORD_AUDIO,
-                Manifest.permission.CAMERA
-            )
-            .onExplainRequestReason { deniedList ->
-                showRequestReasonDialog(deniedList, "软件需要开启以下权限", "确定", "取消")
-            }
-            .request { allGranted, grantedList, deniedList ->
-                if (allGranted) {
-                    GlobalScope.launch {
-                        delay(2000)
-                        startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-                        finish()
-                    }
-                }
-            }
+        val permissions = arrayOf(
+            Manifest.permission.CAMERA,
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.BODY_SENSORS,
+            Manifest.permission.RECORD_AUDIO
+        )
+        if (EasyPermissions.hasPermissions(this, *permissions)) {
+            return
+        }
+        EasyPermissions.requestPermissions(this, "一张图需要申请以下权限", RC_CAMERA_AND_LOCATION, *permissions)
     }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
+    override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
+
+    }
+
+    override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
+
+    }
+
+    companion object {
+        private const val RC_CAMERA_AND_LOCATION = 1
+    }
+
 
 }

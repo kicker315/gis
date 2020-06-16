@@ -1,8 +1,6 @@
 package com.zydcc.zrdc.viewmodels
 
 import androidx.lifecycle.*
-import com.zydcc.zrdc.core.ext.postNext
-import com.zydcc.zrdc.core.ext.setNext
 import com.zydcc.zrdc.data.DLTB
 import com.zydcc.zrdc.data.DLTBRepository
 import com.zydcc.zrdc.data.Datasource

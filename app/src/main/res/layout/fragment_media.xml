@@ -57,7 +57,8 @@
                 android:paddingBottom="3dp"
                 android:text="@string/txt_media_camera"
                 android:textColor="@drawable/tab_text_color_pressed"
-                android:textSize="@dimen/textsize_normal" />
+                android:textSize="@dimen/textsize_normal"
+                android:onClick="@{() -> callback.navToCamera()}"/>
 
             <RadioButton
                 android:id="@+id/rb_media_video"
@@ -74,9 +75,10 @@
                 android:paddingTop="3dp"
                 android:paddingRight="@dimen/padding_normal"
                 android:paddingBottom="3dp"
-                android:text="@string/txt_media_record"
+                android:text="@string/txt_media_video"
                 android:textColor="@drawable/tab_text_color_pressed"
-                android:textSize="@dimen/textsize_normal" />
+                android:textSize="@dimen/textsize_normal"
+                android:onClick="@{() -> callback.navToVideo()}"/>
 
             <RadioButton
                 android:id="@+id/rb_media_record"
@@ -95,7 +97,8 @@
                 android:paddingBottom="3dp"
                 android:text="@string/txt_media_record"
                 android:textColor="@drawable/tab_text_color_pressed"
-                android:textSize="@dimen/textsize_normal" />
+                android:textSize="@dimen/textsize_normal"
+                android:onClick="@{() -> callback.navToRecord()}"/>
 
             <RadioButton
                 android:id="@+id/rb_media_draw"

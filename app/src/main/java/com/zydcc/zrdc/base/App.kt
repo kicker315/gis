@@ -1,8 +1,6 @@
 package com.zydcc.zrdc.base
 
-import android.content.Context
 import androidx.multidex.MultiDexApplication
-import com.zydcc.iframe.app.BaseApp
 import com.zydcc.zrdc.location.LocationService
 
 /**
@@ -11,7 +9,7 @@ import com.zydcc.zrdc.location.LocationService
  * Create by ningsikai 2020/5/19:1:17 PM
  * ========================================
  */
-class App : BaseApp() {
+class App : MultiDexApplication() {
 
     override fun onCreate() {
         super.onCreate()
