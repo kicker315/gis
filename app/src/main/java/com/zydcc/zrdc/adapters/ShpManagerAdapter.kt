@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.zydcc.zrdc.data.Datasource
+import com.zydcc.zrdc.data.Layer
 import com.zydcc.zrdc.databinding.ItemLayerManagerShpBinding
 
 /**
@@ -14,7 +14,7 @@ import com.zydcc.zrdc.databinding.ItemLayerManagerShpBinding
  * Create by ningsikai 2020/5/26:8:33 AM
  * ========================================
  */
-class ShpManagerAdapter : ListAdapter<Datasource, RecyclerView.ViewHolder>(ShpDiffCallback()) {
+class ShpManagerAdapter : ListAdapter<Layer, RecyclerView.ViewHolder>(ShpDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ViewHolder(
@@ -41,7 +41,7 @@ class ShpManagerAdapter : ListAdapter<Datasource, RecyclerView.ViewHolder>(ShpDi
             }
         }
 
-        fun bind(item: Datasource) {
+        fun bind(item: Layer) {
             binding.apply {
                 entity = item
                 executePendingBindings()
@@ -49,18 +49,18 @@ class ShpManagerAdapter : ListAdapter<Datasource, RecyclerView.ViewHolder>(ShpDi
         }
     }
 
-    var removeListener: (Datasource) -> Unit = {}
-    var attrListener: (Datasource) -> Unit = {}
+    var removeListener: (Layer) -> Unit = {}
+    var attrListener: (Layer) -> Unit = {}
 
 }
 
-private class ShpDiffCallback: DiffUtil.ItemCallback<Datasource>() {
+private class ShpDiffCallback: DiffUtil.ItemCallback<Layer>() {
 
-    override fun areItemsTheSame(oldItem: Datasource, newItem: Datasource): Boolean {
-        return oldItem.path == newItem.path
+    override fun areItemsTheSame(oldItem: Layer, newItem: Layer): Boolean {
+        return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: Datasource, newItem: Datasource): Boolean {
+    override fun areContentsTheSame(oldItem: Layer, newItem: Layer): Boolean {
         return oldItem == newItem
     }
 

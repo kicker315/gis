@@ -1,11 +1,9 @@
 package com.zydcc.zrdc.viewmodels
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
-import androidx.databinding.ObservableInt
 import androidx.lifecycle.*
 import androidx.savedstate.SavedStateRegistryOwner
 import com.baidu.location.BDAbstractLocationListener
@@ -16,8 +14,8 @@ import com.esri.arcgisruntime.geometry.SpatialReferences
 import com.zydcc.zrdc.R
 import com.zydcc.zrdc.data.CodeBrush
 import com.zydcc.zrdc.data.CodeBrushRepository
-import com.zydcc.zrdc.data.Datasource
-import com.zydcc.zrdc.data.DatasourceRepository
+import com.zydcc.zrdc.data.Layer
+import com.zydcc.zrdc.data.LayerRepository
 import com.zydcc.zrdc.interfaces.MapOperate
 import com.zydcc.zrdc.model.bean.LocationData
 import com.zydcc.zrdc.utilities.PositionUtil
@@ -31,7 +29,7 @@ import java.text.DecimalFormat
  * ========================================
  */
 class MapViewModel internal constructor(
-    datasourceRepository: DatasourceRepository,
+    datasourceRepository: LayerRepository,
     codeBrushRepository: CodeBrushRepository,
     view: MapOperate,
     private val savedStateHandle: SavedStateHandle
@@ -69,11 +67,11 @@ class MapViewModel internal constructor(
 
     var onErrorCallback: (String) -> Unit = {}
 
-    val shpDatasourceList: LiveData<List<Datasource>> =
+    val shpDatasourceList: LiveData<List<Layer>> =
         datasourceRepository.getShpDatasourceList()
 
 
-    val tpkDatasourceList: LiveData<List<Datasource>> =
+    val tpkDatasourceList: LiveData<List<Layer>> =
         datasourceRepository.getTpkDatasourceList()
 
 
@@ -176,7 +174,7 @@ class MapViewModel internal constructor(
 
 
 class MapViewModelFactory(
-    private val datasourceRepository: DatasourceRepository,
+    private val datasourceRepository: LayerRepository,
     private val codeBrushRepository: CodeBrushRepository,
     private val view: MapOperate,
     owner: SavedStateRegistryOwner,

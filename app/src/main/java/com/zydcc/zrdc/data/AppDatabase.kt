@@ -3,11 +3,8 @@ package com.zydcc.zrdc.data
 import android.content.Context
 import androidx.room.*
 import androidx.sqlite.db.SupportSQLiteDatabase
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
 import com.zydcc.zrdc.utilities.DATABASE_NAME
 import com.zydcc.zrdc.utilities.DATABASE_PATH
-import com.zydcc.zrdc.works.ImportDatabaseWorker
 
 /**
  * =======================================
@@ -15,12 +12,12 @@ import com.zydcc.zrdc.works.ImportDatabaseWorker
  * Create by ningsikai 2020/5/18:2:56 PM
  * ========================================
  */
-@Database(entities = [DLTB::class, CodeBrush::class, Datasource::class], version = 1, exportSchema = false)
+@Database(entities = [DLTB::class, CodeBrush::class, Layer::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase: RoomDatabase() {
     abstract fun dltbDao(): DLTBDao
     abstract fun codeBrushDao(): CodeBrushDao
-    abstract fun datasourceDao(): DatasourceDao
+    abstract fun layerDao(): LayerDao
 
     companion object {
         // For singleton instantiation

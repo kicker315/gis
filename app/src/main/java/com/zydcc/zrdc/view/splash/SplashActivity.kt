@@ -25,7 +25,6 @@ class SplashActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks 
         super.onCreate(savedInstanceState)
         setContentView<ActivitySplashBinding>(this, R.layout.activity_splash)
         requirePermission()
-        startActivity(Intent(this, MainActivity::class.java))
     }
 
     @AfterPermissionGranted(RC_CAMERA_AND_LOCATION)
@@ -39,6 +38,7 @@ class SplashActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks 
             Manifest.permission.RECORD_AUDIO
         )
         if (EasyPermissions.hasPermissions(this, *permissions)) {
+            startActivity(Intent(this, MainActivity::class.java))
             return
         }
         EasyPermissions.requestPermissions(this, "一张图需要申请以下权限", RC_CAMERA_AND_LOCATION, *permissions)

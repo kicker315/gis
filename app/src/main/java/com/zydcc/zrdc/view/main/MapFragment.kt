@@ -86,7 +86,7 @@ class MapFragment: Fragment(), MapOperate {
         observe(viewModel.tpkDatasourceList) {
             binding.mapView.map.basemap.baseLayers.clear()
             if (it.isNotEmpty()) {
-               resetBaseMap(it[0].path)
+               resetBaseMap(it[0].layerUrl)
             }
             mLocOverlay = GraphicsOverlay()
             binding.mapView.graphicsOverlays.add(mLocOverlay)
@@ -96,7 +96,7 @@ class MapFragment: Fragment(), MapOperate {
             if (it.isEmpty()) {
                 return@observe
             }
-            val shapefileFeatureTable = ShapefileFeatureTable(it[0].path)
+            val shapefileFeatureTable = ShapefileFeatureTable(it[0].layerUrl)
             shapefileFeatureTable.loadAsync()
             shapefileFeatureTable.addDoneLoadingListener{
                 if (shapefileFeatureTable.loadStatus == LoadStatus.LOADED) {

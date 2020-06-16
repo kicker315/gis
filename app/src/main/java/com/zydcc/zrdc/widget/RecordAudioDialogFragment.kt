@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.DialogFragment
 import com.zydcc.zrdc.R
-import kotlinx.android.synthetic.main.fragment_record_audio.*
 import kotlinx.android.synthetic.main.fragment_record_audio.view.*
 
 /**

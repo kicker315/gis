@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.zydcc.zrdc.data.Datasource
+import com.zydcc.zrdc.data.Layer
 import com.zydcc.zrdc.databinding.ItemLayerManagerTpkBinding
 
 /**
@@ -15,7 +15,7 @@ import com.zydcc.zrdc.databinding.ItemLayerManagerTpkBinding
  * Create by ningsikai 2020/5/26:8:33 AM
  * ========================================
  */
-class TpkManagerAdapter : ListAdapter<Datasource, RecyclerView.ViewHolder>(TpkDiffCallback()) {
+class TpkManagerAdapter : ListAdapter<Layer, RecyclerView.ViewHolder>(TpkDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ViewHolder(
@@ -46,7 +46,7 @@ class TpkManagerAdapter : ListAdapter<Datasource, RecyclerView.ViewHolder>(TpkDi
             }
         }
 
-        fun bind(item: Datasource) {
+        fun bind(item: Layer) {
             binding.apply {
                 entity = item
                 executePendingBindings()
@@ -54,20 +54,20 @@ class TpkManagerAdapter : ListAdapter<Datasource, RecyclerView.ViewHolder>(TpkDi
         }
     }
 
-    var removeListener: (Datasource) -> Unit = {}
-    var zoomListener: (Datasource) -> Unit = {}
-    var thumbnailListener: (Datasource) -> Unit = {}
+    var removeListener: (Layer) -> Unit = {}
+    var zoomListener: (Layer) -> Unit = {}
+    var thumbnailListener: (Layer) -> Unit = {}
 
 
 }
 
-private class TpkDiffCallback: DiffUtil.ItemCallback<Datasource>() {
+private class TpkDiffCallback: DiffUtil.ItemCallback<Layer>() {
 
-    override fun areItemsTheSame(oldItem: Datasource, newItem: Datasource): Boolean {
-        return oldItem.path == newItem.path
+    override fun areItemsTheSame(oldItem: Layer, newItem: Layer): Boolean {
+        return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: Datasource, newItem: Datasource): Boolean {
+    override fun areContentsTheSame(oldItem: Layer, newItem: Layer): Boolean {
         return oldItem == newItem
     }
 

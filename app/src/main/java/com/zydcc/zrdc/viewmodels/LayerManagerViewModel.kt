@@ -3,8 +3,8 @@ package com.zydcc.zrdc.viewmodels
 import androidx.lifecycle.*
 import com.zydcc.zrdc.data.DLTB
 import com.zydcc.zrdc.data.DLTBRepository
-import com.zydcc.zrdc.data.Datasource
-import com.zydcc.zrdc.data.DatasourceRepository
+import com.zydcc.zrdc.data.Layer
+import com.zydcc.zrdc.data.LayerRepository
 import kotlinx.coroutines.launch
 
 /**
@@ -14,15 +14,15 @@ import kotlinx.coroutines.launch
  * ========================================
  */
 class LayerManagerViewModel(
-    private val repository: DatasourceRepository,
+    private val repository: LayerRepository,
     private val dltbRepository: DLTBRepository
 ): ViewModel() {
 
-    val shpDatasourceList: LiveData<List<Datasource>> =
+    val shpDatasourceList: LiveData<List<Layer>> =
         repository.getShpDatasourceList()
 
 
-    val tpkDatasourceList: LiveData<List<Datasource>> =
+    val tpkDatasourceList: LiveData<List<Layer>> =
         repository.getTpkDatasourceList()
 
     val dltbList: LiveData<List<DLTB>> =
@@ -30,14 +30,14 @@ class LayerManagerViewModel(
 
 
     // 添加数据源
-    fun addDatasource(datasource: Datasource) {
+    fun addDatasource(datasource: Layer) {
         viewModelScope.launch {
             repository.insert(datasource)
         }
     }
 
     // 删除数据源
-    fun deleteDatasource(datasource: Datasource) {
+    fun deleteDatasource(datasource: Layer) {
         viewModelScope.launch {
             repository.remove(datasource)
         }
@@ -49,7 +49,7 @@ class LayerManagerViewModel(
 
 
 class LayerManagerViewModelFactory(
-    private val repository: DatasourceRepository,
+    private val repository: LayerRepository,
     private var dltbRepository: DLTBRepository
 ): ViewModelProvider.Factory {
 

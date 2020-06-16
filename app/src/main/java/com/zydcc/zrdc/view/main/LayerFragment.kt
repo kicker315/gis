@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import com.zydcc.zrdc.adapters.ShpManagerAdapter
 import com.zydcc.zrdc.adapters.TpkManagerAdapter
 import com.zydcc.zrdc.core.ext.observe
-import com.zydcc.zrdc.data.Datasource
+import com.zydcc.zrdc.data.Layer
 import com.zydcc.zrdc.databinding.FragmentLayerBinding
 import com.zydcc.zrdc.utilities.InjectorUtils
 import com.zydcc.zrdc.utilities.IntentConstants
@@ -54,7 +54,18 @@ class LayerFragment : Fragment() {
                         bundle.putString(IntentConstants.SUFFIX, "shp")
                         mShpChooseDialog?.arguments = bundle
                         mShpChooseDialog?.onDatasourceSelector = {
-                            val datasource = Datasource(it.title, it.path, 0)
+                            val datasource = Layer(
+                                layerId = -1,
+                                layerName = it.title,
+                                layerUrl = it.path,
+                                isBaseMap = 1,
+                                isEdit = 0,
+                                isSelect = 1,
+                                isLabel = 1,
+                                fillColor = "255,0,210,200",
+                                isShow = 1,
+                                projectId = 0
+                            )
                             viewModel.addDatasource(datasource)
                         }
                     }
@@ -68,7 +79,18 @@ class LayerFragment : Fragment() {
                         bundle.putString(IntentConstants.SUFFIX, "tpk")
                         mTpkChooseDialog?.arguments = bundle
                         mTpkChooseDialog?.onDatasourceSelector = {
-                            val datasource = Datasource(it.title, it.path, 1)
+                            val datasource = Layer(
+                                layerId = -1,
+                                layerName = it.title,
+                                layerUrl = it.path,
+                                isBaseMap = 0,
+                                isEdit = 0,
+                                isSelect = 1,
+                                isLabel = 1,
+                                fillColor = "255,0,210,200",
+                                isShow = 1,
+                                projectId = 0
+                            )
                             viewModel.addDatasource(datasource)
                         }
                     }
