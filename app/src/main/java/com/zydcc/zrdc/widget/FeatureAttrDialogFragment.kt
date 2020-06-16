@@ -12,7 +12,7 @@ import com.zydcc.zrdc.utilities.DimenUtils
  * Create by ningsikai 2020/5/26:1:11 PM
  * ========================================
  */
-class FeatureAttrDialog : DialogFragment() {
+class FeatureAttrDialogFragment : DialogFragment() {
 
     override fun onStart() {
         super.onStart()

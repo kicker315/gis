@@ -14,6 +14,7 @@ import com.zydcc.zrdc.R
 import com.zydcc.zrdc.adapters.*
 import com.zydcc.zrdc.databinding.FragmentMediaBinding
 import com.zydcc.zrdc.utilities.IntentConstants
+import com.zydcc.zrdc.widget.RecordAudioDialogFragment
 
 /**
  * =======================================
@@ -89,7 +90,9 @@ class MediaFragment: Fragment() {
     }
 
     private fun mediaRecord() {
-
+        val recordAudioDialogFragment = RecordAudioDialogFragment()
+        recordAudioDialogFragment.show(requireActivity().supportFragmentManager, "record")
+        recordAudioDialogFragment.isCancelable = false
     }
 
     private fun mediaVideo() {

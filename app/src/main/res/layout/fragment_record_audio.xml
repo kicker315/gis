@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    app:cardElevation="3dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/padding_normal"
+        android:paddingTop="@dimen/padding_normal"
+        android:paddingEnd="@dimen/padding_normal"
+        android:paddingBottom="48dp">
+        <ImageView
+            android:id="@+id/record_audio_iv_close"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_close"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"/>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/record_audio_fab_record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/ic_mic_white_36dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/record_audio_chronometer_time"/>
+        <Chronometer
+            android:id="@+id/record_audio_chronometer_time"
+            android:layout_width="240dp"
+            android:layout_height="84dp"
+            android:textSize="60sp"
+            android:gravity="center"
+            android:layout_below="@id/record_audio_iv_close"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif-light" />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
