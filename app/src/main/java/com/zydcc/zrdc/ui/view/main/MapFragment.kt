@@ -166,11 +166,7 @@ class MapFragment: Fragment(), MapOperate {
 
     override fun confirmHide() {
 
-        if (viewModel.messageIsGone.get()) {
-            return
-        }
-
-        viewModel.messageIsGone.set(true)
+        binding.messageShow.visibility = View.GONE
 
         if (defaultMapViewOnTouchListener == null) {
             return
@@ -187,12 +183,11 @@ class MapFragment: Fragment(), MapOperate {
 
     @SuppressLint("ClickableViewAccessibility")
     override fun measureDistance() {
-        if (!viewModel.messageIsGone.get()) {
+        if (binding.messageShow.visibility == View.VISIBLE) {
             Toast.makeText(requireContext(), "请确认查询或测量信息",Toast.LENGTH_SHORT).show()
             saveButtonStation(defaultMapViewOnTouchListener)
             return
         }
-        viewModel.messageIsGone.set(false)
         defaultMapViewOnTouchListener = null
         defaultMapViewOnTouchListener = MeasureDistanceListener.getInstance(requireContext(), binding.mapView, binding.messageShow, binding.textTool1)
         binding.mapView.onTouchListener = defaultMapViewOnTouchListener
@@ -200,12 +195,11 @@ class MapFragment: Fragment(), MapOperate {
 
     @SuppressLint("ClickableViewAccessibility")
     override fun measureArea() {
-        if (!viewModel.messageIsGone.get()) {
+        if (binding.messageShow.visibility == View.VISIBLE) {
             Toast.makeText(requireContext(), "请确认查询或测量信息",Toast.LENGTH_SHORT).show()
             saveButtonStation(defaultMapViewOnTouchListener)
             return
         }
-        viewModel.messageIsGone.set(false)
         defaultMapViewOnTouchListener = null
         defaultMapViewOnTouchListener = MeasureAreaListener.getInstance(requireContext(), binding.mapView, binding.messageShow, binding.textTool1)
         binding.mapView.onTouchListener = defaultMapViewOnTouchListener

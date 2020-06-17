@@ -47,6 +47,7 @@ public class MapUtils {
         ListenableList<GraphicsOverlay> graphicsOverlays = mapView.getGraphicsOverlays();
         if (graphicsOverlays.size() > 0 && points.size() > 0) {
             mapView.getGraphicsOverlays().removeAll(graphicsOverlays);
+            points.clear();
         }
     }
 

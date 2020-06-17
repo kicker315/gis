@@ -54,8 +54,7 @@ class MapViewModel internal constructor(
     // 工具状态栏状态
     var toolOperateIsGone = ObservableBoolean(true)
 
-    // 测量消息界面状态
-    var messageIsGone = ObservableBoolean(true)
+
 
 
 

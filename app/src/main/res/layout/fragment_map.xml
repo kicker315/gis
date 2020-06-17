@@ -73,10 +73,10 @@
             android:layout_marginStart="@dimen/margin_normal"
             android:background="@color/white"
             android:alpha="0.8"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:isGone="@{viewModel.messageIsGone}"
             >
 
             <TextView
@@ -98,11 +98,12 @@
 
             <ImageView
                 android:id="@+id/confirm_hide"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerInParent="true"
                 android:src="@drawable/btn_done_draw_pressed"
+                android:contentDescription="@string/app_name"
                 android:onClick="@{viewModel::click}"/>
         </RelativeLayout>
 
