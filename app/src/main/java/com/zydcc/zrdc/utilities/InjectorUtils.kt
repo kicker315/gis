@@ -6,11 +6,11 @@ import com.zydcc.zrdc.data.AppDatabase
 import com.zydcc.zrdc.data.CodeBrushRepository
 import com.zydcc.zrdc.data.DLTBRepository
 import com.zydcc.zrdc.data.LayerRepository
-import com.zydcc.zrdc.interfaces.MapOperate
-import com.zydcc.zrdc.viewmodels.DrawViewModelFactory
-import com.zydcc.zrdc.viewmodels.LayerManagerViewModelFactory
-import com.zydcc.zrdc.viewmodels.MapViewModelFactory
-import com.zydcc.zrdc.viewmodels.QueryStaticsViewModelFactory
+import com.zydcc.zrdc.ui.interfaces.MapOperate
+import com.zydcc.zrdc.ui.viewmodels.DrawViewModelFactory
+import com.zydcc.zrdc.ui.viewmodels.LayerManagerViewModelFactory
+import com.zydcc.zrdc.ui.viewmodels.MapViewModelFactory
+import com.zydcc.zrdc.ui.viewmodels.QueryStaticsViewModelFactory
 
 /**
  * =======================================

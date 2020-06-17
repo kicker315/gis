@@ -5,7 +5,7 @@
     <data>
         <variable
             name="callback"
-            type="com.zydcc.zrdc.view.sys.SysFragment.Callback" />
+            type="com.zydcc.zrdc.ui.view.sys.SysFragment.Callback" />
     </data>
 
     <LinearLayout

@@ -128,7 +128,8 @@
                 android:drawableStart="@drawable/btn_layer_info"
                 android:text="@string/txt_attr"
                 android:textColor="@drawable/tab_text_color_pressed"
-                android:textSize="@dimen/textsize_normal" />
+                android:textSize="@dimen/textsize_normal"
+                android:onClick="@{attrListener}"/>
 
             <RadioButton
                 android:id="@+id/rb_layer_render"

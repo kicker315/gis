@@ -14,4 +14,9 @@ object IntentConstants {
     const val SUFFIX = "suffix"
     const val REQUEST_CODE_TAKE_PHOTO = 0
     const val REQUEST_CODE_TAKE_VIDEO = 1
+
+}
+
+object BundleConstants {
+    const val BUNDLE_LAYER = "layer"
 }

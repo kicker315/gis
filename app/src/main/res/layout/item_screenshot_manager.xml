@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.zydcc.zrdc.widget.MaskedCardView
+    <com.zydcc.zrdc.ui.widget.MaskedCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/card_side_margin"
@@ -23,7 +23,7 @@
                 app:layout_constraintDimensionRatio="16:9"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.zydcc.zrdc.widget.MaskedCardView>
+    </com.zydcc.zrdc.ui.widget.MaskedCardView>
 
 
 </layout>

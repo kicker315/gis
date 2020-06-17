@@ -81,6 +81,8 @@
     <string name="txt_create_time">创建时间</string>
     <string name="txt_update_time">修改时间</string>
 
+    <string name="txt_layer_attr_info">图层属性信息</string>
+
     <string name="txt_choose_file">选择文件</string>
     <string name="txt_query_statistics">查询统计</string>
     <string name="txt_compare_analyst">比对分析</string>

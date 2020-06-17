@@ -12,9 +12,9 @@ import androidx.room.PrimaryKey
  */
 @Entity(tableName = "TDDCGZFL")
 data class CodeBrush(
-    @PrimaryKey @ColumnInfo(name="ID") val id: Int,
-    @ColumnInfo(name="DM")val dm: String,
-    @ColumnInfo(name="MC")val mc: String,
-    @ColumnInfo(name="YJLBM")val yjlbm: String?,
-    @ColumnInfo(name="RGB")val rgb: String?
+    @PrimaryKey @ColumnInfo(name="ID") var id: Int,
+    @ColumnInfo(name="DM")var dm: String,
+    @ColumnInfo(name="MC")var mc: String,
+    @ColumnInfo(name="YJLBM")val yjlbm: String ?= null,
+    @ColumnInfo(name="RGB")val rgb: String ?= null
 )

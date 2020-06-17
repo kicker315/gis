@@ -6,7 +6,7 @@
     <data>
         <variable
             name="callback"
-            type="com.zydcc.zrdc.view.main.LayerFragment.Callback" />
+            type="com.zydcc.zrdc.ui.view.main.LayerFragment.Callback" />
     </data>
 
     <androidx.core.widget.NestedScrollView

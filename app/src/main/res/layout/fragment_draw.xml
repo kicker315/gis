@@ -5,7 +5,7 @@
     <data>
         <variable
             name="callback"
-            type="com.zydcc.zrdc.view.freedraw.DrawFragment.Callback" />
+            type="com.zydcc.zrdc.ui.view.freedraw.DrawFragment.Callback" />
 
         <variable
             name="maxSize"
@@ -21,7 +21,7 @@
 
         <variable
             name="viewModel"
-            type="com.zydcc.zrdc.viewmodels.DrawViewModel" />
+            type="com.zydcc.zrdc.ui.viewmodels.DrawViewModel" />
     </data>
 
     <RelativeLayout

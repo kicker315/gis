@@ -1,8 +1,10 @@
 package com.zydcc.zrdc.data
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 
 /**
  * =======================================
@@ -11,6 +13,7 @@ import androidx.room.PrimaryKey
  * ========================================
  */
 @Entity(tableName = "LAYER")
+@Parcelize
 data class Layer(
     var fillColor: String,
     var isBaseMap: Int,
@@ -28,7 +31,7 @@ data class Layer(
     var lineColor: String = "",
     var projectId: Long
 
-){
+): Parcelable{
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name="id")
     var id: Int = 0

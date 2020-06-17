@@ -8,11 +8,11 @@
 
         <variable
             name="baseView"
-            type="com.zydcc.zrdc.interfaces.MapOperate" />
+            type="com.zydcc.zrdc.ui.interfaces.MapOperate" />
 
         <variable
             name="viewModel"
-            type="com.zydcc.zrdc.viewmodels.MapViewModel" />
+            type="com.zydcc.zrdc.ui.viewmodels.MapViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

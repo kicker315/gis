@@ -18,6 +18,15 @@
         <item name="android:padding">8dp</item>
     </style>
 
+    <style name="checkbox_center" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:drawableEnd">@drawable/checkbox_style</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">@dimen/textsize_normal</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
     <!-- ToolBar菜单样式 -->
     <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="actionMenuTextColor">@color/white</item> <!--  颜色-->
