@@ -95,6 +95,8 @@ dependencies {
 
     // permission
     implementation "pub.devrel:easypermissions:3.0.0"
+    // 通用工具类
+    implementation 'com.blankj:utilcodex:1.29.0'
 
 
     // gis

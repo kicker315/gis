@@ -1,6 +1,8 @@
 package com.zydcc.zrdc.base
 
 import androidx.multidex.MultiDexApplication
+import com.blankj.utilcode.util.CrashUtils
+import com.blankj.utilcode.util.Utils
 import com.zydcc.zrdc.location.LocationService
 
 /**
@@ -13,6 +15,8 @@ class App : MultiDexApplication() {
 
     override fun onCreate() {
         super.onCreate()
+        Utils.init(this)
+        CrashUtils.init()
         locationService = LocationService(applicationContext)
     }
 

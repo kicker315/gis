@@ -2,7 +2,6 @@ package com.zydcc.zrdc.ui.view.main
 
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,24 +13,16 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.blankj.utilcode.util.FileUtils
 import com.esri.arcgisruntime.ArcGISRuntimeEnvironment
 import com.esri.arcgisruntime.data.ShapefileFeatureTable
 import com.esri.arcgisruntime.data.TileCache
 import com.esri.arcgisruntime.layers.ArcGISTiledLayer
-import com.esri.arcgisruntime.layers.FeatureLayer
-import com.esri.arcgisruntime.loadable.LoadStatus
 import com.esri.arcgisruntime.mapping.ArcGISMap
 import com.esri.arcgisruntime.mapping.Basemap
 import com.esri.arcgisruntime.mapping.Viewpoint
 import com.esri.arcgisruntime.mapping.view.DefaultMapViewOnTouchListener
-import com.esri.arcgisruntime.mapping.view.Graphic
-import com.esri.arcgisruntime.mapping.view.GraphicsOverlay
 import com.esri.arcgisruntime.mapping.view.WrapAroundMode
-import com.esri.arcgisruntime.symbology.SimpleFillSymbol
-import com.esri.arcgisruntime.symbology.SimpleLineSymbol
-import com.esri.arcgisruntime.symbology.SimpleRenderer
-import com.esri.arcgisruntime.symbology.Symbol
-import com.zydcc.zrdc.base.App
 import com.zydcc.zrdc.core.ext.observe
 import com.zydcc.zrdc.data.CodeBrush
 import com.zydcc.zrdc.data.Layer
@@ -41,7 +32,6 @@ import com.zydcc.zrdc.ui.listener.MeasureAreaListener
 import com.zydcc.zrdc.ui.listener.MeasureDistanceListener
 import com.zydcc.zrdc.utilities.InjectorUtils
 import com.zydcc.zrdc.ui.viewmodels.MapViewModel
-import com.zydcc.zrdc.utilities.FileUtils
 import java.io.File
 
 /**
@@ -90,12 +80,18 @@ class MapFragment: Fragment(), MapOperate {
     private fun initMap() {
         // 去水印
         ArcGISRuntimeEnvironment.setLicense("runtimeadvanced,1000,rud000228325,none,3M10F7PZB0YH463EM164")
+        var oldSize = -1
         observe(viewModel.tpkDatasourceList) {
-            if (it.isNotEmpty()) {
-               resetBaseMap(it[0].layerUrl)
-            } else {
+
+            if (oldSize == -1) {
                 addNetBaseMap()
+                return@observe
             }
+
+            if (oldSize != it.size) {
+                resetBaseMap(it[0].layerUrl)
+            }
+            oldSize = it.size
         }
         observe(viewModel.shpDatasourceList) {
             // shape

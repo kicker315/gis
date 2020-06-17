@@ -23,6 +23,7 @@ import com.zydcc.zrdc.utilities.BundleConstants
 import com.zydcc.zrdc.utilities.DimenUtils
 import kotlinx.android.synthetic.main.dialog_feature_attr.*
 import kotlinx.android.synthetic.main.dialog_feature_attr.view.*
+import java.util.*
 
 /**
  * =======================================
@@ -46,18 +47,16 @@ class FeatureAttrDialogFragment : DialogFragment() {
         view.tool_bar.setNavigationOnClickListener {
                 dismiss()
             }
-        initData(view)
+        val dltbRepository = DLTBRepository.getInstance(
+            AppDatabase.getInstance(requireActivity().applicationContext).dltbDao())
+        observe(dltbRepository.getDLTBList()) {
+            initData(it, view)
+        }
+
         return view
     }
-
-
-    private fun initData(view: View) {
-         val dltbRepository = DLTBRepository.getInstance(
-            AppDatabase.getInstance(requireActivity().applicationContext).dltbDao())
-        var dltbList = mutableListOf<DLTB>()
-        observe(dltbRepository.getDLTBList()) {
-            dltbList = it.toMutableList()
-        }
+    
+    private fun initData(dltbList: List<DLTB>,view: View) {
         layer = requireArguments().getParcelable(BundleConstants.BUNDLE_LAYER) as Layer
 
         val shapeFiFeatureTable = ShapefileFeatureTable(layer.layerUrl)
@@ -67,7 +66,7 @@ class FeatureAttrDialogFragment : DialogFragment() {
             val fields = shapeFiFeatureTable.fields
             for (index in 0 until  fields.size) {
                 val field = fields[index]
-                val name = field.name.toUpperCase()
+                val name = field.name.toUpperCase(Locale.CHINA)
                 var dltb: DLTB ?= null
                 if (name != "FID" && name != "OBJECTID" && name != "SHAPE_LENG" && name != "SHAPE_AREA") {
                     for (item in dltbList) {

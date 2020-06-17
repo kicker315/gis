@@ -59,7 +59,7 @@ class LayerFragment : Fragment() {
                     if (mShpChooseDialog == null) {
                         mShpChooseDialog = DatasourceChooseDialog()
                         val bundle = Bundle()
-                        bundle.putString(IntentConstants.SUFFIX, "shp")
+                        bundle.putString(IntentConstants.SUFFIX, ".shp")
                         mShpChooseDialog?.arguments = bundle
                         mShpChooseDialog?.onDatasourceSelector = {
                             val datasource = Layer(
@@ -88,7 +88,7 @@ class LayerFragment : Fragment() {
                     if (mTpkChooseDialog == null) {
                         mTpkChooseDialog = DatasourceChooseDialog()
                         val bundle = Bundle()
-                        bundle.putString(IntentConstants.SUFFIX, "tpk")
+                        bundle.putString(IntentConstants.SUFFIX, ".tpk")
                         mTpkChooseDialog?.arguments = bundle
                         mTpkChooseDialog?.onDatasourceSelector = {
                             val datasource = Layer(

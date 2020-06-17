@@ -11,17 +11,19 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.blankj.utilcode.util.FileUtils
 import com.fondesa.recyclerviewdivider.RecyclerViewDivider
 import com.zydcc.zrdc.R
 import com.zydcc.zrdc.ui.adapters.FileListAdapter
 import com.zydcc.zrdc.databinding.DialogDatasourceChooseBinding
 import com.zydcc.zrdc.model.bean.FileItem
 import com.zydcc.zrdc.utilities.DimenUtils
-import com.zydcc.zrdc.utilities.FileUtils
 import com.zydcc.zrdc.utilities.IntentConstants
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.io.File
+import java.io.FileFilter
+import java.util.*
 
 /**
  * =======================================
@@ -36,7 +38,7 @@ class DatasourceChooseDialog : DialogFragment() {
     private var mAdapter = FileListAdapter()
     private var mRefreshLayout: SwipeRefreshLayout ?= null
 
-    private var suffix = "shp"
+    private var suffix = ".shp"
 
     var onDatasourceSelector: (FileItem) -> Unit = {}
 
@@ -110,8 +112,15 @@ class DatasourceChooseDialog : DialogFragment() {
     }
 
     private  fun getData(suffix: String): List<FileItem> {
-
-        val files = FileUtils.listFilesInDirWithFilter(File(Environment.getExternalStorageDirectory().absolutePath + "/莱西一张图/"), suffix)
+        val sb = StringBuilder()
+            .append(Environment.getExternalStorageDirectory().absolutePath)
+            .append("/")
+            .append(getString(R.string.app_name))
+            .append("/")
+        val files = FileUtils.listFilesInDirWithFilter(File(sb.toString()),
+            FileFilter {
+                return@FileFilter it.name.toUpperCase(Locale.CHINA).endsWith(suffix.toUpperCase(Locale.CHINA))
+            }, true)
         val data = mutableListOf<FileItem>()
         for (file in files) {
             data.add(FileItem(file.name, file.absolutePath))

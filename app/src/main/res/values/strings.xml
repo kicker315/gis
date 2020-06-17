@@ -9,6 +9,10 @@
     <string name="txt_remember_password">记住密码</string>
     <string name="txt_change_password">修改密码</string>
 
+    <string name="txt_project">工程</string>
+    <string name="txt_default_project">默认工程</string>
+    <string name="txt_default_project_name">JZDATA</string>
+    <string name="txt_layer_data">图层数据</string>
     <string name="txt_map">地图</string>
     <string name="txt_layer">图层</string>
     <string name="txt_query">查询</string>
