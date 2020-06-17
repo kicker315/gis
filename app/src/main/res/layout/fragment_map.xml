@@ -64,6 +64,48 @@
                 android:textColor="@color/white" />
         </LinearLayout>
 
+        <RelativeLayout
+            android:id="@+id/message_show"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:background="@color/white"
+            android:alpha="0.8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:isGone="@{viewModel.messageIsGone}"
+            >
+
+            <TextView
+                android:id="@+id/text_tool1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/primary_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/text_tool2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_tool1"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/primary_text"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/confirm_hide"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:src="@drawable/btn_done_draw_pressed"
+                android:onClick="@{viewModel::click}"/>
+        </RelativeLayout>
+
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -452,7 +494,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableTop="@drawable/rb_distance"
-                android:text="@string/txt_distance" />
+                android:text="@string/txt_distance"
+                android:onClick="@{viewModel::click}"/>
 
             <RadioButton
                 android:id="@+id/rb_area"
@@ -460,7 +503,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableTop="@drawable/rb_area"
-                android:text="@string/txt_area" />
+                android:text="@string/txt_area"
+                android:onClick="@{viewModel::click}"/>
 
             <RadioButton
                 android:id="@+id/rb_pointedit"

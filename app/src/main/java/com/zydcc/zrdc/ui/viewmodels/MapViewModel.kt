@@ -18,6 +18,7 @@ import com.zydcc.zrdc.data.Layer
 import com.zydcc.zrdc.data.LayerRepository
 import com.zydcc.zrdc.ui.interfaces.MapOperate
 import com.zydcc.zrdc.model.bean.LocationData
+import com.zydcc.zrdc.ui.listener.MeasureAreaListener
 import com.zydcc.zrdc.utilities.PositionUtil
 import java.math.RoundingMode
 import java.text.DecimalFormat
@@ -52,6 +53,9 @@ class MapViewModel internal constructor(
     var drawOperateIsGone = ObservableBoolean(true)
     // 工具状态栏状态
     var toolOperateIsGone = ObservableBoolean(true)
+
+    // 测量消息界面状态
+    var messageIsGone = ObservableBoolean(true)
 
 
 
@@ -158,6 +162,15 @@ class MapViewModel internal constructor(
             R.id.rb_confirm_info -> {
                 resetSubOperate()
 
+            }
+            R.id.rb_distance -> {
+                mView.measureDistance()
+            }
+            R.id.rb_area -> {
+                mView.measureArea()
+            }
+            R.id.confirm_hide -> {
+                mView.confirmHide()
             }
         }
     }

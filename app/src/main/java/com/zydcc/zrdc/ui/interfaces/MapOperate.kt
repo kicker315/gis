@@ -28,4 +28,13 @@ interface MapOperate : BaseView {
     // 全图
     fun fullMap()
 
+    // 测距
+    fun measureDistance()
+
+    // 测面积
+    fun measureArea()
+
+    // 取消测量
+    fun confirmHide()
+
 }
