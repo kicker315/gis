@@ -13,7 +13,7 @@ import com.zydcc.zrdc.model.bean.IField
  * ========================================
  */
 class FeatureAttrFieldAdapter : BaseQuickAdapter<IField, BaseDataBindingHolder<ItemFeatureAttrFieldBinding>>(
-    R.layout.item_feature_attr_field) {
+    R.layout.item_feature_attr_field, null) {
 
     override fun convert(holder: BaseDataBindingHolder<ItemFeatureAttrFieldBinding>, item: IField) {
         val binding = holder.dataBinding ?: return

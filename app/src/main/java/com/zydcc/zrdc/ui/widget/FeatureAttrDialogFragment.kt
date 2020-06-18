@@ -9,19 +9,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.esri.arcgisruntime.data.ShapefileFeatureTable
 import com.zydcc.zrdc.R
 import com.zydcc.zrdc.core.ext.observe
-import com.zydcc.zrdc.data.AppDatabase
-import com.zydcc.zrdc.data.DLTB
-import com.zydcc.zrdc.data.DLTBRepository
-import com.zydcc.zrdc.data.Layer
+import com.zydcc.zrdc.db.AppDatabase
+import com.zydcc.zrdc.db.table.DLTB
+import com.zydcc.zrdc.db.repository.DLTBRepository
+import com.zydcc.zrdc.db.table.Layer
 import com.zydcc.zrdc.model.bean.IField
 import com.zydcc.zrdc.ui.adapters.FeatureAttrFieldAdapter
 import com.zydcc.zrdc.utilities.BundleConstants
 import com.zydcc.zrdc.utilities.DimenUtils
-import kotlinx.android.synthetic.main.dialog_feature_attr.*
 import kotlinx.android.synthetic.main.dialog_feature_attr.view.*
 import java.util.*
 
@@ -56,7 +54,7 @@ class FeatureAttrDialogFragment : DialogFragment() {
         return view
     }
 
-    private fun initData(dltbList: List<DLTB>,view: View) {
+    private fun initData(dltbList: List<DLTB>, view: View) {
         layer = requireArguments().getParcelable(BundleConstants.BUNDLE_LAYER) as Layer
 
         val shapeFiFeatureTable = ShapefileFeatureTable(layer.layerUrl)
@@ -67,7 +65,7 @@ class FeatureAttrDialogFragment : DialogFragment() {
             for (index in 0 until  fields.size) {
                 val field = fields[index]
                 val name = field.name.toUpperCase(Locale.CHINA)
-                var dltb: DLTB ?= null
+                var dltb: DLTB?= null
                 if (name != "FID" && name != "OBJECTID" && name != "SHAPE_LENG" && name != "SHAPE_AREA") {
                     for (item in dltbList) {
                         if (name == item.zddm) {
@@ -86,8 +84,6 @@ class FeatureAttrDialogFragment : DialogFragment() {
                 iFieldList.add(iField)
 
             }
-            view.rv_feature_attr.layoutManager = LinearLayoutManager(requireContext())
-            view.rv_feature_attr.setHasFixedSize(true)
             mAdapter.setNewInstance(iFieldList)
             view.rv_feature_attr.adapter = mAdapter
         }

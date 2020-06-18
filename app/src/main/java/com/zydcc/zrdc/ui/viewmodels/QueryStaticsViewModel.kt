@@ -1,12 +1,10 @@
 package com.zydcc.zrdc.ui.viewmodels
 
-import androidx.databinding.Observable
-import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.zydcc.zrdc.data.Layer
-import com.zydcc.zrdc.data.LayerRepository
+import com.zydcc.zrdc.db.table.Layer
+import com.zydcc.zrdc.db.table.LayerRepository
 import com.zydcc.zrdc.model.bean.QueryData
 
 /**
@@ -21,6 +19,20 @@ class QueryStaticsViewModel(  repository: LayerRepository) : ViewModel() {
 
     val shpDatasourceList: LiveData<List<Layer>> =
         repository.getShpDatasourceList()
+
+
+    var operateMap = hashMapOf<String, String>().also {
+        it["大于"] = " > "
+        it["小于"] = " < "
+        it["等于"] = " = "
+        it["大于等于"] = " >= "
+        it["小于等于"] = " <= "
+        it["不等于"] = " <> "
+        it["或"] = " < "
+        it["且"] = " < "
+        it["包含"] = " < "
+        it["LIKE"] = " LIKE "
+    }
 
 }
 

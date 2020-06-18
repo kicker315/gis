@@ -24,8 +24,8 @@ import com.esri.arcgisruntime.mapping.Viewpoint
 import com.esri.arcgisruntime.mapping.view.DefaultMapViewOnTouchListener
 import com.esri.arcgisruntime.mapping.view.WrapAroundMode
 import com.zydcc.zrdc.core.ext.observe
-import com.zydcc.zrdc.data.CodeBrush
-import com.zydcc.zrdc.data.Layer
+import com.zydcc.zrdc.db.table.CodeBrush
+import com.zydcc.zrdc.db.table.Layer
 import com.zydcc.zrdc.databinding.FragmentMapBinding
 import com.zydcc.zrdc.ui.interfaces.MapOperate
 import com.zydcc.zrdc.ui.listener.MeasureAreaListener
@@ -82,8 +82,8 @@ class MapFragment: Fragment(), MapOperate {
         ArcGISRuntimeEnvironment.setLicense("runtimeadvanced,1000,rud000228325,none,3M10F7PZB0YH463EM164")
         var oldSize = -1
         observe(viewModel.tpkDatasourceList) {
-
-            if (oldSize == -1) {
+            // 默认为网络
+            if (oldSize == -1 && it.isEmpty()) {
                 addNetBaseMap()
                 return@observe
             }

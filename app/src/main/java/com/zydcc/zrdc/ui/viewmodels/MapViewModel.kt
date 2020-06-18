@@ -12,13 +12,12 @@ import com.esri.arcgisruntime.geometry.GeometryEngine
 import com.esri.arcgisruntime.geometry.Point
 import com.esri.arcgisruntime.geometry.SpatialReferences
 import com.zydcc.zrdc.R
-import com.zydcc.zrdc.data.CodeBrush
-import com.zydcc.zrdc.data.CodeBrushRepository
-import com.zydcc.zrdc.data.Layer
-import com.zydcc.zrdc.data.LayerRepository
+import com.zydcc.zrdc.db.table.CodeBrush
+import com.zydcc.zrdc.db.repository.CodeBrushRepository
+import com.zydcc.zrdc.db.table.Layer
+import com.zydcc.zrdc.db.table.LayerRepository
 import com.zydcc.zrdc.ui.interfaces.MapOperate
 import com.zydcc.zrdc.model.bean.LocationData
-import com.zydcc.zrdc.ui.listener.MeasureAreaListener
 import com.zydcc.zrdc.utilities.PositionUtil
 import java.math.RoundingMode
 import java.text.DecimalFormat

@@ -1,4 +1,4 @@
-package com.zydcc.zrdc.data
+package com.zydcc.zrdc.db
 
 import androidx.room.TypeConverter
 import java.util.*

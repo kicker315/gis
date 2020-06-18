@@ -1,4 +1,6 @@
-package com.zydcc.zrdc.data
+package com.zydcc.zrdc.db.table
+
+import com.zydcc.zrdc.db.dao.LayerDao
 
 /**
  * =======================================
@@ -26,11 +28,12 @@ class LayerRepository private constructor(private val dao: LayerDao) {
 
     companion object {
         // For Single instantiation
-        @Volatile private var instance: LayerRepository ?= null
+        @Volatile private var instance: LayerRepository?= null
 
         fun getInstance(datasourceDao: LayerDao) =
-            instance?: synchronized(this) {
-                instance?: LayerRepository(datasourceDao).also {
+            instance ?: synchronized(this) {
+                instance
+                    ?: LayerRepository(datasourceDao).also {
                     instance = it
                 }
             }

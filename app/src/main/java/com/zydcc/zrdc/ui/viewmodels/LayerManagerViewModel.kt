@@ -1,10 +1,10 @@
 package com.zydcc.zrdc.ui.viewmodels
 
 import androidx.lifecycle.*
-import com.zydcc.zrdc.data.DLTB
-import com.zydcc.zrdc.data.DLTBRepository
-import com.zydcc.zrdc.data.Layer
-import com.zydcc.zrdc.data.LayerRepository
+import com.zydcc.zrdc.db.table.DLTB
+import com.zydcc.zrdc.db.repository.DLTBRepository
+import com.zydcc.zrdc.db.table.Layer
+import com.zydcc.zrdc.db.table.LayerRepository
 import kotlinx.coroutines.launch
 
 /**

@@ -32,6 +32,7 @@ class MainFragment: Fragment() {
         val viewPager = binding.viewPager
         viewPager.isUserInputEnabled = false // 禁止滑动
         viewPager.adapter = MainPageAdapter(this)
+        viewPager.offscreenPageLimit = 4
         initTab(binding.rgTools, viewPager)
         binding.rbSetting.setOnClickListener {view ->
             val directions =

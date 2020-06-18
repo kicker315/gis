@@ -1,7 +1,7 @@
 package com.zydcc.zrdc.model.bean
 
 import com.esri.arcgisruntime.data.Field
-import com.zydcc.zrdc.data.DLTB
+import com.zydcc.zrdc.db.table.DLTB
 
 /**
  * =======================================

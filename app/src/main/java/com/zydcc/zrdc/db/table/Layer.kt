@@ -1,4 +1,4 @@
-package com.zydcc.zrdc.data
+package com.zydcc.zrdc.db.table
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo

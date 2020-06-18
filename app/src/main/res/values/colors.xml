@@ -8,6 +8,9 @@
     <color name="black_scrim">#C0000000</color>
     <color name="invisible_scrim">#00000000</color>
     <color name="loading">#e2e2e2</color>
+    <color name="stroke_color">#ff385990</color>
+    <color name="background">#ffebeef2</color>
+    <color name="btn_color">#ff6cb134</color>
 
     <color name="white">#FFFFFF</color>
     <color name="black">#000</color>

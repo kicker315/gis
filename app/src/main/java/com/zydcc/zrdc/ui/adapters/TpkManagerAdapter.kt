@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.zydcc.zrdc.data.Layer
+import com.zydcc.zrdc.db.table.Layer
 import com.zydcc.zrdc.databinding.ItemLayerManagerTpkBinding
 
 /**

@@ -1,4 +1,6 @@
-package com.zydcc.zrdc.data
+package com.zydcc.zrdc.db.repository
+
+import com.zydcc.zrdc.db.dao.DLTBDao
 
 /**
  * =======================================
@@ -12,11 +14,12 @@ class DLTBRepository private constructor(private val dltbDao: DLTBDao) {
 
     companion object {
         // For Single instantiation
-        @Volatile private var instance: DLTBRepository ?= null
+        @Volatile private var instance: DLTBRepository?= null
 
         fun getInstance(dltbDao: DLTBDao) =
-            instance?: synchronized(this) {
-                instance?: DLTBRepository(dltbDao).also {
+            instance ?: synchronized(this) {
+                instance
+                    ?: DLTBRepository(dltbDao).also {
                     instance = it
                 }
             }

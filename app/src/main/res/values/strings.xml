@@ -179,5 +179,11 @@
     <string name="txt_time">时间</string>
     <string name="txt_direct">方向</string>
 
+    <string name="txt_import_project">导入工程</string>
+    <string name="txt_export_project">导出工程</string>
+    <string name="txt_new_project">新建工程</string>
+    <string name="txt_new_layer">新建图层</string>
+    <string name="txt_project_path">工程路径</string>
+
 
 </resources>

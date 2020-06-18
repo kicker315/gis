@@ -15,7 +15,7 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.zydcc.zrdc.ui.adapters.ShpManagerAdapter
 import com.zydcc.zrdc.ui.adapters.TpkManagerAdapter
 import com.zydcc.zrdc.core.ext.observe
-import com.zydcc.zrdc.data.Layer
+import com.zydcc.zrdc.db.table.Layer
 import com.zydcc.zrdc.databinding.FragmentLayerBinding
 import com.zydcc.zrdc.utilities.InjectorUtils
 import com.zydcc.zrdc.utilities.IntentConstants

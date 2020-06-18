@@ -2,7 +2,7 @@ package com.zydcc.zrdc.ui.interfaces
 
 import androidx.lifecycle.LiveData
 import com.zydcc.zrdc.base.BaseView
-import com.zydcc.zrdc.data.CodeBrush
+import com.zydcc.zrdc.db.table.CodeBrush
 
 /**
  * =======================================

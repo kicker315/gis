@@ -2,10 +2,10 @@ package com.zydcc.zrdc.utilities
 
 import android.content.Context
 import androidx.fragment.app.Fragment
-import com.zydcc.zrdc.data.AppDatabase
-import com.zydcc.zrdc.data.CodeBrushRepository
-import com.zydcc.zrdc.data.DLTBRepository
-import com.zydcc.zrdc.data.LayerRepository
+import com.zydcc.zrdc.db.AppDatabase
+import com.zydcc.zrdc.db.repository.CodeBrushRepository
+import com.zydcc.zrdc.db.repository.DLTBRepository
+import com.zydcc.zrdc.db.table.LayerRepository
 import com.zydcc.zrdc.ui.interfaces.MapOperate
 import com.zydcc.zrdc.ui.viewmodels.DrawViewModelFactory
 import com.zydcc.zrdc.ui.viewmodels.LayerManagerViewModelFactory

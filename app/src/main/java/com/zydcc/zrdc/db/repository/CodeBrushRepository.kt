@@ -1,4 +1,6 @@
-package com.zydcc.zrdc.data
+package com.zydcc.zrdc.db.repository
+
+import com.zydcc.zrdc.db.dao.CodeBrushDao
 
 /**
  * =======================================
@@ -12,11 +14,15 @@ class CodeBrushRepository private constructor(private val codeBrushDao: CodeBrus
 
     companion object {
         // For Single instantiation
-        @Volatile private var instance: CodeBrushRepository ?= null
+        @Volatile private var instance: CodeBrushRepository?= null
 
         fun getInstance(codeBrushDao: CodeBrushDao) =
-            instance?: synchronized(this) {
-                instance?: CodeBrushRepository(codeBrushDao).also {
+            instance
+                ?: synchronized(this) {
+                instance
+                    ?: CodeBrushRepository(
+                        codeBrushDao
+                    ).also {
                     instance = it
                 }
             }

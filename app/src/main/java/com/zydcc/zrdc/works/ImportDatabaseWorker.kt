@@ -7,8 +7,8 @@ import androidx.work.WorkerParameters
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader
-import com.zydcc.zrdc.data.AppDatabase
-import com.zydcc.zrdc.data.DLTB
+import com.zydcc.zrdc.db.AppDatabase
+import com.zydcc.zrdc.db.table.DLTB
 import com.zydcc.zrdc.utilities.DLTB_DATA_FILENAME
 import kotlinx.coroutines.coroutineScope
 import java.lang.Exception

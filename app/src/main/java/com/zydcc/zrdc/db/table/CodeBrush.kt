@@ -1,4 +1,4 @@
-package com.zydcc.zrdc.data
+package com.zydcc.zrdc.db.table
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

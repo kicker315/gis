@@ -1,8 +1,14 @@
-package com.zydcc.zrdc.data
+package com.zydcc.zrdc.db
 
 import android.content.Context
 import androidx.room.*
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.zydcc.zrdc.db.dao.CodeBrushDao
+import com.zydcc.zrdc.db.dao.DLTBDao
+import com.zydcc.zrdc.db.dao.LayerDao
+import com.zydcc.zrdc.db.table.CodeBrush
+import com.zydcc.zrdc.db.table.DLTB
+import com.zydcc.zrdc.db.table.Layer
 import com.zydcc.zrdc.utilities.DATABASE_NAME
 import com.zydcc.zrdc.utilities.DATABASE_PATH
 
