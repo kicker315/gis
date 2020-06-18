@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/rcv_background"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="1px"
+        android:background="@color/white"
+        android:descendantFocusability="blocksDescendants"
+        android:elevation="1dp">
+
+        <RelativeLayout
+            android:id="@id/rv_layerselect"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground">
+
+            <ImageView
+                android:id="@+id/icon_file"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/dp_10"
+                android:src="@drawable/icon_file"
+                android:contentDescription="@string/app_name"/>
+
+            <TextView
+                android:id="@+id/tv_filename"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/icon_file"
+                android:padding="10dp"
+                android:textSize="@dimen/textsize_normal" />
+
+            <CheckBox
+                android:id="@id/checkbox"
+                style="@style/checkbox_lm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:clickable="false"
+                android:focusable="false" />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

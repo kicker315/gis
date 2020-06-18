@@ -55,7 +55,7 @@ class FeatureAttrDialogFragment : DialogFragment() {
 
         return view
     }
-    
+
     private fun initData(dltbList: List<DLTB>,view: View) {
         layer = requireArguments().getParcelable(BundleConstants.BUNDLE_LAYER) as Layer
 

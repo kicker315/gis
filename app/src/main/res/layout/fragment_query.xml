@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.zydcc.zrdc.ui.viewmodels.QueryStaticsViewModel" />
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -65,7 +72,8 @@
                             android:gravity="center"
                             android:hint="@string/please_select_layer"
                             android:padding="7dp"
-                            android:textSize="@dimen/textsize_normal" />
+                            android:textSize="@dimen/textsize_normal"
+                            android:text="@{viewModel.queryData.layerName}"/>
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -108,7 +116,8 @@
                             android:gravity="center"
                             android:hint="@string/please_select_fields"
                             android:padding="7dp"
-                            android:textSize="@dimen/textsize_normal" />
+                            android:textSize="@dimen/textsize_normal"
+                            android:text="@{viewModel.queryData.selectFieldNames}"/>
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -161,7 +170,8 @@
                             android:gravity="center"
                             android:hint="@string/please_select_fields"
                             android:padding="7dp"
-                            android:textSize="@dimen/textsize_normal" />
+                            android:textSize="@dimen/textsize_normal"
+                            android:text="@{viewModel.queryData.fieldName}"/>
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -203,7 +213,8 @@
                             android:gravity="center"
                             android:hint="@string/please_select_operate"
                             android:padding="7dp"
-                            android:textSize="@dimen/textsize_normal" />
+                            android:textSize="@dimen/textsize_normal"
+                            android:text="@{viewModel.queryData.operaName}"/>
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -248,7 +259,8 @@
                             android:inputType="text"
                             android:lines="1"
                             android:padding="7.0dip"
-                            android:textSize="@dimen/textsize_normal" />
+                            android:textSize="@dimen/textsize_normal"
+                            android:text="@{viewModel.queryData.range}"/>
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
