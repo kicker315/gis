@@ -24,9 +24,8 @@ import com.esri.arcgisruntime.mapping.Viewpoint
 import com.esri.arcgisruntime.mapping.view.DefaultMapViewOnTouchListener
 import com.esri.arcgisruntime.mapping.view.WrapAroundMode
 import com.zydcc.zrdc.core.ext.observe
-import com.zydcc.zrdc.db.table.CodeBrush
-import com.zydcc.zrdc.db.table.Layer
 import com.zydcc.zrdc.databinding.FragmentMapBinding
+import com.zydcc.zrdc.model.bean.Layer
 import com.zydcc.zrdc.ui.interfaces.MapOperate
 import com.zydcc.zrdc.ui.listener.MeasureAreaListener
 import com.zydcc.zrdc.ui.listener.MeasureDistanceListener
@@ -93,9 +92,7 @@ class MapFragment: Fragment(), MapOperate {
             }
             oldSize = it.size
         }
-        observe(viewModel.shpDatasourceList) {
-            // shape
-        }
+
     }
 
     /**
@@ -205,12 +202,6 @@ class MapFragment: Fragment(), MapOperate {
         binding.rbLocation.isChecked = false
     }
 
-    override fun showCodeBrushList(data: LiveData<List<CodeBrush>>) {
-        data.observe(viewLifecycleOwner,
-            Observer { codes ->
-                Log.d("code", codes.toString())
-            })
-    }
 
     override fun showToast(type: Int, msg: String?) {
 

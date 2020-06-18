@@ -12,11 +12,11 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.listener.OnItemDragListener
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.zydcc.zrdc.core.ext.observe
 import com.zydcc.zrdc.ui.adapters.ShpManagerAdapter
 import com.zydcc.zrdc.ui.adapters.TpkManagerAdapter
-import com.zydcc.zrdc.core.ext.observe
-import com.zydcc.zrdc.db.table.Layer
 import com.zydcc.zrdc.databinding.FragmentLayerBinding
+import com.zydcc.zrdc.model.bean.Layer
 import com.zydcc.zrdc.utilities.InjectorUtils
 import com.zydcc.zrdc.utilities.IntentConstants
 import com.zydcc.zrdc.ui.viewmodels.LayerManagerViewModel
@@ -63,17 +63,18 @@ class LayerFragment : Fragment() {
                         mShpChooseDialog?.arguments = bundle
                         mShpChooseDialog?.onDatasourceSelector = {
                             val datasource = Layer(
-                                layerId = -1,
-                                layerName = it.title,
-                                layerUrl = it.path,
-                                isBaseMap = 1,
-                                isEdit = 0,
-                                isSelect = 1,
-                                isLabel = 1,
-                                fillColor = "255,0,210,200",
-                                isShow = 1,
+                            ).apply {
+                                layerId = -1
+                                layerName = it.title
+                                layerUrl = it.path
+                                isBaseMap = 1
+                                isEdit = 0
+                                isSelect = 1
+                                isLabel = 1
+                                fillColor = "255,0,210,200"
+                                isShow = 1
                                 projectId = 0
-                            )
+                            }
                             viewModel.addDatasource(datasource)
                         }
                     }
@@ -91,18 +92,18 @@ class LayerFragment : Fragment() {
                         bundle.putString(IntentConstants.SUFFIX, ".tpk")
                         mTpkChooseDialog?.arguments = bundle
                         mTpkChooseDialog?.onDatasourceSelector = {
-                            val datasource = Layer(
-                                layerId = -1,
-                                layerName = it.title,
-                                layerUrl = it.path,
-                                isBaseMap = 0,
-                                isEdit = 0,
-                                isSelect = 1,
-                                isLabel = 1,
-                                fillColor = "255,0,210,200",
-                                isShow = 1,
+                            val datasource = Layer().apply {
+                                layerId = -1
+                                layerName = it.title
+                                layerUrl = it.path
+                                isBaseMap = 0
+                                isEdit = 0
+                                isSelect = 1
+                                isLabel = 1
+                                fillColor = "255,0,210,200"
+                                isShow = 1
                                 projectId = 0
-                            )
+                            }
                             viewModel.addDatasource(datasource)
                         }
                     }

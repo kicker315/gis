@@ -8,15 +8,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.esri.arcgisruntime.data.ShapefileFeatureTable
 import com.zydcc.zrdc.R
+import com.zydcc.zrdc.base.App
 import com.zydcc.zrdc.core.ext.observe
-import com.zydcc.zrdc.db.AppDatabase
-import com.zydcc.zrdc.db.table.DLTB
-import com.zydcc.zrdc.db.repository.DLTBRepository
-import com.zydcc.zrdc.db.table.Layer
+
 import com.zydcc.zrdc.model.bean.IField
+import com.zydcc.zrdc.model.bean.Layer
+import com.zydcc.zrdc.model.dic.DLTB
 import com.zydcc.zrdc.ui.adapters.FeatureAttrFieldAdapter
 import com.zydcc.zrdc.utilities.BundleConstants
 import com.zydcc.zrdc.utilities.DimenUtils
@@ -45,11 +44,8 @@ class FeatureAttrDialogFragment : DialogFragment() {
         view.tool_bar.setNavigationOnClickListener {
                 dismiss()
             }
-        val dltbRepository = DLTBRepository.getInstance(
-            AppDatabase.getInstance(requireActivity().applicationContext).dltbDao())
-        observe(dltbRepository.getDLTBList()) {
-            initData(it, view)
-        }
+        val dltbDao = App.mDaoSession!!.dltbDao
+        initData(dltbDao.loadAll(), view)
 
         return view
     }

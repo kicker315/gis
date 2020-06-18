@@ -1,11 +1,12 @@
 package com.zydcc.zrdc.ui.viewmodels
 
 import androidx.lifecycle.*
-import com.zydcc.zrdc.db.table.DLTB
-import com.zydcc.zrdc.db.repository.DLTBRepository
-import com.zydcc.zrdc.db.table.Layer
-import com.zydcc.zrdc.db.table.LayerRepository
+import com.blankj.utilcode.util.LogUtils
+import com.zydcc.zrdc.base.App
+import com.zydcc.zrdc.greendao.LayerDao
+import com.zydcc.zrdc.model.bean.Layer
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 /**
  * =======================================
@@ -14,38 +15,46 @@ import kotlinx.coroutines.launch
  * ========================================
  */
 class LayerManagerViewModel(
-    private val repository: LayerRepository,
-    private val dltbRepository: DLTBRepository
 ): ViewModel() {
 
-    val shpDatasourceList: LiveData<List<Layer>> =
-        repository.getShpDatasourceList()
+    var shpDatasourceList = MutableLiveData<List<Layer>>()
 
 
-    val tpkDatasourceList: LiveData<List<Layer>> =
-        repository.getTpkDatasourceList()
 
-    val dltbList: LiveData<List<DLTB>> =
-        dltbRepository.getDLTBList()
+    val tpkDatasourceList = MutableLiveData<List<Layer>>()
+
+
+
+    init {
+        update()
+    }
+
+    private fun update() {
+        shpDatasourceList.value = App.mDaoSession.layerDao.queryBuilder().where(LayerDao.Properties.IsBaseMap.eq("1")).list()
+        tpkDatasourceList.value = App.mDaoSession.layerDao.queryBuilder().where(LayerDao.Properties.IsBaseMap.eq("0")).list()
+    }
 
 
     // 添加数据源
     fun addDatasource(datasource: Layer) {
         viewModelScope.launch {
-            repository.insert(datasource)
+            App.mDaoSession.layerDao.insert(datasource)
+            update()
         }
     }
 
     // 删除数据源
     fun deleteDatasource(datasource: Layer) {
         viewModelScope.launch {
-            repository.remove(datasource)
+            App.mDaoSession.layerDao.delete(datasource)
+            update()
         }
     }
 
     fun updateDatasource(datasource: Layer) {
         viewModelScope.launch {
-            repository.update(datasource)
+            App.mDaoSession.layerDao.update(datasource)
+            update()
         }
     }
 
@@ -55,12 +64,10 @@ class LayerManagerViewModel(
 
 
 class LayerManagerViewModelFactory(
-    private val repository: LayerRepository,
-    private var dltbRepository: DLTBRepository
 ): ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return LayerManagerViewModel(repository, dltbRepository) as T
+        return LayerManagerViewModel() as T
     }
 }

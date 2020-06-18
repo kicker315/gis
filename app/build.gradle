@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -43,10 +44,22 @@ android {
         experimental = true
     }
 
+    greendao {
+        schemaVersion 1
+        daoPackage 'com.zydcc.zrdc.greendao'
+        targetGenDir 'src/main/java'
+    }
+
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
         }
+    }
+
+    greendao {
+        schemaVersion 1
+        daoPackage 'com.zydcc.zrdc.greendao'
+        targetGenDir 'src/main/java'
     }
 
     packagingOptions {
@@ -97,7 +110,7 @@ dependencies {
     implementation "pub.devrel:easypermissions:3.0.0"
     // 通用工具类
     implementation 'com.blankj:utilcodex:1.29.0'
-
+    implementation 'org.greenrobot:greendao:3.2.2'
 
     // gis
     //noinspection GradleDependency

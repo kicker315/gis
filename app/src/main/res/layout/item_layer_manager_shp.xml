@@ -15,7 +15,7 @@
 
         <variable
             name="entity"
-            type="com.zydcc.zrdc.db.table.Layer" />
+            type="com.zydcc.zrdc.model.bean.Layer" />
     </data>
 
     <LinearLayout
