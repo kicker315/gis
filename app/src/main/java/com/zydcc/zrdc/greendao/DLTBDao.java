@@ -15,7 +15,7 @@ import com.zydcc.zrdc.model.dic.DLTB;
 /** 
  * DAO for table "DLTB".
 */
-public class DLTBDao extends AbstractDao<DLTB, Void> {
+public class DLTBDao extends AbstractDao<DLTB, String> {
 
     public static final String TABLENAME = "DLTB";
 
@@ -24,7 +24,7 @@ public class DLTBDao extends AbstractDao<DLTB, Void> {
      * Can be used for QueryBuilder and for referencing column names.
      */
     public static class Properties {
-        public final static Property ID = new Property(0, String.class, "ID", false, "ID");
+        public final static Property Id = new Property(0, String.class, "id", true, "ID");
         public final static Property Bz = new Property(1, String.class, "bz", false, "BZ");
         public final static Property Sfxs = new Property(2, int.class, "sfxs", false, "SFXS");
         public final static Property Xh = new Property(3, int.class, "xh", false, "XH");
@@ -48,9 +48,9 @@ public class DLTBDao extends AbstractDao<DLTB, Void> {
     protected final void bindValues(DatabaseStatement stmt, DLTB entity) {
         stmt.clearBindings();
  
-        String ID = entity.getID();
-        if (ID != null) {
-            stmt.bindString(1, ID);
+        String id = entity.getId();
+        if (id != null) {
+            stmt.bindString(1, id);
         }
  
         String bz = entity.getBz();
@@ -86,9 +86,9 @@ public class DLTBDao extends AbstractDao<DLTB, Void> {
     protected final void bindValues(SQLiteStatement stmt, DLTB entity) {
         stmt.clearBindings();
  
-        String ID = entity.getID();
-        if (ID != null) {
-            stmt.bindString(1, ID);
+        String id = entity.getId();
+        if (id != null) {
+            stmt.bindString(1, id);
         }
  
         String bz = entity.getBz();
@@ -121,14 +121,14 @@ public class DLTBDao extends AbstractDao<DLTB, Void> {
     }
 
     @Override
-    public Void readKey(Cursor cursor, int offset) {
-        return null;
+    public String readKey(Cursor cursor, int offset) {
+        return cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0);
     }    
 
     @Override
     public DLTB readEntity(Cursor cursor, int offset) {
         DLTB entity = new DLTB( //
-            cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0), // ID
+            cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // bz
             cursor.getInt(offset + 2), // sfxs
             cursor.getInt(offset + 3), // xh
@@ -143,7 +143,7 @@ public class DLTBDao extends AbstractDao<DLTB, Void> {
      
     @Override
     public void readEntity(Cursor cursor, DLTB entity, int offset) {
-        entity.setID(cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0));
+        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0));
         entity.setBz(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setSfxs(cursor.getInt(offset + 2));
         entity.setXh(cursor.getInt(offset + 3));
@@ -155,20 +155,22 @@ public class DLTBDao extends AbstractDao<DLTB, Void> {
      }
     
     @Override
-    protected final Void updateKeyAfterInsert(DLTB entity, long rowId) {
-        // Unsupported or missing PK type
-        return null;
+    protected final String updateKeyAfterInsert(DLTB entity, long rowId) {
+        return entity.getId();
     }
     
     @Override
-    public Void getKey(DLTB entity) {
-        return null;
+    public String getKey(DLTB entity) {
+        if(entity != null) {
+            return entity.getId();
+        } else {
+            return null;
+        }
     }
 
     @Override
     public boolean hasKey(DLTB entity) {
-        // TODO
-        return false;
+        return entity.getId() != null;
     }
 
     @Override

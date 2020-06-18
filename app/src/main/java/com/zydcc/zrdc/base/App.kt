@@ -58,7 +58,7 @@ class App : MultiDexApplication() {
 
     companion object {
         var db: SQLiteDatabase ?= null
-        private lateinit var dicDaoSession: DaoSession
+        lateinit var dicDaoSession: DaoSession
         lateinit var mDaoSession: DaoSession
     }
 

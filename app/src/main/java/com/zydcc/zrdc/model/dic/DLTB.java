@@ -2,6 +2,7 @@ package com.zydcc.zrdc.model.dic;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Id;
 
 /**
  * =======================================
@@ -11,7 +12,8 @@ import org.greenrobot.greendao.annotation.Generated;
  */
 @Entity(createInDb = false)
 public class DLTB {
-    private String ID;
+    @Id
+    private String id;
     private String bz;
     private int sfxs;
     private int xh;
@@ -20,10 +22,10 @@ public class DLTB {
     private String zddm;
     private String zdlx;
     private String zdmc;
-    @Generated(hash = 1770810988)
-    public DLTB(String ID, String bz, int sfxs, int xh, String xsws, int ystj,
+    @Generated(hash = 2050778958)
+    public DLTB(String id, String bz, int sfxs, int xh, String xsws, int ystj,
             String zddm, String zdlx, String zdmc) {
-        this.ID = ID;
+        this.id = id;
         this.bz = bz;
         this.sfxs = sfxs;
         this.xh = xh;
@@ -36,11 +38,11 @@ public class DLTB {
     @Generated(hash = 44115711)
     public DLTB() {
     }
-    public String getID() {
-        return this.ID;
+    public String getId() {
+        return this.id;
     }
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setId(String id) {
+        this.id = id;
     }
     public String getBz() {
         return this.bz;

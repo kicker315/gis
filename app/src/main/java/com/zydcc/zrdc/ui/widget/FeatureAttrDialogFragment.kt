@@ -20,6 +20,7 @@ import com.zydcc.zrdc.ui.adapters.FeatureAttrFieldAdapter
 import com.zydcc.zrdc.utilities.BundleConstants
 import com.zydcc.zrdc.utilities.DimenUtils
 import kotlinx.android.synthetic.main.dialog_feature_attr.view.*
+import java.lang.Exception
 import java.util.*
 
 /**
@@ -44,8 +45,13 @@ class FeatureAttrDialogFragment : DialogFragment() {
         view.tool_bar.setNavigationOnClickListener {
                 dismiss()
             }
-        val dltbDao = App.mDaoSession!!.dltbDao
-        initData(dltbDao.loadAll(), view)
+        try {
+            val dltbDao = App.dicDaoSession.dltbDao
+            initData(dltbDao.loadAll(), view)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
 
         return view
     }
