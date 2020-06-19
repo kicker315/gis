@@ -71,6 +71,7 @@ class SplashActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks 
                     .append(getString(R.string.app_name))
                     .append("/")
                     .append(getString(R.string.txt_project))
+                    .append("/")
                     .append(getString(R.string.txt_default_project))
                     .toString()
                 project.startTime = Date()

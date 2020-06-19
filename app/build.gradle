@@ -25,12 +25,40 @@ android {
             abiFilters 'armeabi-v7a', 'armeabi', 'x86'
         }
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    signingConfigs {
+        release_config {
+            keyAlias 'onekey_release'
+            keyPassword '123456'
+            storeFile file('../onekeyask.jks')
+            storePassword '123456'
+            v1SigningEnabled true
+            v2SigningEnabled true
         }
     }
+
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release_config
+        }
+
+        release {
+            minifyEnabled false
+            shrinkResources false
+            zipAlignEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release_config
+        }
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "莱西-v${defaultConfig.versionName}_${defaultConfig.versionCode}.apk"
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
