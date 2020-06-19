@@ -1,6 +1,7 @@
 package com.zydcc.zrdc.ui.view.main
 
 import android.annotation.SuppressLint
+import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -14,6 +15,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.blankj.utilcode.util.FileUtils
+import com.blankj.utilcode.util.SPUtils
 import com.esri.arcgisruntime.ArcGISRuntimeEnvironment
 import com.esri.arcgisruntime.data.ShapefileFeatureTable
 import com.esri.arcgisruntime.data.TileCache
@@ -23,14 +25,19 @@ import com.esri.arcgisruntime.mapping.Basemap
 import com.esri.arcgisruntime.mapping.Viewpoint
 import com.esri.arcgisruntime.mapping.view.DefaultMapViewOnTouchListener
 import com.esri.arcgisruntime.mapping.view.WrapAroundMode
+import com.zydcc.zrdc.base.App
 import com.zydcc.zrdc.core.ext.observe
 import com.zydcc.zrdc.databinding.FragmentMapBinding
 import com.zydcc.zrdc.model.bean.Layer
+import com.zydcc.zrdc.model.bean.Project
 import com.zydcc.zrdc.ui.interfaces.MapOperate
 import com.zydcc.zrdc.ui.listener.MeasureAreaListener
 import com.zydcc.zrdc.ui.listener.MeasureDistanceListener
 import com.zydcc.zrdc.utilities.InjectorUtils
 import com.zydcc.zrdc.ui.viewmodels.MapViewModel
+import com.zydcc.zrdc.ui.widget.DrawLayerDialog
+import com.zydcc.zrdc.ui.widget.ProjectManagerDialog
+import com.zydcc.zrdc.utilities.DimenUtils
 import java.io.File
 
 /**
@@ -51,7 +58,8 @@ class MapFragment: Fragment(), MapOperate {
     private var shapefilePolyline: ShapefileFeatureTable ?= null
 
     private var shapes = mutableListOf<ShapefileFeatureTable>()
-    private var sharePreferences: SharedPreferences ?= null
+    private lateinit var sharePreferences: SharedPreferences
+    private lateinit var currentProject: Project
     private var shpLayerList = mutableListOf<Layer>()
 
     private var defaultMapViewOnTouchListener: DefaultMapViewOnTouchListener?= null
@@ -69,6 +77,9 @@ class MapFragment: Fragment(), MapOperate {
         context ?: return binding.root
         binding.viewModel = viewModel
         binding.baseView = this
+        sharePreferences = requireActivity().getSharedPreferences("zydcc", MODE_PRIVATE)
+        val lastProjectId = sharePreferences.getLong("lastProject", 0L)
+        currentProject = App.mDaoSession.projectDao.load(lastProjectId)
         initMap()
         dealError()
         return binding.root
@@ -91,6 +102,10 @@ class MapFragment: Fragment(), MapOperate {
                 resetBaseMap(it[0].layerUrl)
             }
             oldSize = it.size
+        }
+
+        observe(viewModel.shpDatasourceList) {
+            shpLayerList = it.toMutableList()
         }
 
     }
@@ -148,6 +163,15 @@ class MapFragment: Fragment(), MapOperate {
 
     private fun saveButtonStation(defaultMapViewOnTouchListener: DefaultMapViewOnTouchListener?) {
 
+    }
+
+    override fun drawLayerDialog() {
+        val layerMap = hashMapOf<Layer, com.esri.arcgisruntime.layers.Layer>()
+        DrawLayerDialog.getInstance(requireContext(), layerMap).showDialog()
+    }
+
+    override fun projectManagerDialog() {
+        ProjectManagerDialog.getInstance(requireContext(),sharePreferences, currentProject).showDialog()
     }
 
     override fun fullMap() {
@@ -214,6 +238,8 @@ class MapFragment: Fragment(), MapOperate {
     override fun closeProgressDialog() {
 
     }
+
+
 
 
 }

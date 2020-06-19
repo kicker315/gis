@@ -57,7 +57,7 @@ android {
     }
 
     greendao {
-        schemaVersion 1
+        schemaVersion 2
         daoPackage 'com.zydcc.zrdc.greendao'
         targetGenDir 'src/main/java'
     }

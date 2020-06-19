@@ -104,7 +104,7 @@
                 android:layout_centerInParent="true"
                 android:src="@drawable/btn_done_draw_pressed"
                 android:contentDescription="@string/app_name"
-                android:onClick="@{viewModel::click}"/>
+                android:onClick="@{()->baseView.confirmHide()}"/>
         </RelativeLayout>
 
         <RadioGroup
@@ -123,7 +123,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableTop="@drawable/rb_draw_layer"
-                android:text="@string/txt_draw_layer" />
+                android:text="@string/txt_draw_layer"
+                android:onClick="@{()->baseView.drawLayerDialog()}"/>
 
             <RadioButton
                 android:id="@+id/rb_project_manager"
@@ -131,7 +132,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableTop="@drawable/rb_projectmanager"
-                android:text="@string/txt_project_manager" />
+                android:text="@string/txt_project_manager"
+                android:onClick="@{()->baseView.projectManagerDialog()}"/>
 
             <RadioButton
                 style="@style/rb_bottombar"
@@ -496,7 +498,7 @@
                 android:layout_height="wrap_content"
                 android:drawableTop="@drawable/rb_distance"
                 android:text="@string/txt_distance"
-                android:onClick="@{viewModel::click}"/>
+                android:onClick="@{()->baseView.measureDistance()}"/>
 
             <RadioButton
                 android:id="@+id/rb_area"
@@ -505,7 +507,7 @@
                 android:layout_height="wrap_content"
                 android:drawableTop="@drawable/rb_area"
                 android:text="@string/txt_area"
-                android:onClick="@{viewModel::click}"/>
+                android:onClick="@{()->baseView.measureArea()}"/>
 
             <RadioButton
                 android:id="@+id/rb_pointedit"

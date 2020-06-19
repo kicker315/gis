@@ -1,20 +1,25 @@
 package com.zydcc.zrdc.ui.view.splash
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Environment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil.setContentView
 import com.blankj.utilcode.util.FileUtils
 import com.zydcc.zrdc.R
+import com.zydcc.zrdc.base.App
 import com.zydcc.zrdc.databinding.ActivitySplashBinding
+import com.zydcc.zrdc.model.bean.Project
 import com.zydcc.zrdc.ui.view.main.MainActivity
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import pub.devrel.easypermissions.AfterPermissionGranted
 import pub.devrel.easypermissions.EasyPermissions
+import java.util.*
 
 /**
  * =======================================
@@ -25,10 +30,12 @@ import pub.devrel.easypermissions.EasyPermissions
 class SplashActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
 
 
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView<ActivitySplashBinding>(this, R.layout.activity_splash)
+        sharedPreferences = getSharedPreferences("zydcc", Context.MODE_PRIVATE)
         requirePermission()
     }
 
@@ -52,10 +59,43 @@ class SplashActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks 
         val intent = Intent(this, MainActivity::class.java)
         GlobalScope.launch {
             initDirectory()
+            // 如果第一次登陆
+            if (sharedPreferences.getBoolean("firststart", true)) {
+                initAppID()
+                getAppKey()
+                val project = Project()
+                project.projectName = "默认工程"
+                project.url = StringBuilder()
+                    .append(Environment.getExternalStorageDirectory().path)
+                    .append("/")
+                    .append(getString(R.string.app_name))
+                    .append("/")
+                    .append(getString(R.string.txt_project))
+                    .append(getString(R.string.txt_default_project))
+                    .toString()
+                project.startTime = Date()
+                project.projectMan = "admain"
+                project.coordinate = "西安80坐标系_117"
+                val lastProjectId = App.mDaoSession.projectDao.insert(project)
+
+                sharedPreferences.edit()
+                    .putLong("lastProject",lastProjectId)
+                    .putBoolean("firststart", false)
+                    .apply()
+
+            }
             delay(2000)
             startActivity(intent)
             finish()
         }
+
+    }
+
+    private fun initAppID() {
+
+    }
+
+    private fun getAppKey() {
 
     }
 

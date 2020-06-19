@@ -64,7 +64,10 @@
             android:textSize="@dimen/textsize_normal" />
     </RelativeLayout>
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_project_manager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="?actionBarSize"/>
+        android:layout_marginTop="?actionBarSize"
+        app:spanCount="1"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 </RelativeLayout>

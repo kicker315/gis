@@ -5,7 +5,7 @@ import androidx.multidex.MultiDexApplication
 import com.blankj.utilcode.util.CrashUtils
 import com.blankj.utilcode.util.ResourceUtils
 import com.blankj.utilcode.util.Utils
-import com.zydcc.zrdc.greendao.DbOpenHelper
+import com.zydcc.zrdc.greendao.helper.DbOpenHelper
 import com.zydcc.zrdc.greendao.DaoMaster
 import com.zydcc.zrdc.greendao.DaoSession
 import com.zydcc.zrdc.utilities.DATABASE_NAME
@@ -50,7 +50,8 @@ class App : MultiDexApplication() {
     }
 
     private fun setDatabase() {
-        mHelper = DbOpenHelper(this, "zydcc-db", null)
+        mHelper =
+            DbOpenHelper(this, "zydcc-db", null)
         db = mHelper.writableDatabase
         mDaoMaster = DaoMaster(db)
         mDaoSession = mDaoMaster.newSession()

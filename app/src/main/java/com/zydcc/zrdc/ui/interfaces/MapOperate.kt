@@ -17,6 +17,13 @@ interface MapOperate : BaseView {
     // 调转到截图管理页面
     fun navToScreenshotManager()
 
+    // 弹出绘制图层
+    fun drawLayerDialog()
+
+    // 弹出工程管理
+    fun projectManagerDialog()
+
+
 
     // 定位到当前位置
     fun onLocation()
@@ -32,5 +39,7 @@ interface MapOperate : BaseView {
 
     // 取消测量
     fun confirmHide()
+
+
 
 }

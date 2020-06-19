@@ -1,9 +1,14 @@
-package com.zydcc.zrdc.greendao;
+package com.zydcc.zrdc.greendao.helper;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 
+import com.zydcc.zrdc.greendao.DaoMaster;
+import com.zydcc.zrdc.greendao.LayerDao;
+import com.zydcc.zrdc.greendao.ProjectDao;
+import com.zydcc.zrdc.greendao.ProjectFileDao;
+import com.zydcc.zrdc.greendao.helper.MigrationHelper;
 
 import org.greenrobot.greendao.database.Database;
 
@@ -38,6 +43,6 @@ public class DbOpenHelper extends DaoMaster.OpenHelper {
                     public void onDropAllTables(Database db, boolean ifExists) {
                         DaoMaster.dropAllTables(db, ifExists);
                     }
-                }, LayerDao.class);
+                }, LayerDao.class, ProjectDao.class, ProjectFileDao.class);
     }
 }

@@ -162,15 +162,6 @@ class MapViewModel internal constructor(
                 resetSubOperate()
 
             }
-            R.id.rb_distance -> {
-                mView.measureDistance()
-            }
-            R.id.rb_area -> {
-                mView.measureArea()
-            }
-            R.id.confirm_hide -> {
-                mView.confirmHide()
-            }
         }
     }
 

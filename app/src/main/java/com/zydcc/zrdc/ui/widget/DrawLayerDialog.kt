@@ -3,9 +3,11 @@ package com.zydcc.zrdc.ui.widget
 import android.app.AlertDialog
 import android.content.Context
 import android.view.Gravity
+import android.view.LayoutInflater
 import android.widget.ListPopupWindow
 import com.zydcc.zrdc.R
 import com.zydcc.zrdc.model.bean.Layer
+import kotlinx.android.synthetic.main.dialog_draw_layer.view.*
 
 /**
  * =======================================
@@ -23,15 +25,19 @@ class DrawLayerDialog(
     private var alertDialog: AlertDialog ?= null
 
     fun showDialog() {
+        val view = LayoutInflater.from(context).inflate(R.layout.dialog_draw_layer, null)
         alertDialog = AlertDialog.Builder(context)
             .setView(
-                R.layout.dialog_draw_layer
+                view
             )
             .setCancelable(false)
             .create()
         alertDialog?.apply {
             show()
             window?.setGravity(Gravity.CENTER)
+        }
+        view.tool_bar.setOnClickListener {
+            alertDialog?.dismiss()
         }
     }
 

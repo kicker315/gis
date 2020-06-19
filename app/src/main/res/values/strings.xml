@@ -183,7 +183,12 @@
     <string name="txt_export_project">导出工程</string>
     <string name="txt_new_project">新建工程</string>
     <string name="txt_new_layer">新建图层</string>
+    <string name="txt_current_project">当前工程</string>
+    <string name="txt_choose_layer">选择图层</string>
     <string name="txt_project_path">工程路径</string>
+    <string name="txt_create_user">责任人：</string>
+    <string name="txt_default_username">admin</string>
+    <string name="txt_project_list">工程列表</string>
 
 
 </resources>

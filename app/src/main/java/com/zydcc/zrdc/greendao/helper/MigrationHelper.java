@@ -1,4 +1,4 @@
-package com.zydcc.zrdc.greendao;
+package com.zydcc.zrdc.greendao.helper;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;

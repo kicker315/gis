@@ -1,70 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tool_bar"
         style="@style/toolbar_style"
         app:title="@string/txt_draw_layer" />
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="?actionBarSize"
-        android:elevation="5dp">
-
-        <TextView
-            android:id="@+id/tv_import"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginEnd="@dimen/dp_10"
-            android:layout_toStartOf="@+id/tv_new_project"
-            android:background="@drawable/shape_new_project"
-            android:paddingLeft="5dp"
-            android:paddingTop="3dp"
-            android:paddingRight="5dp"
-            android:paddingBottom="3dp"
-            android:text="@string/txt_import_project"
-            android:textColor="@color/btn_color"
-            android:textSize="@dimen/textsize_normal" />
-
-        <TextView
-            android:id="@id/tv_new_project"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="@dimen/dp_10"
-            android:layout_toStartOf="@+id/tv_new_shp"
-            android:background="@drawable/shape_new_project"
-            android:paddingLeft="5dp"
-            android:paddingTop="3dp"
-            android:paddingRight="5dp"
-            android:paddingBottom="3dp"
-            android:text="@string/txt_new_project"
-            android:textColor="@color/btn_color"
-            android:textSize="@dimen/textsize_normal" />
-
-        <TextView
-            android:id="@+id/tv_new_shp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="@dimen/dp_10"
-            android:background="@drawable/shape_new_project"
-            android:paddingLeft="5dp"
-            android:paddingTop="3dp"
-            android:paddingRight="5dp"
-            android:paddingBottom="3dp"
-            android:text="@string/txt_new_layer"
-            android:textColor="@color/btn_color"
-            android:textSize="@dimen/textsize_normal" />
-    </RelativeLayout>
-    <androidx.recyclerview.widget.RecyclerView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="?actionBarSize"/>
-</RelativeLayout>
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/shape_corner_buttonbg"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingStart="@dimen/padding_normal"
+            android:paddingEnd="0dp"
+            android:text="@string/txt_layer"
+            android:textSize="@dimen/textsize_normal" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/shape_corner_buttonbg">
+
+            <TextView
+                android:id="@id/sp_layerlist"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="@string/txt_choose_layer"
+                android:paddingStart="10dp"
+                android:paddingTop="7dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="7dp"
+                android:textSize="@dimen/textsize_normal" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="10dp"
+                android:clickable="false"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:src="@drawable/icon_arrow_bottom"
+                android:contentDescription="@string/app_name"/>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

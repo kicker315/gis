@@ -9,7 +9,7 @@
     <dimen name="padding_normal">8dp</dimen>
     <dimen name="padding_small">4dp</dimen>
     <dimen name="elevation_normal">2dp</dimen>
-    <dimen name="toolbar_elevation">5dp</dimen>
+    <dimen name="toolbar_elevation">2dp</dimen>
     <dimen name="toolbar_small_height">48dp</dimen>
     <dimen name="toolbar_small_textsize">12sp</dimen>
     <dimen name="textsize_big">16sp</dimen>
