@@ -1,0 +1,2 @@
+/Users/ningsikai/Desktop/mimi/app/.cxx/cmake/release/x86/CMakeFiles/rebuild_cache.dir
+/Users/ningsikai/Desktop/mimi/app/.cxx/cmake/release/x86/CMakeFiles/edit_cache.dir

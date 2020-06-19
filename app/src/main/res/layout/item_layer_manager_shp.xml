@@ -10,6 +10,10 @@
             type="android.view.View.OnClickListener" />
 
         <variable
+            name="renderListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
             name="removeListener"
             type="android.view.View.OnClickListener" />
 
@@ -141,7 +145,8 @@
                 android:text="@string/txt_render"
                 android:textColor="@drawable/tab_text_color_pressed"
                 android:textSize="@dimen/textsize_normal"
-                android:visibility="visible" />
+                android:visibility="visible"
+                android:onClick="@{renderListener}"/>
 
             <RadioButton
                 android:id="@+id/rb_lm_remove"

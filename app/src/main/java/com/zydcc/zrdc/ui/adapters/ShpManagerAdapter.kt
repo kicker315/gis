@@ -24,6 +24,10 @@ class ShpManagerAdapter : BaseQuickAdapter<Layer, BaseDataBindingHolder<ItemLaye
             attrListener.invoke(binding.entity!!)
         }
 
+        binding?.setRenderListener {
+            renderListener.invoke(binding.entity!!)
+        }
+
         binding?.setRemoveListener {
             removeListener.invoke(binding.entity!!)
         }
@@ -37,5 +41,6 @@ class ShpManagerAdapter : BaseQuickAdapter<Layer, BaseDataBindingHolder<ItemLaye
 
     var removeListener: (Layer) -> Unit = {}
     var attrListener: (Layer) -> Unit = {}
+    var renderListener: (Layer) -> Unit = {}
 
 }

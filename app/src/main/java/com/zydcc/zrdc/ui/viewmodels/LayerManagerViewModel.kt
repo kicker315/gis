@@ -4,6 +4,7 @@ import androidx.lifecycle.*
 import com.blankj.utilcode.util.LogUtils
 import com.zydcc.zrdc.base.App
 import com.zydcc.zrdc.greendao.LayerDao
+import com.zydcc.zrdc.greendao.ProjectDao
 import com.zydcc.zrdc.model.bean.Layer
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -22,7 +23,6 @@ class LayerManagerViewModel(
 
 
     val tpkDatasourceList = MutableLiveData<List<Layer>>()
-
 
 
     init {

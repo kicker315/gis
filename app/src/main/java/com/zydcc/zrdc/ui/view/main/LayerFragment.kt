@@ -1,6 +1,8 @@
 package com.zydcc.zrdc.ui.view.main
 
 import android.animation.ValueAnimator
+import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,16 +14,19 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.listener.OnItemDragListener
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.zydcc.zrdc.base.App
 import com.zydcc.zrdc.core.ext.observe
 import com.zydcc.zrdc.ui.adapters.ShpManagerAdapter
 import com.zydcc.zrdc.ui.adapters.TpkManagerAdapter
 import com.zydcc.zrdc.databinding.FragmentLayerBinding
 import com.zydcc.zrdc.model.bean.Layer
+import com.zydcc.zrdc.model.bean.Project
 import com.zydcc.zrdc.utilities.InjectorUtils
 import com.zydcc.zrdc.utilities.IntentConstants
 import com.zydcc.zrdc.ui.viewmodels.LayerManagerViewModel
 import com.zydcc.zrdc.ui.widget.DatasourceChooseDialog
 import com.zydcc.zrdc.ui.widget.FeatureAttrDialogFragment
+import com.zydcc.zrdc.ui.widget.RenderDialog
 import com.zydcc.zrdc.utilities.BundleConstants
 
 /**
@@ -31,6 +36,9 @@ import com.zydcc.zrdc.utilities.BundleConstants
  * ========================================
  */
 class LayerFragment : Fragment() {
+
+    private lateinit var sp: SharedPreferences
+    private lateinit var currentProject: Project
 
     val viewModel: LayerManagerViewModel by viewModels {
         InjectorUtils.providerLayerManagerModelFactory(this)
@@ -127,12 +135,20 @@ class LayerFragment : Fragment() {
 
     private fun binds() {
 
+        sp = requireActivity().getSharedPreferences("zydcc", Context.MODE_PRIVATE)
+        currentProject = App.mDaoSession.projectDao.load(sp.getLong("lastProject", 0))
+
         mShpManagerAdapter.attrListener = {
             val featureAttrDialog = FeatureAttrDialogFragment()
             val bundle = Bundle()
             bundle.putParcelable(BundleConstants.BUNDLE_LAYER, it)
             featureAttrDialog.arguments = bundle
             featureAttrDialog.show(requireActivity().supportFragmentManager, "featureLayer")
+        }
+
+        mShpManagerAdapter.renderListener = {
+            val renderDialog = RenderDialog(requireActivity(), currentProject,it)
+            renderDialog.showDialog()
         }
 
         mShpManagerAdapter.removeListener = {

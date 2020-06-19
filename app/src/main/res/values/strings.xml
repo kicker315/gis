@@ -201,6 +201,11 @@
     <string name="txt_project_progress">工程进度</string>
     <string name="txt_layer_type">要素类型</string>
     <string name="txt_feature_num">要素数目</string>
+    <string name="txt_label_field">标注内容</string>
+    <string name="txt_line_color">边线颜色</string>
+    <string name="txt_fill_color">填充颜色</string>
+    <string name="txt_show_label">显示标注</string>
+    <string name="txt_label_color">标注颜色</string>
 
 
 </resources>
