@@ -50,7 +50,7 @@ class ProjectManagerDialog(
             window?.setGravity(Gravity.CENTER)
         }
         initData(view)
-        view.tool_bar.setOnClickListener {
+        view.tool_bar.setNavigationOnClickListener {
             alertDialog.dismiss()
         }
     }
