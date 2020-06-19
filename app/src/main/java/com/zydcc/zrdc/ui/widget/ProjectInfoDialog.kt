@@ -25,10 +25,10 @@ import kotlinx.coroutines.launch
  * ========================================
  */
 class ProjectInfoDialog(
-    private var context: Context,
-    private var parentDialog: AlertDialog,
-    private var project: Project,
-    private var sharedPreferences: SharedPreferences
+    var context: Context,
+    var parentDialog: AlertDialog,
+    var project: Project,
+    var sharedPreferences: SharedPreferences
 
 ) {
 
@@ -72,15 +72,5 @@ class ProjectInfoDialog(
         return headerView
     }
 
-    companion object {
-        @Volatile private var instance: ProjectInfoDialog ?= null
-        fun getInstance(context: Context, alertDialog: AlertDialog,project: Project, sharedPreferences: SharedPreferences): ProjectInfoDialog {
-            return instance?: ProjectInfoDialog(
-                context, alertDialog, project, sharedPreferences
-            ).also {
-                instance = it
-            }
-        }
-    }
 
 }

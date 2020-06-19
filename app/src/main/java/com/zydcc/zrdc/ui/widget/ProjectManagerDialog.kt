@@ -1,5 +1,6 @@
 package com.zydcc.zrdc.ui.widget
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.SharedPreferences
@@ -26,9 +27,9 @@ import org.greenrobot.greendao.Property
  * ========================================
  */
 class ProjectManagerDialog(
-    private var context: Context,
-    private var sharedPreferences: SharedPreferences,
-    private var currentProject: Project
+    var context: Activity,
+    var sharedPreferences: SharedPreferences,
+    var currentProject: Project
 ) {
 
 
@@ -64,7 +65,7 @@ class ProjectManagerDialog(
         view.rv_project_manager.adapter = mAdapter
         mAdapter.setOnItemClickListener { adapter, _, position ->
             val item = adapter.data[position] as Project
-            ProjectInfoDialog.getInstance(context, alertDialog, project = item, sharedPreferences = sharedPreferences).showDialog()
+            ProjectInfoDialog(context, alertDialog, project = item, sharedPreferences = sharedPreferences).showDialog()
         }
     }
 
@@ -75,17 +76,6 @@ class ProjectManagerDialog(
         headerview.tv_project_time.text = TimeUtils.date2String(currentProject.startTime)
         headerview.tv_coordinate.text = currentProject.coordinate
         return headerview
-    }
-
-    companion object {
-       @Volatile private var instance: ProjectManagerDialog ?= null
-        fun getInstance(context: Context, sharedPreferences: SharedPreferences,currentProject: Project):ProjectManagerDialog {
-            return  instance ?: ProjectManagerDialog(
-                context, sharedPreferences, currentProject
-            ).also {
-                instance = it
-            }
-        }
     }
 
 }

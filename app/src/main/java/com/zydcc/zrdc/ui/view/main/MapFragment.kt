@@ -168,11 +168,11 @@ class MapFragment: Fragment(), MapOperate {
 
     override fun drawLayerDialog() {
         val layerMap = hashMapOf<Layer, com.esri.arcgisruntime.layers.Layer>()
-        DrawLayerDialog.getInstance(requireContext(), layerMap).showDialog()
+        DrawLayerDialog.getInstance(requireActivity(), layerMap).showDialog()
     }
 
     override fun projectManagerDialog() {
-        ProjectManagerDialog.getInstance(requireContext(),sharePreferences, currentProject).showDialog()
+        ProjectManagerDialog(requireActivity(),sharePreferences, currentProject).showDialog()
     }
 
     override fun fullMap() {
@@ -240,6 +240,11 @@ class MapFragment: Fragment(), MapOperate {
 
     }
 
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+    }
 
 
 
