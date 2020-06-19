@@ -32,7 +32,7 @@ class ProjectManagerDialog(
 ) {
 
 
-    private var alertDialog: AlertDialog?= null
+    private lateinit var alertDialog: AlertDialog
 
     fun showDialog() {
         val view = LayoutInflater.from(context).inflate(R.layout.dialog_project_manager, null)
@@ -42,7 +42,7 @@ class ProjectManagerDialog(
             )
             .setCancelable(false)
             .create()
-        alertDialog?.apply {
+        alertDialog.apply {
             show()
             val width = (DimenUtils.getScreenHeight(context))
             val height = ((DimenUtils.getScreenHeight(context) * 0.7).toInt())
@@ -51,7 +51,7 @@ class ProjectManagerDialog(
         }
         initData(view)
         view.tool_bar.setOnClickListener {
-            alertDialog?.dismiss()
+            alertDialog.dismiss()
         }
     }
 
@@ -62,6 +62,10 @@ class ProjectManagerDialog(
         mAdapter.setNewInstance(projects)
         mAdapter.setHeaderView(getHeaderView(view.rv_project_manager))
         view.rv_project_manager.adapter = mAdapter
+        mAdapter.setOnItemClickListener { adapter, _, position ->
+            val item = adapter.data[position] as Project
+            ProjectInfoDialog.getInstance(context, alertDialog, project = item, sharedPreferences = sharedPreferences).showDialog()
+        }
     }
 
     private fun getHeaderView(view: RecyclerView): View {

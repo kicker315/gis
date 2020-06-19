@@ -189,6 +189,18 @@
     <string name="txt_create_user">责任人：</string>
     <string name="txt_default_username">admin</string>
     <string name="txt_project_list">工程列表</string>
+    <string name="txt_project_info">工程信息</string>
+
+    <string name="txt_open">打开</string>
+    <string name="txt_delete">删除</string>
+    <string name="txt_export">导出</string>
+    <string name="txt_excel">调查表</string>
+    <string name="txt_project_name">工程名称</string>
+    <string name="txt_project_base_info">工程概况</string>
+    <string name="txt_project_sd_path">存储路径</string>
+    <string name="txt_project_progress">工程进度</string>
+    <string name="txt_layer_type">要素类型</string>
+    <string name="txt_feature_num">要素数目</string>
 
 
 </resources>

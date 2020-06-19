@@ -155,4 +155,9 @@
 
     </style>
 
+    <style name="NoAnimationDialog" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@null</item>
+        <item name="android:windowExitAnimation">@null</item>
+    </style>
+
 </resources>

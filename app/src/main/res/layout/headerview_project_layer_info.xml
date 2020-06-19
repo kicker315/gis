@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/grey_translucent"
+        android:padding="10dp"
+        android:text="@string/txt_project_base_info"
+        android:textSize="@dimen/textsize_normal" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1px"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/icon_projectname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="12dp"
+            android:src="@drawable/icon_projectname"
+            android:contentDescription="@string/app_name"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/icon_projectname"
+            android:text="@string/txt_project_name"
+            android:textSize="@dimen/textsize_normal" />
+
+        <TextView
+            android:id="@+id/tv_projectName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:padding="12dp"
+            android:textSize="@dimen/textsize_normal" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1px"
+        android:background="#ffffffff">
+
+        <ImageView
+            android:id="@+id/icon_projectman"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="12.0dip"
+            android:src="@drawable/icon_createman" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/icon_projectman"
+            android:text="@string/txt_create_user"
+            android:textSize="@dimen/textsize_normal" />
+
+        <TextView
+            android:id="@+id/tv_projectMan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:padding="12dp"
+            android:textSize="@dimen/textsize_normal" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1px"
+        android:background="@color/white"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/icon_coordinate_system"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="12.0dip"
+            android:src="@drawable/icon_coordinate_system"
+            android:contentDescription="@string/app_name"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/icon_coordinate_system"
+            android:text="@string/txt_coordinate_sys"
+            android:textSize="@dimen/textsize_normal" />
+
+        <TextView
+            android:id="@id/tv_coordinate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:padding="12dp"
+            android:textSize="@dimen/textsize_normal" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1px"
+        android:background="@color/white"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/icon_layertemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="12dp"
+            android:src="@drawable/icon_layertemp"
+            android:contentDescription="@string/app_name"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/icon_layertemp"
+            android:text="@string/txt_layer_temp"
+            android:textSize="@dimen/textsize_normal" />
+
+        <TextView
+            android:id="@+id/tv_project_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:padding="12.0dip"
+            android:textSize="@dimen/textsize_normal" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1px"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/icon_createtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="12.0dip"
+            android:src="@drawable/icon_createtime"
+            android:contentDescription="@string/app_name"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/icon_createtime"
+            android:text="@string/txt_create_time"
+            android:textSize="@dimen/textsize_normal" />
+
+        <TextView
+            android:id="@+id/tv_project_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:padding="12dp"
+            android:textSize="@dimen/textsize_normal" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1px"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/icon_url"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="12.0dip"
+            android:src="@drawable/icon_save_path"
+            android:contentDescription="@string/app_name"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/icon_url"
+            android:text="@string/txt_project_sd_path"
+            android:textSize="@dimen/textsize_normal" />
+
+        <TextView
+            android:id="@+id/tv_project_path"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:padding="12dp"
+            android:textSize="@dimen/textsize_normal" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffeff3f5"
+        android:padding="10dp"
+        android:text="@string/txt_project_progress"
+        android:textSize="@dimen/textsize_normal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1px"
+        android:layout_marginBottom="1px"
+        android:background="@color/white"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@id/tv_layer_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/txt_project_name"
+            android:textColor="#ff4b4b4b"
+            android:textSize="@dimen/textsize_normal" />
+
+        <TextView
+            android:id="@+id/tv_layer_type"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="@string/txt_layer_type"
+            android:textColor="#ff4b4b4b"
+            android:textSize="@dimen/textsize_normal"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/tv_layer_feature_num"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="@string/txt_feature_num"
+            android:textColor="#ff4b4b4b"
+            android:textSize="@dimen/textsize_normal" />
+    </LinearLayout>
+</LinearLayout>
