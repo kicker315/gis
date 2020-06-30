@@ -3,12 +3,12 @@
   "buildFiles": [
     "/Users/ningsikai/Library/Android/sdk/ndk/20.0.5594570/build/cmake/platforms.cmake",
     "/Users/ningsikai/Library/Android/sdk/ndk/20.0.5594570/build/cmake/android.toolchain.cmake",
-    "/Users/ningsikai/Desktop/mimi/app/src/main/cpp/CMakeLists.txt"
+    "/Users/ningsikai/Desktop/edu/survery/app/src/main/cpp/CMakeLists.txt"
   ],
   "cleanCommands": [
-    "/Users/ningsikai/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/ningsikai/Desktop/mimi/app/.cxx/cmake/release/x86\" clean"
+    "/Users/ningsikai/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/ningsikai/Desktop/edu/survery/app/.cxx/cmake/release/x86\" clean"
   ],
-  "buildTargetsCommand": "/Users/ningsikai/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja  -C \"/Users/ningsikai/Desktop/mimi/app/.cxx/cmake/release/x86\" {LIST_OF_TARGETS_TO_BUILD}",
+  "buildTargetsCommand": "/Users/ningsikai/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja  -C \"/Users/ningsikai/Desktop/edu/survery/app/.cxx/cmake/release/x86\" {LIST_OF_TARGETS_TO_BUILD}",
   "libraries": {},
   "toolchains": {
     "3441939936": {
