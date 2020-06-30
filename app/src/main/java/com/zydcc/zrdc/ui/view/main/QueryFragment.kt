@@ -9,8 +9,8 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.zydcc.zrdc.core.ext.observe
+import com.zydcc.zrdc.db.table.Layer
 import com.zydcc.zrdc.databinding.FragmentQueryBinding
-import com.zydcc.zrdc.model.bean.Layer
 import com.zydcc.zrdc.ui.adapters.QueryLayerSelectAdapter
 import com.zydcc.zrdc.utilities.InjectorUtils
 import com.zydcc.zrdc.ui.viewmodels.QueryStaticsViewModel

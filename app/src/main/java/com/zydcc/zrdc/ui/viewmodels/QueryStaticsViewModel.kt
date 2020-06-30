@@ -1,12 +1,10 @@
 package com.zydcc.zrdc.ui.viewmodels
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.zydcc.zrdc.base.App
-import com.zydcc.zrdc.greendao.LayerDao
-import com.zydcc.zrdc.model.bean.Layer
+import com.zydcc.zrdc.db.table.Layer
+import com.zydcc.zrdc.db.table.LayerRepository
 import com.zydcc.zrdc.model.bean.QueryData
 
 /**
@@ -15,15 +13,12 @@ import com.zydcc.zrdc.model.bean.QueryData
  * Create by ningsikai 2020/5/26:12:56 PM
  * ========================================
  */
-class QueryStaticsViewModel() : ViewModel() {
+class QueryStaticsViewModel(  repository: LayerRepository) : ViewModel() {
 
     var queryData = QueryData()
 
-    var shpDatasourceList = MutableLiveData<List<Layer>>()
-
-    init {
-        shpDatasourceList.value = App.mDaoSession.layerDao.queryBuilder().where(LayerDao.Properties.IsBaseMap.eq("1")).list()
-    }
+    val shpDatasourceList: LiveData<List<Layer>> =
+        repository.getShpDatasourceList()
 
 
     var operateMap = hashMapOf<String, String>().also {
@@ -41,10 +36,10 @@ class QueryStaticsViewModel() : ViewModel() {
 
 }
 
-class QueryStaticsViewModelFactory(): ViewModelProvider.Factory {
+class QueryStaticsViewModelFactory(private val repository: LayerRepository): ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return QueryStaticsViewModel() as T
+        return QueryStaticsViewModel(repository) as T
     }
 }

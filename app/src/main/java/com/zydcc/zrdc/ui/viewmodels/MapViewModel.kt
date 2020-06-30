@@ -12,9 +12,10 @@ import com.esri.arcgisruntime.geometry.GeometryEngine
 import com.esri.arcgisruntime.geometry.Point
 import com.esri.arcgisruntime.geometry.SpatialReferences
 import com.zydcc.zrdc.R
-import com.zydcc.zrdc.base.App
-import com.zydcc.zrdc.greendao.LayerDao
-import com.zydcc.zrdc.model.bean.Layer
+import com.zydcc.zrdc.db.table.CodeBrush
+import com.zydcc.zrdc.db.repository.CodeBrushRepository
+import com.zydcc.zrdc.db.table.Layer
+import com.zydcc.zrdc.db.table.LayerRepository
 import com.zydcc.zrdc.ui.interfaces.MapOperate
 import com.zydcc.zrdc.model.bean.LocationData
 import com.zydcc.zrdc.utilities.PositionUtil
@@ -28,6 +29,8 @@ import java.text.DecimalFormat
  * ========================================
  */
 class MapViewModel internal constructor(
+    datasourceRepository: LayerRepository,
+    codeBrushRepository: CodeBrushRepository,
     view: MapOperate,
     private val savedStateHandle: SavedStateHandle
 ): ViewModel() {
@@ -66,17 +69,12 @@ class MapViewModel internal constructor(
 
     var onErrorCallback: (String) -> Unit = {}
 
-    var shpDatasourceList = MutableLiveData<List<Layer>>()
+    val shpDatasourceList: LiveData<List<Layer>> =
+        datasourceRepository.getShpDatasourceList()
 
 
-
-    var tpkDatasourceList = MutableLiveData<List<Layer>>()
-
-    init {
-        shpDatasourceList.value = App.mDaoSession.layerDao.queryBuilder().where(LayerDao.Properties.IsBaseMap.eq("1")).list()
-        tpkDatasourceList.value = App.mDaoSession.layerDao.queryBuilder().where(LayerDao.Properties.IsBaseMap.eq("0")).list()
-    }
-
+    val tpkDatasourceList: LiveData<List<Layer>> =
+        datasourceRepository.getTpkDatasourceList()
 
 
     inner class MyBDLocationListener : BDAbstractLocationListener() {
@@ -133,6 +131,7 @@ class MapViewModel internal constructor(
 
             R.id.rb_code_brush -> {
 
+                mView.showCodeBrushList(codeBrushList)
             }
 
             R.id.rb_clear -> {
@@ -175,11 +174,14 @@ class MapViewModel internal constructor(
         clearSubOperateChecked.set(true)
     }
 
+    private val codeBrushList: LiveData<List<CodeBrush>> = codeBrushRepository.getCodeBrushList()
 
 }
 
 
 class MapViewModelFactory(
+    private val datasourceRepository: LayerRepository,
+    private val codeBrushRepository: CodeBrushRepository,
     private val view: MapOperate,
     owner: SavedStateRegistryOwner,
     defaultArgs: Bundle? = null
@@ -191,6 +193,6 @@ class MapViewModelFactory(
         modelClass: Class<T>,
         handle: SavedStateHandle
     ): T {
-        return MapViewModel(view, handle) as T
+        return MapViewModel(datasourceRepository,codeBrushRepository, view, handle) as T
     }
 }

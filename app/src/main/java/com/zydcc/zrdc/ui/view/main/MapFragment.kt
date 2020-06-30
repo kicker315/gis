@@ -27,9 +27,14 @@ import com.esri.arcgisruntime.mapping.view.DefaultMapViewOnTouchListener
 import com.esri.arcgisruntime.mapping.view.WrapAroundMode
 import com.zydcc.zrdc.base.App
 import com.zydcc.zrdc.core.ext.observe
+import com.zydcc.zrdc.db.table.CodeBrush
+import com.zydcc.zrdc.db.table.Layer
 import com.zydcc.zrdc.databinding.FragmentMapBinding
+<<<<<<< HEAD
 import com.zydcc.zrdc.model.bean.Layer
 import com.zydcc.zrdc.model.bean.Project
+=======
+>>>>>>> parent of 35bc049... 数据库框架变更
 import com.zydcc.zrdc.ui.interfaces.MapOperate
 import com.zydcc.zrdc.ui.listener.MeasureAreaListener
 import com.zydcc.zrdc.ui.listener.MeasureDistanceListener
@@ -104,11 +109,17 @@ class MapFragment: Fragment(), MapOperate {
             }
             oldSize = it.size
         }
+<<<<<<< HEAD
 
         observe(viewModel.shpDatasourceList) {
             shpLayerList = it.toMutableList()
         }
 
+=======
+        observe(viewModel.shpDatasourceList) {
+            // shape
+        }
+>>>>>>> parent of 35bc049... 数据库框架变更
     }
 
     /**
@@ -227,6 +238,12 @@ class MapFragment: Fragment(), MapOperate {
         binding.rbLocation.isChecked = false
     }
 
+    override fun showCodeBrushList(data: LiveData<List<CodeBrush>>) {
+        data.observe(viewLifecycleOwner,
+            Observer { codes ->
+                Log.d("code", codes.toString())
+            })
+    }
 
     override fun showToast(type: Int, msg: String?) {
 

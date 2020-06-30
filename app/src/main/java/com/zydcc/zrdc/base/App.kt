@@ -1,16 +1,18 @@
 package com.zydcc.zrdc.base
 
-import android.database.sqlite.SQLiteDatabase
 import androidx.multidex.MultiDexApplication
 import com.blankj.utilcode.util.CrashUtils
-import com.blankj.utilcode.util.ResourceUtils
 import com.blankj.utilcode.util.Utils
+<<<<<<< HEAD
 import com.zydcc.zrdc.greendao.helper.DbOpenHelper
 import com.zydcc.zrdc.greendao.DaoMaster
 import com.zydcc.zrdc.greendao.DaoSession
 import com.zydcc.zrdc.utilities.DATABASE_NAME
 import com.zydcc.zrdc.utilities.DATABASE_PATH
 import java.io.IOException
+=======
+import com.zydcc.zrdc.location.LocationService
+>>>>>>> parent of 35bc049... 数据库框架变更
 
 /**
  * =======================================
@@ -20,16 +22,11 @@ import java.io.IOException
  */
 class App : MultiDexApplication() {
 
-
-
-    private lateinit var mDaoMaster: DaoMaster
-    private lateinit var mHelper: DbOpenHelper
-
-
     override fun onCreate() {
         super.onCreate()
         Utils.init(this)
         CrashUtils.init()
+<<<<<<< HEAD
         setDatabase()
         try {
             copyDatabase()
@@ -61,7 +58,14 @@ class App : MultiDexApplication() {
         var db: SQLiteDatabase ?= null
         lateinit var dicDaoSession: DaoSession
         lateinit var mDaoSession: DaoSession
+=======
+        locationService = LocationService(applicationContext)
     }
 
+    companion object {
+        // 百度定位监听
+        var locationService: LocationService? = null
+>>>>>>> parent of 35bc049... 数据库框架变更
+    }
 
 }

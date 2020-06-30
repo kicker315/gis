@@ -4,8 +4,8 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.module.DraggableModule
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 import com.zydcc.zrdc.R
+import com.zydcc.zrdc.db.table.Layer
 import com.zydcc.zrdc.databinding.ItemLayerManagerShpBinding
-import com.zydcc.zrdc.model.bean.Layer
 
 /**
  * =======================================

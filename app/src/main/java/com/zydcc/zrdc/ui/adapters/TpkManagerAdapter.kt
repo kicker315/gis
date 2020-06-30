@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.zydcc.zrdc.db.table.Layer
 import com.zydcc.zrdc.databinding.ItemLayerManagerTpkBinding
-import com.zydcc.zrdc.model.bean.Layer
 
 /**
  * =======================================
@@ -64,7 +64,7 @@ class TpkManagerAdapter : ListAdapter<Layer, RecyclerView.ViewHolder>(TpkDiffCal
 private class TpkDiffCallback: DiffUtil.ItemCallback<Layer>() {
 
     override fun areItemsTheSame(oldItem: Layer, newItem: Layer): Boolean {
-        return oldItem.layerIndex == newItem.layerIndex
+        return oldItem.id == newItem.id
     }
 
     override fun areContentsTheSame(oldItem: Layer, newItem: Layer): Boolean {
