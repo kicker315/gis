@@ -33,22 +33,7 @@ class LayerManagerViewModel(
     val tpkDatasourceList: LiveData<List<Layer>> =
         repository.getTpkDatasourceList()
 
-<<<<<<< HEAD
-    val tpkDatasourceList = MutableLiveData<List<Layer>>()
 
-
-    init {
-        update()
-    }
-
-    private fun update() {
-        shpDatasourceList.value = App.mDaoSession.layerDao.queryBuilder().where(LayerDao.Properties.IsBaseMap.eq("1")).list()
-        tpkDatasourceList.value = App.mDaoSession.layerDao.queryBuilder().where(LayerDao.Properties.IsBaseMap.eq("0")).list()
-    }
-=======
-    val dltbList: LiveData<List<DLTB>> =
-        dltbRepository.getDLTBList()
->>>>>>> parent of 35bc049... 数据库框架变更
 
 
     // 添加数据源

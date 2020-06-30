@@ -19,18 +19,14 @@ interface MapOperate : BaseView {
     // 调转到截图管理页面
     fun navToScreenshotManager()
 
-<<<<<<< HEAD
     // 弹出绘制图层
     fun drawLayerDialog()
 
     // 弹出工程管理
     fun projectManagerDialog()
 
-
-=======
     // 显示编码刷列表
     fun showCodeBrushList(data: LiveData<List<CodeBrush>>)
->>>>>>> parent of 35bc049... 数据库框架变更
 
     // 定位到当前位置
     fun onLocation()

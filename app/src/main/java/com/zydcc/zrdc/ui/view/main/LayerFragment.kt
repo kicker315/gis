@@ -14,21 +14,13 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.listener.OnItemDragListener
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
-<<<<<<< HEAD
-import com.zydcc.zrdc.base.App
-import com.zydcc.zrdc.core.ext.observe
-=======
->>>>>>> parent of 35bc049... 数据库框架变更
 import com.zydcc.zrdc.ui.adapters.ShpManagerAdapter
 import com.zydcc.zrdc.ui.adapters.TpkManagerAdapter
 import com.zydcc.zrdc.core.ext.observe
 import com.zydcc.zrdc.db.table.Layer
 import com.zydcc.zrdc.databinding.FragmentLayerBinding
-<<<<<<< HEAD
-import com.zydcc.zrdc.model.bean.Layer
 import com.zydcc.zrdc.model.bean.Project
-=======
->>>>>>> parent of 35bc049... 数据库框架变更
+
 import com.zydcc.zrdc.utilities.InjectorUtils
 import com.zydcc.zrdc.utilities.IntentConstants
 import com.zydcc.zrdc.ui.viewmodels.LayerManagerViewModel
@@ -143,7 +135,6 @@ class LayerFragment : Fragment() {
     private fun binds() {
 
         sp = requireActivity().getSharedPreferences("zydcc", Context.MODE_PRIVATE)
-        currentProject = App.mDaoSession.projectDao.load(sp.getLong("lastProject", 0))
 
         mShpManagerAdapter.attrListener = {
             val featureAttrDialog = FeatureAttrDialogFragment()

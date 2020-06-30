@@ -88,15 +88,6 @@ android {
         }
     }
 
-<<<<<<< HEAD
-    greendao {
-        schemaVersion 2
-        daoPackage 'com.zydcc.zrdc.greendao'
-        targetGenDir 'src/main/java'
-    }
-
-=======
->>>>>>> parent of 35bc049... 数据库框架变更
     packagingOptions {
         exclude 'META-INF/services/javax.annotation.processing.Processor'
         exclude 'META-INF/LGPL2.1'
