@@ -14,4 +14,12 @@ class Converters {
 
     @TypeConverter fun datestampToCalendar(value: Long): Calendar =
         Calendar.getInstance().apply { timeInMillis = value }
+
+    @TypeConverter fun fromTimestamp(value: Long): Date {
+        return Date(value)
+    }
+
+    @TypeConverter fun dataToTimestamp(date: Date): Long {
+        return date.time
+    }
 }

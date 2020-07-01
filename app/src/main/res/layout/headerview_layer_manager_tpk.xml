@@ -1,137 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <data>
-        <variable
-            name="callback"
-            type="com.zydcc.zrdc.ui.view.main.LayerFragment.Callback" />
-    </data>
-    <LinearLayout
-        android:layout_width="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="1px"
+    android:background="@color/white"
+    android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="0.0dip"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="1px"
-        android:background="@color/white"
+        android:layout_gravity="center"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="28dp"
+        android:layout_weight="1.0"
+        android:gravity="center"
+        android:padding="@dimen/padding_normal"
+        android:text="@string/txt_layer_manager"
+        android:textSize="@dimen/textsize_normal" />
+
+    <TextView
+        android:layout_width="0.0dip"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1.0"
+        android:gravity="center"
+        android:padding="@dimen/padding_normal"
+        android:text="@string/txt_coord"
+        android:textSize="@dimen/textsize_normal" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="3"
+        android:gravity="center"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingRight="@dimen/dp_10"
+        android:visibility="invisible">
+
+        <CheckBox
+            style="@style/checkbox_lm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableStart="@null"
+            android:text="@string/txt_visibility"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_percent="0.33"
+            />
+
+        <CheckBox
+            style="@style/checkbox_lm"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:button="@null"
+            android:drawableStart="@null"
+            android:text="@string/txt_choose"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_percent="0.33"
+            />
+
+        <CheckBox
+            style="@style/checkbox_lm"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:button="@null"
+            android:drawableStart="@null"
+            android:text="@string/txt_editable"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_percent="0.33"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RadioGroup
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="3.0"
+        android:gravity="end"
         android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0.0dip"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="0dp"
-            android:layout_marginEnd="28dp"
-            android:layout_weight="1.0"
-            android:gravity="center"
-            android:padding="@dimen/padding_normal"
-            android:text="@string/txt_layer_manager"
-            android:textSize="@dimen/textsize_normal" />
-
-        <TextView
-            android:layout_width="0.0dip"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1.0"
-            android:gravity="center"
-            android:padding="@dimen/padding_normal"
-            android:text="@string/txt_coord"
-            android:textSize="@dimen/textsize_normal" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <RadioButton
+            style="@style/rb_layermanager_operate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="3"
-            android:gravity="center"
-            android:paddingLeft="@dimen/dp_10"
-            android:paddingRight="@dimen/dp_10"
-            android:visibility="invisible">
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:text="@string/txt_zoom"
+            android:textSize="@dimen/textsize_normal" />
 
-            <CheckBox
-                style="@style/checkbox_lm"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:button="@null"
-                android:drawableStart="@null"
-                android:text="@string/txt_visibility"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintWidth_percent="0.33"
-                />
-
-            <CheckBox
-                style="@style/checkbox_lm"
-                android:layout_width="0.0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                android:button="@null"
-                android:drawableStart="@null"
-                android:text="@string/txt_choose"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintWidth_percent="0.33"
-                />
-
-            <CheckBox
-                style="@style/checkbox_lm"
-                android:layout_width="0.0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                android:button="@null"
-                android:drawableStart="@null"
-                android:text="@string/txt_editable"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintWidth_percent="0.33"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <RadioGroup
+        <RadioButton
+            style="@style/rb_layermanager_operate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="3.0"
-            android:gravity="end"
-            android:orientation="horizontal">
-            <RadioButton
-                style="@style/rb_layermanager_operate"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:text="@string/txt_zoom"
-                android:textSize="@dimen/textsize_normal" />
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:text="@string/txt_attr"
+            android:textSize="@dimen/textsize_normal"
+            android:visibility="gone"/>
 
-            <RadioButton
-                style="@style/rb_layermanager_operate"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:text="@string/txt_attr"
-                android:textSize="@dimen/textsize_normal"
-                android:visibility="gone"/>
+        <RadioButton
+            style="@style/rb_layermanager_operate"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:background="@color/white"
+            android:text="@string/txt_render"
+            android:textSize="@dimen/textsize_normal"
+            android:visibility="gone"
+            />
 
-            <RadioButton
-                style="@style/rb_layermanager_operate"
-                android:layout_width="0.0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                android:background="@color/white"
-                android:text="@string/txt_render"
-                android:textSize="@dimen/textsize_normal"
-                android:visibility="gone"
-                />
-
-            <RadioButton
-                style="@style/rb_layermanager_operate"
-                android:layout_width="0.0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                android:background="@color/white"
-                android:text="@string/txt_remove"
-                android:textSize="@dimen/textsize_normal" />
-        </RadioGroup>
-    </LinearLayout>
-</layout>
+        <RadioButton
+            style="@style/rb_layermanager_operate"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:background="@color/white"
+            android:text="@string/txt_remove"
+            android:textSize="@dimen/textsize_normal" />
+    </RadioGroup>
+</LinearLayout>

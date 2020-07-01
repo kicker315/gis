@@ -1,115 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <RelativeLayout
-            android:id="@+id/tab"
+        android:id="@+id/tab"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:background="#ffffffff"
+        android:elevation="@dimen/padding_normal">
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
             android:background="#ffffffff"
-            android:elevation="@dimen/padding_normal">
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:paddingLeft="@dimen/padding_normal"
+                android:paddingTop="@dimen/padding_normal"
+                android:paddingRight="@dimen/padding_normal"
+                android:paddingBottom="4dp"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:background="#ffffffff"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:paddingHorizontal="@dimen/padding_normal"
+                android:paddingLeft="@dimen/padding_normal"
+                android:paddingRight="@dimen/padding_normal"
+                android:text="@string/app_name"
+                android:textSize="8sp" />
+        </LinearLayout>
 
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:paddingLeft="@dimen/padding_normal"
-                    android:paddingTop="@dimen/padding_normal"
-                    android:paddingRight="@dimen/padding_normal"
-                    android:paddingBottom="4dp"
-                    android:src="@mipmap/ic_launcher" />
+        <RadioGroup
+            android:id="@+id/rg_tools"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingHorizontal="@dimen/padding_normal"
-                    android:paddingLeft="@dimen/padding_normal"
-                    android:paddingRight="@dimen/padding_normal"
-                    android:text="@string/app_name"
-                    android:textSize="8sp" />
-            </LinearLayout>
-
-            <RadioGroup
-                android:id="@+id/rg_tools"
+            <RadioButton
+                android:id="@+id/rb_map"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:gravity="center">
+                android:drawableTop="@drawable/tab_map"
+                android:checked="true"
+                android:text="@string/txt_map"
+                style="@style/rb_tab"/>
 
-                <RadioButton
-                    android:id="@+id/rb_map"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/tab_map"
-                    android:checked="true"
-                    android:text="@string/txt_map"
-                    style="@style/rb_tab"/>
-
-                <RadioButton
-                    android:id="@+id/rb_layer_manager"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/tab_layer_manager"
-                    android:text="@string/txt_layer"
-                    style="@style/rb_tab"
-                    />
-
-
-                <RadioButton
-                    android:id="@+id/rb_query"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/tab_query"
-                    android:text="@string/txt_query"
-                    style="@style/rb_tab"
-                    />
-                <RadioButton
-                    android:id="@+id/rb_analyst"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/tab_analyst"
-                    android:text="@string/txt_analyst"
-                    style="@style/rb_tab"
-                    />
-            </RadioGroup>
-
-            <RadioGroup
+            <RadioButton
+                android:id="@+id/rb_layer_manager"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:background="#ffffffff"
-                android:gravity="center">
+                android:drawableTop="@drawable/tab_layer_manager"
+                android:text="@string/txt_layer"
+                style="@style/rb_tab"
+                />
 
-                <RadioButton
-                    android:id="@+id/rb_setting"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:drawableTop="@drawable/tab_sysconfig"
-                    android:text="@string/txt_setting"
-                    android:textColor="@drawable/tab_text_color_pressed"
-                    style="@style/rb_tab"
-                    />
-            </RadioGroup>
-        </RelativeLayout>
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/view_pager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_toEndOf="@id/tab" />
+            <RadioButton
+                android:id="@+id/rb_query"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/tab_query"
+                android:text="@string/txt_query"
+                style="@style/rb_tab"
+                />
+            <RadioButton
+                android:id="@+id/rb_analyst"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/tab_analyst"
+                android:text="@string/txt_analyst"
+                style="@style/rb_tab"
+                />
+        </RadioGroup>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="#ffffffff"
+            android:gravity="center">
+
+            <RadioButton
+                android:id="@+id/rb_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableTop="@drawable/tab_sysconfig"
+                android:text="@string/txt_setting"
+                android:textColor="@drawable/tab_text_color_pressed"
+                style="@style/rb_tab"
+                />
+        </RadioGroup>
     </RelativeLayout>
-</layout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_toEndOf="@id/tab" />
+</RelativeLayout>

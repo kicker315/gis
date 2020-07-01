@@ -6,9 +6,6 @@ apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
-    dataBinding {
-        enabled = true
-    }
     defaultConfig {
         applicationId "com.zydcc.zrdc"
         minSdkVersion rootProject.minSdkVersion

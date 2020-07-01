@@ -1,44 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <data>
-        <variable
-            name="entity"
-            type="com.zydcc.zrdc.model.bean.IField" />
-    </data>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    >
+    <TextView
+        android:id="@+id/tv_field_name"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        >
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="10dp"
-            android:text="@{entity.field.name}"
-            />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:text='@{entity.dltb != null ? entity.dltb.zdmc : "-"}'/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="end"
-            android:layout_weight="1"
-            android:text="@{entity.field.fieldType.toString()}"/>
-        <CheckBox
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            style="@style/checkbox_center"
-            android:layout_weight="1"
-            android:gravity="center|end"
-            android:layout_gravity="center|end"
-            android:checked="false"
-            />
-    </LinearLayout>
-</layout>
+        android:layout_weight="1"
+        android:padding="10dp"
+        />
+    <TextView
+        android:id="@+id/tv_zdmc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="end" />
+    <TextView
+        android:id="@+id/tv_field_type"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:layout_weight="1"/>
+    <CheckBox
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/checkbox_center"
+        android:layout_weight="1"
+        android:gravity="center|end"
+        android:layout_gravity="center|end"
+        android:checked="false"
+        />
+</LinearLayout>

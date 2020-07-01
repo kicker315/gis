@@ -1,112 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1px"
+        android:background="@color/white">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="1px"
-            android:background="@color/white">
+            android:background="?android:selectableItemBackground"
+            android:padding="@dimen/padding_normal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?android:selectableItemBackground"
-                android:padding="@dimen/padding_normal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="采样方式"
-                    android:textSize="@dimen/textsize_normal" />
-            </LinearLayout>
-
-            <RelativeLayout
-                android:id="@+id/rv_1"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10.0dip"
-                android:layout_marginRight="10.0dip">
-
-                <TextView
-                    android:id="@+id/sp_cysf"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@id/sp_arrow"
-                    android:padding="7.0dip"
-                    android:text="按时间间隔采样"
-                    android:textSize="12.0sp" />
-
-                <ImageView
-                    android:id="@id/sp_arrow"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:clickable="false"
-                    android:paddingLeft="10.0dip"
-                    android:paddingRight="10.0dip"
-                    android:src="@drawable/icon_arrow_bottom" />
-            </RelativeLayout>
-        </RelativeLayout>
+                android:layout_gravity="center"
+                android:text="采样方式"
+                android:textSize="@dimen/textsize_normal" />
+        </LinearLayout>
 
         <RelativeLayout
-            android:layout_width="fill_parent"
+            android:id="@+id/rv_1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="1.0px"
-            android:background="#ffffffff">
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginRight="10.0dip">
 
-            <LinearLayout
-                android:layout_width="fill_parent"
+            <TextView
+                android:id="@+id/sp_cysf"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="?android:selectableItemBackground"
-                android:clickable="true"
-                android:padding="12.0dip">
+                android:layout_toLeftOf="@id/sp_arrow"
+                android:padding="7.0dip"
+                android:text="按时间间隔采样"
+                android:textSize="12.0sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="采样率"
-                    android:textSize="12.0sp" />
-            </LinearLayout>
-
-            <RelativeLayout
-                android:id="@+id/rv_2"
+            <ImageView
+                android:id="@id/sp_arrow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="10.0dip"
-                android:layout_marginRight="10.0dip">
-
-                <TextView
-                    android:id="@+id/sp_cyl"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@id/sp_arrow2"
-                    android:padding="7.0dip"
-                    android:text="1S"
-                    android:textSize="12.0sp" />
-
-                <ImageView
-                    android:id="@+id/sp_arrow2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:clickable="false"
-                    android:paddingLeft="10.0dip"
-                    android:paddingRight="10.0dip"
-                    android:src="@drawable/icon_arrow_bottom" />
-            </RelativeLayout>
+                android:clickable="false"
+                android:paddingLeft="10.0dip"
+                android:paddingRight="10.0dip"
+                android:src="@drawable/icon_arrow_bottom" />
         </RelativeLayout>
-    </LinearLayout>
-</layout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1.0px"
+        android:background="#ffffffff">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:clickable="true"
+            android:padding="12.0dip">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="采样率"
+                android:textSize="12.0sp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rv_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginRight="10.0dip">
+
+            <TextView
+                android:id="@+id/sp_cyl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/sp_arrow2"
+                android:padding="7.0dip"
+                android:text="1S"
+                android:textSize="12.0sp" />
+
+            <ImageView
+                android:id="@+id/sp_arrow2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:clickable="false"
+                android:paddingLeft="10.0dip"
+                android:paddingRight="10.0dip"
+                android:src="@drawable/icon_arrow_bottom" />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

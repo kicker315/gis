@@ -8,7 +8,7 @@ import com.esri.arcgisruntime.geometry.Polygon;
 import com.esri.arcgisruntime.geometry.PolygonBuilder;
 import com.esri.arcgisruntime.geometry.SpatialReference;
 import com.esri.arcgisruntime.geometry.SpatialReferences;
-import com.zydcc.zrdc.model.bean.Gps;
+import com.zydcc.zrdc.entity.bean.Gps;
 
 /**
  * =======================================

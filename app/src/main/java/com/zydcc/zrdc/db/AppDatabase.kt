@@ -1,37 +1,40 @@
 package com.zydcc.zrdc.db
 
 import android.content.Context
-import androidx.room.*
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.zydcc.zrdc.db.dao.CodeBrushDao
-import com.zydcc.zrdc.db.dao.DLTBDao
-import com.zydcc.zrdc.db.dao.LayerDao
-import com.zydcc.zrdc.db.table.CodeBrush
-import com.zydcc.zrdc.db.table.DLTB
-import com.zydcc.zrdc.db.table.Layer
+import com.zydcc.zrdc.entity.dic.Dltb
+import com.zydcc.zrdc.entity.dic.Layer
+import com.zydcc.zrdc.entity.dic.Project
 import com.zydcc.zrdc.utilities.DATABASE_NAME
 import com.zydcc.zrdc.utilities.DATABASE_PATH
 
 /**
  * =======================================
- * The Room database for this app
- * Create by ningsikai 2020/5/18:2:56 PM
+ *
+ * Create by ningsikai 2020/7/1:8:31 AM
  * ========================================
  */
-@Database(entities = [DLTB::class, CodeBrush::class, Layer::class], version = 1, exportSchema = false)
+@Database(entities = [Dltb::class, Layer::class, Project::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase: RoomDatabase() {
-    abstract fun dltbDao(): DLTBDao
-    abstract fun codeBrushDao(): CodeBrushDao
+    abstract fun dltbDao(): DltbDao
     abstract fun layerDao(): LayerDao
+    abstract fun projectDao(): ProjectDao
 
     companion object {
         // For singleton instantiation
         @Volatile private var instance: AppDatabase? = null
 
         fun getInstance(context: Context): AppDatabase {
-            return instance?: synchronized(this) {
-                instance?: buildDatabase(context).also { instance = it }
+            return instance ?: synchronized(this) {
+                instance
+                    ?: buildDatabase(
+                        context
+                    ).also { instance = it }
             }
         }
 

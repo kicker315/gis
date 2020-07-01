@@ -1,146 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffeaeaea"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#ffeaeaea"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1px"
+        android:background="@color/white">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="1px"
-            android:background="@color/white">
+            android:layout_weight="1"
+            android:padding="@dimen/dp_10"
+            android:text="@string/title_app_name"
+            android:textSize="@dimen/textsize_normal" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="@dimen/dp_10"
-                android:text="@string/title_app_name"
-                android:textSize="@dimen/textsize_normal" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="@string/app_name"
-                android:padding="12.0dip"
-                android:textSize="@dimen/textsize_normal" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="1px"
-            android:background="@color/white">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="@dimen/dp_10"
-                android:text="@string/title_version_code"
-                android:textSize="@dimen/textsize_normal" />
-
-            <TextView
-                android:id="@+id/tv_version"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="@string/app_ver"
-                android:padding="@dimen/padding_normal"
-                android:textSize="@dimen/textsize_normal" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="1px"
-            android:background="@color/white">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="@dimen/dp_10"
-                android:text="@string/title_copyright"
-                android:textSize="12.0sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="@string/hit_company"
-                android:padding="@dimen/padding_normal"
-                android:textSize="@dimen/textsize_normal" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="1px"
-            android:background="@color/white">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="@dimen/dp_10"
-                android:text="@string/title_org_site"
-                android:textSize="12.0sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="@string/hit_org_site"
-                android:padding="@dimen/padding_normal"
-                android:textSize="@dimen/textsize_normal" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="1px"
-            android:background="@color/white">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="@dimen/dp_10"
-                android:text="@string/title_it_support"
-                android:textSize="@dimen/textsize_normal" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="@string/hint_it_support_phone"
-                android:padding="@dimen/padding_normal"
-                android:textSize="@dimen/textsize_normal" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/rl_register"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="1px"
-            android:background="@color/white">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="@dimen/dp_10"
-                android:text="@string/title_register_state"
-                android:textSize="@dimen/textsize_normal" />
-
-            <TextView
-                android:id="@+id/tv_register"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="@string/hint_no_register"
-                android:padding="@dimen/padding_normal"
-                android:textSize="@dimen/textsize_normal" />
-        </LinearLayout>
+            android:hint="@string/app_name"
+            android:padding="12.0dip"
+            android:textSize="@dimen/textsize_normal" />
     </LinearLayout>
-</layout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1px"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="@dimen/dp_10"
+            android:text="@string/title_version_code"
+            android:textSize="@dimen/textsize_normal" />
+
+        <TextView
+            android:id="@+id/tv_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/app_ver"
+            android:padding="@dimen/padding_normal"
+            android:textSize="@dimen/textsize_normal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1px"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="@dimen/dp_10"
+            android:text="@string/title_copyright"
+            android:textSize="12.0sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/hit_company"
+            android:padding="@dimen/padding_normal"
+            android:textSize="@dimen/textsize_normal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1px"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="@dimen/dp_10"
+            android:text="@string/title_org_site"
+            android:textSize="12.0sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/hit_org_site"
+            android:padding="@dimen/padding_normal"
+            android:textSize="@dimen/textsize_normal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1px"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="@dimen/dp_10"
+            android:text="@string/title_it_support"
+            android:textSize="@dimen/textsize_normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_it_support_phone"
+            android:padding="@dimen/padding_normal"
+            android:textSize="@dimen/textsize_normal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rl_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="1px"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="@dimen/dp_10"
+            android:text="@string/title_register_state"
+            android:textSize="@dimen/textsize_normal" />
+
+        <TextView
+            android:id="@+id/tv_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_no_register"
+            android:padding="@dimen/padding_normal"
+            android:textSize="@dimen/textsize_normal" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,531 +1,499 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <data>
-
-        <import type="android.view.View" />
-
-        <variable
-            name="baseView"
-            type="com.zydcc.zrdc.ui.interfaces.MapOperate" />
-
-        <variable
-            name="viewModel"
-            type="com.zydcc.zrdc.ui.viewmodels.MapViewModel" />
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.esri.arcgisruntime.mapping.view.MapView
+        android:id="@+id/map_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" />
 
-        <com.esri.arcgisruntime.mapping.view.MapView
-            android:id="@+id/map_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+    <LinearLayout
+        android:id="@+id/statusbar"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:background="@color/grey_translucent"
+        android:gravity="center_vertical"
+        android:paddingStart="@dimen/padding_normal"
+        android:paddingEnd="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:id="@+id/statusbar"
-            android:layout_width="match_parent"
-            android:layout_height="32dp"
-            android:background="@color/grey_translucent"
-            android:gravity="center_vertical"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.locationData.longitude}"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
             android:paddingStart="@dimen/padding_normal"
-            android:paddingEnd="0dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:paddingEnd="@dimen/padding_normal"
+            android:text="@{viewModel.locationData.latitude}"
+            android:textColor="@color/white" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{viewModel.locationData.longitude}"
-                android:textColor="@color/white" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.locationData.x}"
+            android:textColor="@color/white" />
 
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:paddingStart="@dimen/padding_normal"
-                android:paddingEnd="@dimen/padding_normal"
-                android:text="@{viewModel.locationData.latitude}"
-                android:textColor="@color/white" />
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/padding_normal"
+            android:paddingEnd="@dimen/padding_normal"
+            android:text="@{viewModel.locationData.y}"
+            android:textColor="@color/white" />
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{viewModel.locationData.x}"
-                android:textColor="@color/white" />
+    <RelativeLayout
+        android:id="@+id/message_show"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:background="@color/white"
+        android:alpha="0.8"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
 
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:paddingStart="@dimen/padding_normal"
-                android:paddingEnd="@dimen/padding_normal"
-                android:text="@{viewModel.locationData.y}"
-                android:textColor="@color/white" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/text_tool1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textColor="@color/primary_text"
+            android:textSize="12sp" />
 
-        <RelativeLayout
-            android:id="@+id/message_show"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_alignParentStart="true"
+        <TextView
+            android:id="@+id/text_tool2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_tool1"
+            android:layout_marginStart="5dp"
+            android:textColor="@color/primary_text"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/confirm_hide"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
-            android:layout_marginStart="@dimen/margin_normal"
-            android:background="@color/white"
-            android:alpha="0.8"
-            android:visibility="gone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            >
+            android:src="@drawable/btn_done_draw_pressed"
+            android:contentDescription="@string/app_name" />
+    </RelativeLayout>
 
-            <TextView
-                android:id="@+id/text_tool1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:textColor="@color/primary_text"
-                android:textSize="12sp" />
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_normal"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-            <TextView
-                android:id="@+id/text_tool2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/text_tool1"
-                android:layout_marginStart="5dp"
-                android:textColor="@color/primary_text"
-                android:textSize="12sp" />
+        <RadioButton
+            android:id="@+id/rb_draw_layer"
+            style="@style/rb_bottombar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/rb_draw_layer"
+            android:text="@string/txt_draw_layer" />
 
-            <ImageView
-                android:id="@+id/confirm_hide"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerInParent="true"
-                android:src="@drawable/btn_done_draw_pressed"
-                android:contentDescription="@string/app_name"
-                android:onClick="@{()->baseView.confirmHide()}"/>
-        </RelativeLayout>
+        <RadioButton
+            android:id="@+id/rb_project_manager"
+            style="@style/rb_bottombar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/rb_projectmanager"
+            android:text="@string/txt_project_manager"
+            />
+
+        <RadioButton
+            android:id="@+id/rb_media"
+            style="@style/rb_bottombar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/rb_media"
+            android:text="@string/txt_media" />
+
+        <RadioButton
+            android:id="@+id/rb_transparent"
+            style="@style/rb_bottombar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/rb_transparent"
+            android:text="@string/txt_transparent" />
+
+        <RadioButton
+            android:id="@+id/rb_track"
+            style="@style/rb_bottombar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/rb_track"
+            android:text="@string/txt_track" />
+
+        <RadioButton
+            android:id="@+id/rb_rolling"
+            style="@style/rb_bottombar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/rb_rolling"
+            android:text="@string/txt_rolling" />
+
+        <RadioButton
+            android:id="@+id/rb_clear"
+            style="@style/rb_bottombar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/rb_clear_mark"
+            android:text="@string/txt_clear_mark" />
+
+        <RadioButton
+            android:id="@+id/rb_cancel_choose"
+            style="@style/rb_bottombar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/rb_cancelchoose"
+            android:text="@string/txt_cancel_choose" />
+
+        <RadioButton
+            android:id="@+id/rb_attr_brush"
+            style="@style/rb_bottombar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/rb_element_brush"
+            android:text="@string/txt_attr_brush" />
+
+
+        <RadioButton
+            android:id="@+id/rb_code_brush"
+            style="@style/rb_bottombar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/rb_brush"
+            android:text="@string/txt_code_brush" />
+
+
+        <RadioButton
+            android:id="@+id/rb_all_map"
+            style="@style/rb_bottombar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/rb_allmap"
+            android:text="@string/txt_all_map" />
+
+        <RadioButton
+            android:id="@+id/rb_location"
+            style="@style/rb_bottombar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/rb_location"
+            android:text="@string/txt_current_location" />
+    </RadioGroup>
+
+    <RelativeLayout
+        android:id="@+id/rl_main_operate"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        android:elevation="@dimen/elevation_normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/statusbar">
 
         <RadioGroup
+            android:id="@+id/rg_operation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_normal"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <RadioButton
-                android:id="@+id/rb_draw_layer"
-                style="@style/rb_bottombar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/rb_draw_layer"
-                android:text="@string/txt_draw_layer"
-                android:onClick="@{()->baseView.drawLayerDialog()}"/>
-
-            <RadioButton
-                android:id="@+id/rb_project_manager"
-                style="@style/rb_bottombar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/rb_projectmanager"
-                android:text="@string/txt_project_manager"
-                android:onClick="@{()->baseView.projectManagerDialog()}"/>
-
-            <RadioButton
-                style="@style/rb_bottombar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/rb_media"
-                android:onClick="@{()->baseView.navToMedia()}"
-                android:text="@string/txt_media" />
-
-            <RadioButton
-                android:id="@+id/rb_transparent"
-                style="@style/rb_bottombar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/rb_transparent"
-                android:text="@string/txt_transparent" />
-
-            <RadioButton
-                android:id="@+id/rb_track"
-                style="@style/rb_bottombar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/rb_track"
-                android:text="@string/txt_track" />
-
-            <RadioButton
-                android:id="@+id/rb_rolling"
-                style="@style/rb_bottombar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/rb_rolling"
-                android:text="@string/txt_rolling" />
-
-            <RadioButton
-                android:id="@+id/rb_clear"
-                style="@style/rb_bottombar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/rb_clear_mark"
-                android:text="@string/txt_clear_mark" />
-
-            <RadioButton
-                android:id="@+id/rb_cancel_choose"
-                style="@style/rb_bottombar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/rb_cancelchoose"
-                android:text="@string/txt_cancel_choose" />
-
-            <RadioButton
-                android:id="@+id/rb_attr_brush"
-                style="@style/rb_bottombar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/rb_element_brush"
-                android:text="@string/txt_attr_brush" />
-
-
-            <RadioButton
-                android:id="@+id/rb_code_brush"
-                style="@style/rb_bottombar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel::click}"
-                android:drawableTop="@drawable/rb_brush"
-                android:text="@string/txt_code_brush" />
-
-
-            <RadioButton
-                android:id="@+id/rb_all_map"
-                style="@style/rb_bottombar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel::click}"
-                android:drawableTop="@drawable/rb_allmap"
-                android:text="@string/txt_all_map" />
-
-            <RadioButton
-                android:id="@+id/rb_location"
-                style="@style/rb_bottombar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/rb_location"
-                android:onClick="@{() -> viewModel.extend()}"
-                android:text="@string/txt_current_location" />
-        </RadioGroup>
-
-        <RelativeLayout
-            android:id="@+id/rl_main_operate"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:background="@color/white"
-            android:elevation="@dimen/elevation_normal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/statusbar">
-
-            <RadioGroup
-                android:id="@+id/rg_operation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:background="@color/white"
-                app:clearCheck="@{viewModel.resetMainOperate}">
-
-                <RadioButton
-                    android:id="@+id/rb_choose"
-                    style="@style/rb_operation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/rb_choose"
-                    android:onClick="@{viewModel::click}"
-                    android:text="@string/txt_choose" />
-
-                <RadioButton
-                    android:id="@+id/rb_draw"
-                    style="@style/rb_operation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/rb_draw"
-                    android:onClick="@{viewModel::click}"
-                    android:text="@string/txt_draw" />
-
-                <RadioButton
-                    android:id="@+id/rb_tools"
-                    style="@style/rb_operation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/rb_tools"
-                    android:onClick="@{viewModel::click}"
-                    android:text="@string/txt_tools" />
-
-                <RadioButton
-                    android:id="@+id/rb_info"
-                    style="@style/rb_operation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/rb_info"
-                    android:onClick="@{viewModel::click}"
-                    android:text="@string/txt_attr"
-                    android:visibility="gone" />
-
-                <RadioButton
-                    android:id="@+id/rb_confirm_info"
-                    style="@style/rb_operation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="@{viewModel::click}"
-                    android:drawableTop="@drawable/rb_attr_confirms"
-                    android:text="@string/txt_confirm" />
-            </RadioGroup>
-
-
-            <ImageView
-                android:id="@+id/btn_bt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:contentDescription="@string/app_name"
-                android:padding="5.0dip"
-                android:src="@drawable/btn_bluetooth" />
-        </RelativeLayout>
-
-        <RadioGroup
-            android:id="@+id/rg_selection"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/rl_main_operate"
-            app:layout_constraintTop_toTopOf="parent"
-            app:clearCheck="@{viewModel.clearSubOperateChecked}"
-            app:isGone="@{viewModel.chooseOperateIsGone}">
-
-            <RadioButton
-                android:id="@+id/rb_single_selection"
-                style="@style/rb_suboperation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:drawableTop="@drawable/rb_single_selection"
-                android:text="@string/txt_single_selection" />
-
-            <RadioButton
-                android:id="@+id/rb_multi_selection"
-                style="@style/rb_suboperation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/rb_multi_selection"
-                android:text="@string/txt_multi_selection" />
-        </RadioGroup>
-
-
-        <LinearLayout
-            android:id="@+id/rg_draw"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/rl_main_operate"
-            app:layout_constraintTop_toTopOf="parent"
-            app:isGone="@{viewModel.drawOperateIsGone}">
-
-            <RadioGroup
-                android:id="@+id/rg_draw_up"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:gravity="center"
-                app:clearCheck="@{viewModel.clearSubOperateChecked}">
-
-                <RadioButton
-                    android:id="@+id/rb_makepoint_gps"
-                    style="@style/rb_suboperation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/rb_makepoint_gps"
-                    android:text="@string/txt_makepoint_gps" />
-
-                <RadioButton
-                    android:id="@+id/rb_makepoint_cont"
-                    style="@style/rb_suboperation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/rb_makepoint_cont"
-                    android:text="@string/txt_makepoint_cont" />
-
-                <RadioButton
-                    android:id="@+id/rb_makepoint_cross"
-                    style="@style/rb_suboperation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/rb_makepoint_cross"
-                    android:text="@string/txt_makepoint_cross" />
-
-                <RadioButton
-                    android:id="@+id/rb_makepoint_xy"
-                    style="@style/rb_suboperation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/rb_makepoint_xy"
-                    android:text="@string/txt_makepoint_xy" />
-
-                <RadioButton
-                    android:id="@+id/rb_make_surface"
-                    style="@style/rb_suboperation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/rb_make_surface"
-                    android:text="@string/txt_make_surface" />
-
-                <RadioButton
-                    android:id="@+id/rb_make_FREEHAND_POLYGON"
-                    style="@style/rb_suboperation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/rb_make_liuzhuangmian"
-                    android:text="@string/txt_make_freehand_polygon" />
-            </RadioGroup>
-
-            <RadioGroup
-                android:id="@+id/rg_draw_down"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:gravity="center"
-                app:clearCheck="@{viewModel.resetMainOperate}">
-
-                <RadioButton
-                    android:id="@+id/rb_done_draw"
-                    style="@style/rb_suboperation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/rb_done_draw"
-                    android:text="@string/txt_done_draw"
-                    android:textColor="@drawable/tab_text_color_pressed" />
-
-                <RadioButton
-                    android:id="@+id/rb_cancel_draw"
-                    style="@style/rb_suboperation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/rb_cancel_draw"
-                    android:text="@string/txt_cancel_draw"
-                    android:textColor="@drawable/tab_text_color_pressed" />
-
-                <RadioButton
-                    android:id="@+id/rb_pointcancel"
-                    style="@style/rb_suboperation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/rb_pointcancel"
-                    android:text="@string/txt_point_cancel"
-                    android:textColor="@drawable/tab_text_color_pressed" />
-
-                <RadioButton
-                    android:id="@+id/rb_pointrecover"
-                    style="@style/rb_suboperation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/rb_pointrecover"
-                    android:text="@string/txt_point_recover"
-                    android:textColor="@drawable/tab_text_color_pressed" />
-            </RadioGroup>
-        </LinearLayout>
-
-
-        <RadioGroup
-            android:id="@+id/rg_toolbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:background="@color/white"
-            android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/rl_main_operate"
-            app:layout_constraintTop_toTopOf="parent"
-            app:clearCheck="@{viewModel.clearSubOperateChecked}"
-            app:isGone="@{viewModel.toolOperateIsGone}">
+            android:background="@color/white">
 
             <RadioButton
-                android:id="@+id/rb_screenshot"
-                style="@style/rb_suboperation"
+                android:id="@+id/rb_selection"
+                style="@style/rb_operation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableTop="@drawable/rb_screenshot"
-                android:text="@string/txt_screenshot"
-                android:textColor="@drawable/tab_text_color_pressed" />
+                android:drawableTop="@drawable/rb_choose"
+                android:text="@string/txt_choose" />
 
             <RadioButton
-                android:id="@+id/rb_screenshot_manager"
-                style="@style/rb_suboperation"
+                android:id="@+id/rb_draw"
+                style="@style/rb_operation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableTop="@drawable/rb_screenshot_manager"
-                android:onClick="@{()-> baseView.navToScreenshotManager()}"
-                android:text="@string/txt_screenshot_manager"
-                android:textColor="@drawable/tab_text_color_pressed" />
+                android:drawableTop="@drawable/rb_draw"
+                android:text="@string/txt_draw" />
 
             <RadioButton
-                android:id="@+id/rb_copy_feature"
-                style="@style/rb_suboperation"
+                android:id="@+id/rb_tools"
+                style="@style/rb_operation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableTop="@drawable/rb_copy_feature"
-                android:text="@string/txt_copy_feature" />
+                android:drawableTop="@drawable/rb_tools"
+                android:text="@string/txt_tools" />
 
             <RadioButton
-                android:id="@+id/rb_get_xy"
-                style="@style/rb_suboperation"
+                android:id="@+id/rb_info"
+                style="@style/rb_operation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableTop="@drawable/rb_get_xy"
-                android:text="@string/txt_get_xy" />
-
-            <RadioButton
-                android:id="@+id/rb_distance"
-                style="@style/rb_suboperation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/rb_distance"
-                android:text="@string/txt_distance"
-                android:onClick="@{()->baseView.measureDistance()}"/>
-
-            <RadioButton
-                android:id="@+id/rb_area"
-                style="@style/rb_suboperation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/rb_area"
-                android:text="@string/txt_area"
-                android:onClick="@{()->baseView.measureArea()}"/>
-
-            <RadioButton
-                android:id="@+id/rb_pointedit"
-                style="@style/rb_suboperation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/rb_pointedit"
-                android:text="@string/txt_point_edit"
+                android:drawableTop="@drawable/rb_info"
+                android:text="@string/txt_attr"
                 android:visibility="gone" />
 
             <RadioButton
-                android:id="@+id/rb_getcolor"
+                android:id="@+id/rb_confirm_info"
+                style="@style/rb_operation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/rb_attr_confirms"
+                android:text="@string/txt_confirm" />
+        </RadioGroup>
+
+
+        <ImageView
+            android:id="@+id/btn_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@string/app_name"
+            android:padding="5.0dip"
+            android:src="@drawable/btn_bluetooth" />
+    </RelativeLayout>
+
+    <RadioGroup
+        android:id="@+id/rg_selection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/rl_main_operate"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <RadioButton
+            android:id="@+id/rb_single_selection"
+            style="@style/rb_suboperation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:drawableTop="@drawable/rb_single_selection"
+            android:text="@string/txt_single_selection" />
+
+        <RadioButton
+            android:id="@+id/rb_multi_selection"
+            style="@style/rb_suboperation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/rb_multi_selection"
+            android:text="@string/txt_multi_selection" />
+    </RadioGroup>
+
+
+    <LinearLayout
+        android:id="@+id/layout_draw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/rl_main_operate"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioGroup
+            android:id="@+id/rg_draw_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center">
+
+            <RadioButton
+                android:id="@+id/rb_makepoint_gps"
                 style="@style/rb_suboperation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableTop="@drawable/rb_getcolor"
-                android:text="@string/txt_get_color" />
+                android:drawableTop="@drawable/rb_makepoint_gps"
+                android:text="@string/txt_makepoint_gps" />
+
+            <RadioButton
+                android:id="@+id/rb_makepoint_cont"
+                style="@style/rb_suboperation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/rb_makepoint_cont"
+                android:text="@string/txt_makepoint_cont" />
+
+            <RadioButton
+                android:id="@+id/rb_makepoint_cross"
+                style="@style/rb_suboperation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/rb_makepoint_cross"
+                android:text="@string/txt_makepoint_cross" />
+
+            <RadioButton
+                android:id="@+id/rb_makepoint_xy"
+                style="@style/rb_suboperation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/rb_makepoint_xy"
+                android:text="@string/txt_makepoint_xy" />
+
+            <RadioButton
+                android:id="@+id/rb_make_surface"
+                style="@style/rb_suboperation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/rb_make_surface"
+                android:text="@string/txt_make_surface" />
+
+            <RadioButton
+                android:id="@+id/rb_make_FREEHAND_POLYGON"
+                style="@style/rb_suboperation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/rb_make_liuzhuangmian"
+                android:text="@string/txt_make_freehand_polygon" />
         </RadioGroup>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+        <RadioGroup
+            android:id="@+id/rg_draw_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center">
+
+            <RadioButton
+                android:id="@+id/rb_done_draw"
+                style="@style/rb_suboperation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/rb_done_draw"
+                android:text="@string/txt_done_draw"
+                android:textColor="@drawable/tab_text_color_pressed" />
+
+            <RadioButton
+                android:id="@+id/rb_cancel_draw"
+                style="@style/rb_suboperation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/rb_cancel_draw"
+                android:text="@string/txt_cancel_draw"
+                android:textColor="@drawable/tab_text_color_pressed" />
+
+            <RadioButton
+                android:id="@+id/rb_pointcancel"
+                style="@style/rb_suboperation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/rb_pointcancel"
+                android:text="@string/txt_point_cancel"
+                android:textColor="@drawable/tab_text_color_pressed" />
+
+            <RadioButton
+                android:id="@+id/rb_pointrecover"
+                style="@style/rb_suboperation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/rb_pointrecover"
+                android:text="@string/txt_point_recover"
+                android:textColor="@drawable/tab_text_color_pressed" />
+        </RadioGroup>
+    </LinearLayout>
+
+
+    <RadioGroup
+        android:id="@+id/rg_toolbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:background="@color/white"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/rl_main_operate"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/rb_screenshot"
+            style="@style/rb_suboperation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/rb_screenshot"
+            android:text="@string/txt_screenshot"
+            android:textColor="@drawable/tab_text_color_pressed" />
+
+        <RadioButton
+            android:id="@+id/rb_screenshot_manager"
+            style="@style/rb_suboperation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/rb_screenshot_manager"
+            android:text="@string/txt_screenshot_manager"
+            android:textColor="@drawable/tab_text_color_pressed" />
+
+        <RadioButton
+            android:id="@+id/rb_copy_feature"
+            style="@style/rb_suboperation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/rb_copy_feature"
+            android:text="@string/txt_copy_feature" />
+
+        <RadioButton
+            android:id="@+id/rb_get_xy"
+            style="@style/rb_suboperation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/rb_get_xy"
+            android:text="@string/txt_get_xy" />
+
+        <RadioButton
+            android:id="@+id/rb_distance"
+            style="@style/rb_suboperation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/rb_distance"
+            android:text="@string/txt_distance"/>
+
+        <RadioButton
+            android:id="@+id/rb_area"
+            style="@style/rb_suboperation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/rb_area"
+            android:text="@string/txt_area"/>
+
+        <RadioButton
+            android:id="@+id/rb_pointedit"
+            style="@style/rb_suboperation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/rb_pointedit"
+            android:text="@string/txt_point_edit"
+            android:visibility="gone" />
+
+        <RadioButton
+            android:id="@+id/rb_getcolor"
+            style="@style/rb_suboperation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/rb_getcolor"
+            android:text="@string/txt_get_color" />
+    </RadioGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
