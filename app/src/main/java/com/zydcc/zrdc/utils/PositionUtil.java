@@ -1,4 +1,4 @@
-package com.zydcc.zrdc.utilities;
+package com.zydcc.zrdc.utils;
 
 import com.esri.arcgisruntime.geometry.Geometry;
 import com.esri.arcgisruntime.geometry.GeometryEngine;

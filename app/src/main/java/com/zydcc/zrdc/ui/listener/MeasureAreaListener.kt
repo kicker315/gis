@@ -8,7 +8,7 @@ import android.widget.TextView
 import com.esri.arcgisruntime.geometry.Point
 import com.esri.arcgisruntime.mapping.view.DefaultMapViewOnTouchListener
 import com.esri.arcgisruntime.mapping.view.MapView
-import com.zydcc.zrdc.utilities.MapUtils
+import com.zydcc.zrdc.utils.MapUtils
 import java.math.BigDecimal
 import kotlin.math.abs
 import kotlin.math.roundToInt

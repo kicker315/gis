@@ -48,7 +48,7 @@
         <service android:name="com.baidu.location.f"
             android:enabled="true"
             android:process=":remote"/>
-        <service android:name=".location.GpsLocationService"/>
+        <service android:name="com.zydcc.zrdc.service.LocationService"/>
 
         <activity android:name="com.zydcc.zrdc.ui.main.MainActivity"
             android:screenOrientation="landscape">

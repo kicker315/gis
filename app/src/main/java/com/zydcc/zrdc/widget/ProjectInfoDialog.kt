@@ -11,7 +11,7 @@ import com.blankj.utilcode.util.TimeUtils
 import com.zydcc.zrdc.R
 import com.zydcc.zrdc.entity.dic.Project
 import com.zydcc.zrdc.widget.adapters.ProjectLayerListAdapter
-import com.zydcc.zrdc.utilities.DimenUtils
+import com.zydcc.zrdc.utils.DimenUtils
 import kotlinx.android.synthetic.main.dialog_project_info.view.*
 import kotlinx.android.synthetic.main.headerview_project_layer_info.view.*
 

@@ -9,7 +9,7 @@ import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader
 import com.zydcc.zrdc.db.AppDatabase
 import com.zydcc.zrdc.entity.dic.Dltb
-import com.zydcc.zrdc.utilities.DLTB_DATA_FILENAME
+import com.zydcc.zrdc.utils.DLTB_DATA_FILENAME
 import kotlinx.coroutines.coroutineScope
 import java.lang.Exception
 

@@ -17,20 +17,25 @@ import com.esri.arcgisruntime.ArcGISRuntimeEnvironment
 import com.esri.arcgisruntime.data.ShapefileFeatureTable
 import com.esri.arcgisruntime.data.TileCache
 import com.esri.arcgisruntime.layers.ArcGISTiledLayer
+import com.esri.arcgisruntime.location.LocationDataSource
 import com.esri.arcgisruntime.mapping.ArcGISMap
 import com.esri.arcgisruntime.mapping.Basemap
 import com.esri.arcgisruntime.mapping.Viewpoint
 import com.esri.arcgisruntime.mapping.view.DefaultMapViewOnTouchListener
+import com.esri.arcgisruntime.mapping.view.LocationDisplay
 import com.esri.arcgisruntime.mapping.view.WrapAroundMode
+import com.zydcc.zrdc.App
 import com.zydcc.zrdc.R
 import com.zydcc.zrdc.core.ext.observe
 
 import com.zydcc.zrdc.entity.dic.Layer
 import com.zydcc.zrdc.entity.dic.Project
+import com.zydcc.zrdc.service.LocationService
 
 import com.zydcc.zrdc.ui.listener.MeasureAreaListener
 import com.zydcc.zrdc.ui.listener.MeasureDistanceListener
 import com.zydcc.zrdc.ui.main.MainFragmentDirections
+import com.zydcc.zrdc.utils.MyLocationDataSource
 import com.zydcc.zrdc.widget.DrawLayerDialog
 import com.zydcc.zrdc.widget.ProjectManagerDialog
 import kotlinx.android.synthetic.main.dialog_layer_opacity.*
@@ -59,7 +64,9 @@ class MapFragment: Fragment() {
     private var shpLayerList = mutableListOf<Layer>()
     private var opacityAdapter = LayerOpacityAdapter()
     private var defaultMapViewOnTouchListener: DefaultMapViewOnTouchListener?= null
-
+    private var mLocationService: LocationService ?= null
+    private lateinit var mLocationDisplay: LocationDisplay
+    private lateinit var mLocationDataSource: MyLocationDataSource
     private val viewModel by viewModels<MapViewModel>()
 
     override fun onCreateView(
@@ -121,23 +128,23 @@ class MapFragment: Fragment() {
 
         /// ---------------- 主操作栏状态变更开始 --------------------
 
-       rg_operation.setOnCheckedChangeListener { group, checkedId ->
-           resetMainOperate()
-           when (checkedId) {
-               R.id.rb_selection -> {
-                   rg_selection.visibility = View.VISIBLE
-               }
-               R.id.rb_draw -> {
-                   layout_draw.visibility = View.VISIBLE
-               }
-               R.id.rb_tools -> {
-                   rg_toolbox.visibility = View.VISIBLE
-               }
-               R.id.rb_confirm_info -> {
+        rg_all.setOnCheckedChangeListener { group, checkedId ->
+            resetMainOperate()
+            when (checkedId) {
+                R.id.rb_selection -> {
+                    rg_selection.visibility = View.VISIBLE
+                }
+                R.id.rb_draw -> {
+                    layout_draw.visibility = View.VISIBLE
+                }
+                R.id.rb_tools -> {
+                    rg_toolbox.visibility = View.VISIBLE
+                }
+                R.id.rb_confirm_info -> {
 
-               }
-           }
-       }
+                }
+            }
+        }
 
         /// ---------------- 主操作栏变更结束 ------------------------
 
@@ -166,6 +173,8 @@ class MapFragment: Fragment() {
         })
     }
 
+
+
     // 初始化地图
     private fun initMap() {
         // 去水印
@@ -188,6 +197,33 @@ class MapFragment: Fragment() {
             // 变更
             opacityAdapter.setNewInstance(shpLayerList)
         }
+
+        initBDLoc()
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun initBDLoc() {
+        mLocationDisplay = map_view.locationDisplay
+        mLocationDisplay.isShowLocation = true
+        mLocationDataSource = MyLocationDataSource()
+        mLocationDisplay.locationDataSource = mLocationDataSource
+        mLocationDisplay.autoPanMode = LocationDisplay.AutoPanMode.RECENTER
+        mLocationService = App.locationService
+        mLocationService?.registerListener(viewModel.bdListener)
+        mLocationService?.setLocationOption(mLocationService?.getDefaultLocationClientOption())
+        mLocationService?.start()
+        viewModel.onLocationCallback =  {
+            tv_lat.text = "纬度：" + viewModel.viewStateLiveData.value!!.latitude
+            tv_lon.text =  "经度：" + viewModel.viewStateLiveData.value!!.longitude
+            tv_xzb.text =  "x坐标：" + viewModel.viewStateLiveData.value!!.x
+            tv_yzb.text = "y坐标：" + viewModel.viewStateLiveData.value!!.y
+            mLocationService?.stop()
+            val location = LocationDataSource.Location(viewModel.currentPt)
+            mLocationDataSource.UpdateLocation(location)
+            // 定位到当前
+            map_view.setViewpointAsync(Viewpoint(viewModel.currentPt!!, 5000.0))
+        }
+
     }
 
     /**
@@ -295,7 +331,7 @@ class MapFragment: Fragment() {
     }
 
     @SuppressLint("ClickableViewAccessibility")
-     private fun measureDistance() {
+    private fun measureDistance() {
         if (message_show.visibility == View.VISIBLE) {
             Toast.makeText(requireContext(), "请确认查询或测量信息",Toast.LENGTH_SHORT).show()
             saveButtonStation(defaultMapViewOnTouchListener)
@@ -307,7 +343,7 @@ class MapFragment: Fragment() {
     }
 
     @SuppressLint("ClickableViewAccessibility")
-     private fun measureArea() {
+    private fun measureArea() {
         if (message_show.visibility == View.VISIBLE) {
             Toast.makeText(requireContext(), "请确认查询或测量信息",Toast.LENGTH_SHORT).show()
             saveButtonStation(defaultMapViewOnTouchListener)
@@ -318,14 +354,15 @@ class MapFragment: Fragment() {
         map_view.onTouchListener = defaultMapViewOnTouchListener
     }
 
-     private fun onLocation() {
+    private fun onLocation() {
         rb_location.isChecked = false
+        mLocationService?.start()
     }
 
 
     override fun onDestroy() {
         super.onDestroy()
-
+        mLocationService?.unregisterListener(viewModel.bdListener)
     }
 
 

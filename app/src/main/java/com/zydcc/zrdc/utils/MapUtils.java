@@ -1,4 +1,4 @@
-package com.zydcc.zrdc.utilities;
+package com.zydcc.zrdc.utils;
 
 
 import android.content.Context;

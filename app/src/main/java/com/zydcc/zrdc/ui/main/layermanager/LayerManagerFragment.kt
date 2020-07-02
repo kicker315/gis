@@ -19,11 +19,11 @@ import com.zydcc.zrdc.core.ext.observe
 import com.zydcc.zrdc.entity.dic.Layer
 import com.zydcc.zrdc.entity.dic.Project
 
-import com.zydcc.zrdc.utilities.IntentConstants
+import com.zydcc.zrdc.utils.IntentConstants
 import com.zydcc.zrdc.widget.DatasourceChooseDialog
 import com.zydcc.zrdc.widget.FeatureAttrDialogFragment
 import com.zydcc.zrdc.widget.RenderDialog
-import com.zydcc.zrdc.utilities.BundleConstants
+import com.zydcc.zrdc.utils.BundleConstants
 import kotlinx.android.synthetic.main.fragment_layer.*
 
 /**

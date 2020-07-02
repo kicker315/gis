@@ -9,8 +9,8 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.zydcc.zrdc.entity.dic.Dltb
 import com.zydcc.zrdc.entity.dic.Layer
 import com.zydcc.zrdc.entity.dic.Project
-import com.zydcc.zrdc.utilities.DATABASE_NAME
-import com.zydcc.zrdc.utilities.DATABASE_PATH
+import com.zydcc.zrdc.utils.DATABASE_NAME
+import com.zydcc.zrdc.utils.DATABASE_PATH
 
 /**
  * =======================================

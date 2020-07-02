@@ -1,4 +1,4 @@
-package com.zydcc.zrdc.utilities
+package com.zydcc.zrdc.utils
 
 import android.annotation.TargetApi
 import android.content.Context

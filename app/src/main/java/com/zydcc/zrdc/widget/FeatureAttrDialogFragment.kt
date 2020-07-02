@@ -17,11 +17,10 @@ import com.zydcc.zrdc.entity.bean.IField
 import com.zydcc.zrdc.entity.dic.Dltb
 import com.zydcc.zrdc.entity.dic.Layer
 import com.zydcc.zrdc.widget.adapters.FeatureAttrFieldAdapter
-import com.zydcc.zrdc.utilities.BundleConstants
-import com.zydcc.zrdc.utilities.DimenUtils
+import com.zydcc.zrdc.utils.BundleConstants
+import com.zydcc.zrdc.utils.DimenUtils
 import kotlinx.android.synthetic.main.dialog_feature_attr.*
 import kotlinx.android.synthetic.main.dialog_feature_attr.view.*
-import kotlinx.android.synthetic.main.dialog_feature_attr.view.tool_bar
 import java.util.*
 
 /**

@@ -15,8 +15,8 @@ import com.fondesa.recyclerviewdivider.RecyclerViewDivider
 import com.zydcc.zrdc.R
 import com.zydcc.zrdc.widget.adapters.FileListAdapter
 import com.zydcc.zrdc.entity.bean.FileItem
-import com.zydcc.zrdc.utilities.DimenUtils
-import com.zydcc.zrdc.utilities.IntentConstants
+import com.zydcc.zrdc.utils.DimenUtils
+import com.zydcc.zrdc.utils.IntentConstants
 import kotlinx.android.synthetic.main.dialog_datasource_choose.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

@@ -8,9 +8,10 @@ import com.esri.arcgisruntime.geometry.GeometryEngine
 import com.esri.arcgisruntime.geometry.Point
 import com.esri.arcgisruntime.geometry.SpatialReferences
 import com.zydcc.zrdc.core.ext.postNext
+import com.zydcc.zrdc.core.ext.setNext
 import com.zydcc.zrdc.db.AppDatabase
 import com.zydcc.zrdc.entity.dic.Layer
-import com.zydcc.zrdc.utilities.PositionUtil
+import com.zydcc.zrdc.utils.PositionUtil
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
@@ -70,7 +71,7 @@ class MapViewModel internal constructor(
                 val point =
                     when(layerCode) {
                         0 -> {
-                            _viewStateLiveData.postNext { last ->
+                            _viewStateLiveData.setNext { last ->
                                 last.copy(
                                     latitude = df.format(d2),
                                     longitude = df.format(d1)
@@ -79,7 +80,7 @@ class MapViewModel internal constructor(
                             Point(d1, d2, SpatialReferences.getWgs84())
                         }
                         1 -> {
-                            _viewStateLiveData.postNext { last ->
+                            _viewStateLiveData.setNext { last ->
                                 last.copy(
                                     latitude = df.format(latitude),
                                     longitude = df.format(longitude)
