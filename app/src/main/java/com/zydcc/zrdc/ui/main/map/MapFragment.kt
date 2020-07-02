@@ -208,6 +208,7 @@ class MapFragment: Fragment() {
         mLocationDataSource = MyLocationDataSource()
         mLocationDisplay.locationDataSource = mLocationDataSource
         mLocationDisplay.autoPanMode = LocationDisplay.AutoPanMode.RECENTER
+        mLocationDisplay.startAsync()
         mLocationService = App.locationService
         mLocationService?.registerListener(viewModel.bdListener)
         mLocationService?.setLocationOption(mLocationService?.getDefaultLocationClientOption())
