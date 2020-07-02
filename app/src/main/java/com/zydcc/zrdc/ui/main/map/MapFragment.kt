@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SeekBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -32,6 +33,7 @@ import com.zydcc.zrdc.ui.listener.MeasureDistanceListener
 import com.zydcc.zrdc.ui.main.MainFragmentDirections
 import com.zydcc.zrdc.widget.DrawLayerDialog
 import com.zydcc.zrdc.widget.ProjectManagerDialog
+import kotlinx.android.synthetic.main.dialog_layer_opacity.*
 import kotlinx.android.synthetic.main.fragment_map.*
 import java.io.File
 
@@ -55,7 +57,7 @@ class MapFragment: Fragment() {
     private lateinit var sharePreferences: SharedPreferences
     private lateinit var currentProject: Project
     private var shpLayerList = mutableListOf<Layer>()
-
+    private var opacityAdapter = LayerOpacityAdapter()
     private var defaultMapViewOnTouchListener: DefaultMapViewOnTouchListener?= null
 
     private val viewModel by viewModels<MapViewModel>()
@@ -72,6 +74,7 @@ class MapFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         sharePreferences = requireActivity().getSharedPreferences("zydcc", MODE_PRIVATE)
         initListener()
+        initLayerOpacity()
         initMap()
         dealError()
     }
@@ -86,6 +89,19 @@ class MapFragment: Fragment() {
         // 选择工程
         rb_project_manager.setOnClickListener {
             projectManagerDialog()
+        }
+
+        opacity_cancel.setOnClickListener {
+            opacity_list.visibility = View.GONE
+        }
+
+        // 透明度
+        rb_transparent.setOnClickListener {
+            if (opacity_list.visibility == View.VISIBLE) {
+                opacity_list.visibility = View.GONE
+            } else {
+                opacity_list.visibility = View.VISIBLE
+            }
         }
         // 跳转自多媒体
         rb_media.setOnClickListener {
@@ -136,6 +152,19 @@ class MapFragment: Fragment() {
         /// --------------  工具栏结束 ---------------------------
     }
 
+    private fun initLayerOpacity() {
+        rcv_layer.adapter = opacityAdapter
+        opacityAdapter.setOnSeekBarChangeListener(object: LayerOpacityAdapter.OnSeekBarChangeListener  {
+            override fun onProgressChanged(
+                position: Int,
+                seekBar: SeekBar,
+                progress: Int,
+                fromUser: Boolean
+            ) {
+
+            }
+        })
+    }
 
     // 初始化地图
     private fun initMap() {
@@ -156,6 +185,8 @@ class MapFragment: Fragment() {
         }
         observe(viewModel.shpDatasourceList) {
             shpLayerList = it.toMutableList()
+            // 变更
+            opacityAdapter.setNewInstance(shpLayerList)
         }
     }
 

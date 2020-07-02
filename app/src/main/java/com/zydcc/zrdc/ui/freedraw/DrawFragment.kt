@@ -108,15 +108,6 @@ class DrawFragment: Fragment() {
 
     }
 
-    interface Callback {
-
-        fun changeColor()
-        fun undoLast()
-        fun redoLast()
-        fun clear()
-
-    }
-
 
     companion object {
         private const val THICKNESS_STEP = 2
