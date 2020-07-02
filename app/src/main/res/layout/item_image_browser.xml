@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="5dp"
+    android:background="@drawable/shape_corner_bottombar">
+    <ImageView
+        android:id="@+id/item_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/splash"
+        android:contentDescription="@string/app_name"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/gray_light">
+
+        <TextView
+            android:id="@id/tv_filename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:paddingStart="2dp"
+            android:paddingEnd="0dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize_normal"
+            tools:text="2018-11-19 10:26:12.jpg"/>
+
+        <ImageView
+            android:id="@+id/btn_image_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/tv_filename"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:paddingHorizontal="6dp"
+            android:paddingLeft="6dp"
+            android:paddingTop="2dp"
+            android:paddingRight="6dp"
+            android:paddingBottom="2dp"
+            android:src="@drawable/btn_image_delete_nobg"
+            android:visibility="visible"
+            android:contentDescription="@string/app_name"/>
+    </RelativeLayout>
+</RelativeLayout>

@@ -19,11 +19,6 @@ import com.zydcc.zrdc.entity.dic.Layer
  */
 class TpkManagerAdapter : BaseQuickAdapter<Layer, BaseViewHolder>(R.layout.item_layer_manager_tpk, null) {
 
-
-
-    var removeListener: (Layer) -> Unit = {}
-    var zoomListener: (Layer) -> Unit = {}
-    var thumbnailListener: (Layer) -> Unit = {}
     override fun convert(holder: BaseViewHolder, item: Layer) {
         holder.setText(R.id.tv_layer_name, item.layerName)
     }
