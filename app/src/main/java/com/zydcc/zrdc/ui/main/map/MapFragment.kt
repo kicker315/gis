@@ -156,7 +156,22 @@ class MapFragment: Fragment() {
             navToScreenshotManager()
         }
 
+        rb_distance.setOnClickListener {
+            measureDistance()
+        }
+
+        rb_area.setOnClickListener {
+            measureArea()
+        }
+
+        confirm_hide.setOnClickListener {
+            confirmHide()
+        }
+
         /// --------------  工具栏结束 ---------------------------
+
+        /// -------------- 绘制开始 -----------------------------
+        /// -------------- 绘制结束 -----------------------------
     }
 
     private fun initLayerOpacity() {
