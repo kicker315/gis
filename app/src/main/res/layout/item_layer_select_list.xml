@@ -17,7 +17,7 @@
 
         <RelativeLayout
             android:id="@+id/rv_layerselect"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground">
 
@@ -32,7 +32,7 @@
 
             <TextView
                 android:id="@+id/tv_filename"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/icon_file"
                 android:padding="10dp"

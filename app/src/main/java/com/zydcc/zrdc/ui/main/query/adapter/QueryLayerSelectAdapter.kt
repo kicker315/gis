@@ -1,4 +1,4 @@
-package com.zydcc.zrdc.ui.main.query
+package com.zydcc.zrdc.ui.main.query.adapter
 
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
