@@ -32,8 +32,10 @@ class QueryStaticsViewModel(application: Application) : AndroidViewModel(applica
     val showFields: MutableLiveData<MutableList<IField>> = MutableLiveData(
         mutableListOf()
     )
-    val fields: MutableLiveData<IField> = MutableLiveData()
-    val operateName: MutableLiveData<String> = MutableLiveData()
+    var field: MutableLiveData<MutableList<IField>> = MutableLiveData(
+        mutableListOf()
+    )
+    var operateName: MutableLiveData<String> = MutableLiveData()
 
     fun whenLayerSelected(currentLayer: Layer, dltbList: List<Dltb>){
 
@@ -63,6 +65,9 @@ class QueryStaticsViewModel(application: Application) : AndroidViewModel(applica
                 )
                 layerFieldList.add(iField)
             }
+            showFields.value = mutableListOf()
+            field.value = mutableListOf()
+            operateName.value = ""
             _iFieldList.value = layerFieldList
         }
     }

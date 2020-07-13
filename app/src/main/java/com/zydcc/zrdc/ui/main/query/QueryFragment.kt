@@ -97,8 +97,13 @@ class QueryFragment : Fragment() {
         }
 
         // 当字段变更时
-        observe(viewModel.fields) {
-            sp_field.text = it.field.name
+        observe(viewModel.field) {
+            val sb = StringBuilder()
+            for (iField in it) {
+                sb.append(iField.field.name)
+                    .append(",")
+            }
+            sp_field.text = sb.toString()
         }
         // 当操作符变更时
         observe(viewModel.operateName) {
@@ -193,7 +198,11 @@ class QueryFragment : Fragment() {
 
         mFieldAdapter.setOnItemClickListener { adapter, view, position ->
             val item = adapter.data[position] as IField
-            viewModel.fields.postValue(item)
+            viewModel.field.setNext {
+                it.clear()
+                it.add(item)
+                return@setNext it
+            }
             mFieldPopupWindow?.dismiss()
         }
 
