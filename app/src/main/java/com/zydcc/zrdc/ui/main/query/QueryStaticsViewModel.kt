@@ -23,7 +23,7 @@ class QueryStaticsViewModel(application: Application) : AndroidViewModel(applica
 
     private val dataBase = AppDatabase.getInstance(application)
     val dltbDao = dataBase.dltbDao()
-    private var _viewStateLiveData = MutableLiveData<QueryViewState>()
+    var _viewStateLiveData = MutableLiveData<QueryViewState>()
     val viewStateLiveData: LiveData<QueryViewState> = _viewStateLiveData
 
     val shpDatasourceList: LiveData<List<Layer>> =
@@ -75,6 +75,10 @@ class QueryStaticsViewModel(application: Application) : AndroidViewModel(applica
         it["包含"] = " < "
         it["LIKE"] = " LIKE "
     }
+
+    var operateList = arrayListOf(
+        "大于", "小于", "等于", "大于等于", "小于等于", "不等于", "或", "且", "包含", "LIKE"
+    )
 
 
 

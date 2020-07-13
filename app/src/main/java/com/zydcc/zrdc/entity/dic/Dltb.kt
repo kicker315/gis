@@ -12,13 +12,13 @@ import androidx.room.PrimaryKey
  */
 @Entity(tableName = "DLTB")
 data class Dltb(
-    @PrimaryKey @ColumnInfo(name="id") var id: Int,
-    var zdmc: String,
-    var zddm: String,
-    var ystj: Int ?= null,
-    var zdlx: String ?= null,
-    var bz: String ?= null,
-    var xsws: String ?= null,
-    var xh: Int ?= null,
-    var sfxs: Int ?= null
+    @PrimaryKey @ColumnInfo(name="id") val id: Int,
+    val zdmc: String,
+    val zddm: String,
+    val ystj: Int,
+    val zdlx: String,
+    val bz: String,
+    val xsws: String,
+    val xh: Int,
+    val sfxs: Int
 )

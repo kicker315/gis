@@ -5,9 +5,9 @@
     "environmentVariables": []
   },
   "cmake": {
-    "cmakeArtifactsBaseFolder": "/Users/ningsikai/Desktop/edu/survery/app/.cxx/cmake/release/armeabi-v7a",
-    "cmakeServerLogFile": "/Users/ningsikai/Desktop/edu/survery/app/.cxx/cmake/release/armeabi-v7a/cmake_server_log.txt",
-    "cmakeWrappingBaseFolder": "/Users/ningsikai/Desktop/edu/survery/app/.cxx/cxx/release/armeabi-v7a",
+    "cmakeArtifactsBaseFolder": "/Users/ningsikai/Desktop/zh-app/survery/app/.cxx/cmake/release/armeabi-v7a",
+    "cmakeServerLogFile": "/Users/ningsikai/Desktop/zh-app/survery/app/.cxx/cmake/release/armeabi-v7a/cmake_server_log.txt",
+    "cmakeWrappingBaseFolder": "/Users/ningsikai/Desktop/zh-app/survery/app/.cxx/cxx/release/armeabi-v7a",
     "effectiveConfiguration": {
       "name": "traditional-android-studio-cmake-environment",
       "description": "Composite reified CMakeSettings configuration",
@@ -15,7 +15,7 @@
       "inheritEnvironments": [
         "ndk"
       ],
-      "buildRoot": "/Users/ningsikai/Desktop/edu/survery/app/.cxx/cmake/release/armeabi-v7a",
+      "buildRoot": "/Users/ningsikai/Desktop/zh-app/survery/app/.cxx/cmake/release/armeabi-v7a",
       "cmakeToolchain": "/Users/ningsikai/Library/Android/sdk/ndk/20.0.5594570/build/cmake/android.toolchain.cmake",
       "cmakeExecutable": "/Users/ningsikai/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake",
       "variables": [
@@ -57,7 +57,7 @@
         },
         {
           "name": "CMAKE_LIBRARY_OUTPUT_DIRECTORY",
-          "value": "/Users/ningsikai/Desktop/edu/survery/app/build/intermediates/cmake/release/obj/armeabi-v7a"
+          "value": "/Users/ningsikai/Desktop/zh-app/survery/app/build/intermediates/cmake/release/obj/armeabi-v7a"
         },
         {
           "name": "CMAKE_MAKE_PROGRAM",
@@ -74,14 +74,14 @@
       ]
     }
   },
-  "cxxBuildFolder": "/Users/ningsikai/Desktop/edu/survery/app/.cxx/cmake/release/armeabi-v7a",
+  "cxxBuildFolder": "/Users/ningsikai/Desktop/zh-app/survery/app/.cxx/cmake/release/armeabi-v7a",
   "info": {
     "abi": "ARMEABI_V7A",
     "bitness": 32,
     "deprecated": false,
     "default": true
   },
-  "originalCxxBuildFolder": "/Users/ningsikai/Desktop/edu/survery/app/.cxx/cmake/release/armeabi-v7a",
+  "originalCxxBuildFolder": "/Users/ningsikai/Desktop/zh-app/survery/app/.cxx/cmake/release/armeabi-v7a",
   "variant": {
     "buildSystemArgumentList": [],
     "buildTargetSet": [],
@@ -99,12 +99,12 @@
         "ninjaExe": "/Users/ningsikai/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja"
       },
       "cmakeToolchainFile": "/Users/ningsikai/Library/Android/sdk/ndk/20.0.5594570/build/cmake/android.toolchain.cmake",
-      "cxxFolder": "/Users/ningsikai/Desktop/edu/survery/app/.cxx",
+      "cxxFolder": "/Users/ningsikai/Desktop/zh-app/survery/app/.cxx",
       "gradleModulePathName": ":app",
-      "intermediatesFolder": "/Users/ningsikai/Desktop/edu/survery/app/build/intermediates",
-      "makeFile": "/Users/ningsikai/Desktop/edu/survery/app/src/main/cpp/CMakeLists.txt",
-      "moduleBuildFile": "/Users/ningsikai/Desktop/edu/survery/app/build.gradle",
-      "moduleRootFolder": "/Users/ningsikai/Desktop/edu/survery/app",
+      "intermediatesFolder": "/Users/ningsikai/Desktop/zh-app/survery/app/build/intermediates",
+      "makeFile": "/Users/ningsikai/Desktop/zh-app/survery/app/src/main/cpp/CMakeLists.txt",
+      "moduleBuildFile": "/Users/ningsikai/Desktop/zh-app/survery/app/build.gradle",
+      "moduleRootFolder": "/Users/ningsikai/Desktop/zh-app/survery/app",
       "ndkDefaultAbiList": [
         "ARMEABI_V7A",
         "ARM64_V8A",
@@ -167,12 +167,12 @@
       ],
       "ndkVersion": "20.0.5594570",
       "project": {
-        "compilerSettingsCacheFolder": "/Users/ningsikai/Desktop/edu/survery/.cxx",
-        "cxxFolder": "/Users/ningsikai/Desktop/edu/survery/.cxx",
+        "compilerSettingsCacheFolder": "/Users/ningsikai/Desktop/zh-app/survery/.cxx",
+        "cxxFolder": "/Users/ningsikai/Desktop/zh-app/survery/.cxx",
         "isBuildOnlyTargetAbiEnabled": true,
         "isCmakeBuildCohabitationEnabled": false,
         "isNativeCompilerSettingsCacheEnabled": false,
-        "rootBuildGradleFolder": "/Users/ningsikai/Desktop/edu/survery",
+        "rootBuildGradleFolder": "/Users/ningsikai/Desktop/zh-app/survery",
         "sdkFolder": "/Users/ningsikai/Library/Android/sdk"
       },
       "splitsAbiFilterSet": [],
@@ -188,7 +188,7 @@
         "SYSTEM": {}
       }
     },
-    "objFolder": "/Users/ningsikai/Desktop/edu/survery/app/build/intermediates/cmake/release/obj",
+    "objFolder": "/Users/ningsikai/Desktop/zh-app/survery/app/build/intermediates/cmake/release/obj",
     "variantName": "release",
     "validAbiList": [
       "ARMEABI_V7A",

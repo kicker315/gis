@@ -15,14 +15,15 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="@dimen/margin_normal"
             android:layout_marginEnd="@dimen/margin_normal">
+
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="330dp"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@+id/btn_add_shp"
+                android:text="@string/txt_shp_manager"
                 android:textColor="@color/primary_text"
-                android:textSize="@dimen/textsize_big"
-                android:text="@string/txt_shp_manager"/>
+                android:textSize="@dimen/textsize_big" />
             <TextView
                 android:id="@+id/btn_add_shp"
                 style="@style/btn_other"

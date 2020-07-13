@@ -1,6 +1,6 @@
 Executable : /Users/ningsikai/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake
 arguments : 
--H/Users/ningsikai/Desktop/edu/survery/app/src/main/cpp
+-H/Users/ningsikai/Desktop/zh-app/survery/app/src/main/cpp
 -DCMAKE_CXX_FLAGS=-std=c++11
 -DCMAKE_BUILD_TYPE=Release
 -DCMAKE_TOOLCHAIN_FILE=/Users/ningsikai/Library/Android/sdk/ndk/20.0.5594570/build/cmake/android.toolchain.cmake
@@ -10,11 +10,11 @@ arguments :
 -DCMAKE_ANDROID_ARCH_ABI=x86
 -DCMAKE_ANDROID_NDK=/Users/ningsikai/Library/Android/sdk/ndk/20.0.5594570
 -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
--DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/Users/ningsikai/Desktop/edu/survery/app/build/intermediates/cmake/release/obj/x86
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/Users/ningsikai/Desktop/zh-app/survery/app/build/intermediates/cmake/release/obj/x86
 -DCMAKE_MAKE_PROGRAM=/Users/ningsikai/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja
 -DCMAKE_SYSTEM_NAME=Android
 -DCMAKE_SYSTEM_VERSION=21
--B/Users/ningsikai/Desktop/edu/survery/app/.cxx/cmake/release/x86
+-B/Users/ningsikai/Desktop/zh-app/survery/app/.cxx/cmake/release/x86
 -GNinja
 jvmArgs : 
 

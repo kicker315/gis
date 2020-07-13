@@ -23,7 +23,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /Users/ningsikai/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake -H/Users/ningsikai/Desktop/edu/survery/app/src/main/cpp -B/Users/ningsikai/Desktop/edu/survery/app/.cxx/cmake/release/armeabi-v7a
+  command = /Users/ningsikai/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake -H/Users/ningsikai/Desktop/zh-app/survery/app/src/main/cpp -B/Users/ningsikai/Desktop/zh-app/survery/app/.cxx/cmake/release/armeabi-v7a
   description = Re-running CMake...
   generator = 1
 

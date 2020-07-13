@@ -11,12 +11,12 @@ import com.zydcc.zrdc.entity.bean.DMItem
  * Create by ningsikai 2020/7/3:9:16 AM
  * ========================================
  */
-class QueryOperationAdapter : BaseQuickAdapter<DMItem, BaseViewHolder>(R.layout.item_layer_select_list, null) {
-
-    override fun convert(holder: BaseViewHolder, item: DMItem) {
-        holder.setText(R.id.tv_filename, item.mc)
+class QueryOperationAdapter : BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_layer_select_list, null) {
+    override fun convert(holder: BaseViewHolder, item: String) {
+        holder.setText(R.id.tv_filename, item)
             .setGone(R.id.icon_file, true)
             .setGone(R.id.checkbox, true)
-
     }
+
+
 }

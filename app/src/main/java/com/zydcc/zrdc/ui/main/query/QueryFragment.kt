@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.zydcc.zrdc.R
 import com.zydcc.zrdc.core.ext.observe
+import com.zydcc.zrdc.core.ext.postNext
+import com.zydcc.zrdc.core.ext.setNext
 import com.zydcc.zrdc.entity.bean.IField
 import com.zydcc.zrdc.entity.dic.Layer
 import com.zydcc.zrdc.ui.main.query.adapter.QueryFieldSelectAdapter
@@ -75,10 +77,16 @@ class QueryFragment : Fragment() {
     private fun initData() {
         initListener()
         initRecyclerView()
+        mOperationAdapter.setNewInstance(viewModel.operateList)
         observe(viewModel.shpDatasourceList) {
             if (it.isNotEmpty()) {
                 mLayerSelectAdapter.setNewInstance(it.toMutableList())
             }
+        }
+        observe(viewModel.viewStateLiveData) {
+            sp_layerlist.text = it.layer?.layerName
+            sp_field.text = it.field?.name
+            sp_selectopera.text = it.operaName
         }
     }
 
@@ -141,6 +149,16 @@ class QueryFragment : Fragment() {
         mShowFieldAdpter.addChildClickViewIds(R.id.rv_layerselect)
         mShowFieldAdpter.setOnItemChildClickListener { adapter, view, position ->
             val item = adapter.data[position] as IField
+        }
+
+        mOperationAdapter.setOnItemClickListener { adapter, view, position ->
+            val item = adapter.data[position] as String
+            viewModel._viewStateLiveData.postNext {
+                it.copy(
+                    operaName = "呵呵"
+                )
+            }
+            mOperationPopupWindow?.dismiss()
         }
     }
 

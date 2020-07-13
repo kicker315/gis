@@ -1,2 +1,2 @@
-/Users/ningsikai/Desktop/edu/survery/app/.cxx/cmake/debug/x86/CMakeFiles/rebuild_cache.dir
-/Users/ningsikai/Desktop/edu/survery/app/.cxx/cmake/debug/x86/CMakeFiles/edit_cache.dir
+/Users/ningsikai/Desktop/zh-app/survery/app/.cxx/cmake/debug/x86/CMakeFiles/rebuild_cache.dir
+/Users/ningsikai/Desktop/zh-app/survery/app/.cxx/cmake/debug/x86/CMakeFiles/edit_cache.dir

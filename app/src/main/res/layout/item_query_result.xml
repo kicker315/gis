@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/ll_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginBottom="1px"
+        android:background="@color/white">
+
+        <CheckBox
+            android:id="@+id/checkbox"
+            style="@style/checkbox_lm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:clickable="false"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1px"
+        android:layout_gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tv_attr1"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:visibility="gone"
+            style="@style/tv_field"/>
+
+        <TextView
+            android:id="@+id/tv_attr2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:visibility="gone"
+            style="@style/tv_field"/>
+
+        <TextView
+            android:id="@+id/tv_attr3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:visibility="gone"
+            style="@style/tv_field"/>
+
+        <TextView
+            android:id="@+id/tv_attr4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:visibility="gone"
+            style="@style/tv_field"/>
+
+        <TextView
+            android:id="@+id/tv_attr5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:visibility="gone"
+            style="@style/tv_field"/>
+
+        <TextView
+            android:id="@+id/tv_attr6"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:visibility="gone"
+            style="@style/tv_field"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,5 +1,8 @@
 package com.zydcc.zrdc.ui.main.query
 
+import com.esri.arcgisruntime.data.Field
+import com.zydcc.zrdc.entity.dic.Layer
+
 /**
  * =======================================
  *
@@ -7,12 +10,9 @@ package com.zydcc.zrdc.ui.main.query
  * ========================================
  */
 data class QueryViewState(
-    var layerName: String = "",
-    var layerUrl: String = "",
-    var selectFieldNames: String = "",
-    var selectFieldValues: String = "",
-    var fieldName: String = "",
-    var fieldValue: String = "",
+    var layer: Layer ?= null,
+    var showFields: MutableList<Field> = mutableListOf(),
+    var field: Field ?= null,
     var operaName: String = "",
     var operaValue: String = "",
     var range: String = ""
