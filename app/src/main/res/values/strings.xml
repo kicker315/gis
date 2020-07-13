@@ -115,6 +115,8 @@
     <string name="txt_data_export">数据导出</string>
     <string name="txt_location_to_map">定位到地图</string>
 
+    <string name="txt_loaded_empty">数据为空</string>
+
     <string name="txt_base_layer">基础图层</string>
     <string name="please_select_base_layer">请选择基础图层</string>
     <string name="txt_compare_layer">比对图层</string>

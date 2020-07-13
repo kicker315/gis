@@ -20,7 +20,6 @@ import com.zydcc.zrdc.widget.adapters.FeatureAttrFieldAdapter
 import com.zydcc.zrdc.utils.BundleConstants
 import com.zydcc.zrdc.utils.DimenUtils
 import kotlinx.android.synthetic.main.actionbar_common.*
-import kotlinx.android.synthetic.main.dialog_feature_attr.*
 import kotlinx.android.synthetic.main.dialog_feature_attr.view.*
 import java.util.*
 

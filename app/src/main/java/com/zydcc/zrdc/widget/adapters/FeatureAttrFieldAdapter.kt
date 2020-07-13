@@ -15,9 +15,9 @@ class FeatureAttrFieldAdapter : BaseQuickAdapter<IField, BaseViewHolder>(
     R.layout.item_feature_attr_field, null) {
 
     override fun convert(holder: BaseViewHolder, item: IField) {
-        holder.setText(R.id.tv_field_name, item.field.name)
-            .setText(R.id.tv_zdmc, if (item.dltb != null) item.dltb!!.zdmc else "-")
-            .setText(R.id.tv_field_type, item.field.fieldType.toString())
+        holder.setText(R.id.tv_attr_field_name, item.field.name)
+            .setText(R.id.tv_attr_field_alias, if (item.dltb != null) item.dltb!!.zdmc else "-")
+            .setText(R.id.tv_attr_field_type, item.field.fieldType.toString())
     }
 
 

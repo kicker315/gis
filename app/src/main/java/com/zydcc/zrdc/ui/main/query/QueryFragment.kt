@@ -5,23 +5,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.blankj.utilcode.util.ToastUtils
+import com.esri.arcgisruntime.data.Feature
+import com.esri.arcgisruntime.data.Field
+import com.fondesa.recyclerviewdivider.RecyclerViewDivider
 import com.zydcc.zrdc.R
 import com.zydcc.zrdc.core.ext.observe
 import com.zydcc.zrdc.core.ext.postNext
 import com.zydcc.zrdc.core.ext.setNext
 import com.zydcc.zrdc.entity.bean.IField
 import com.zydcc.zrdc.entity.dic.Layer
-import com.zydcc.zrdc.ui.main.query.adapter.QueryFieldSelectAdapter
-import com.zydcc.zrdc.ui.main.query.adapter.QueryShowFieldSelectAdapter
-import com.zydcc.zrdc.ui.main.query.adapter.QueryLayerSelectAdapter
-import com.zydcc.zrdc.ui.main.query.adapter.QueryOperationAdapter
+import com.zydcc.zrdc.ui.main.query.adapter.*
 import com.zydcc.zrdc.widget.ClassicPopupWindow
 import kotlinx.android.synthetic.main.fragment_query.*
 import java.lang.StringBuilder
+import java.util.concurrent.CopyOnWriteArrayList
 
 /**
  * =======================================
@@ -61,6 +64,16 @@ class QueryFragment : Fragment() {
     private var rcvOperation: RecyclerView? = null
     private var mOperationAdapter = QueryOperationAdapter()
 
+    private var selectLayer: Layer? = null
+    private var showFieldSelect = mutableListOf<Field>()
+    private var field: Field?= null
+
+    private lateinit var mResultAdapter: QueryResultAdapter
+
+    private val pageSize = 20
+    private var nextRequestPage = 0
+    private var mResultList = mutableListOf<Feature>()
+
     private val viewModel by viewModels<QueryStaticsViewModel>()
 
     override fun onCreateView(
@@ -85,32 +98,6 @@ class QueryFragment : Fragment() {
                 mLayerSelectAdapter.setNewInstance(it.toMutableList())
             }
         }
-
-        // 当显示字段变更时
-        observe(viewModel.showFields) {
-            val sb = StringBuilder()
-            for (iField in it) {
-                sb.append(iField.field.name)
-                    .append(",")
-            }
-            sp_selectfield.text = sb.toString()
-        }
-
-        // 当字段变更时
-        observe(viewModel.field) {
-            val sb = StringBuilder()
-            for (iField in it) {
-                sb.append(iField.field.name)
-                    .append(",")
-            }
-            sp_field.text = sb.toString()
-        }
-        // 当操作符变更时
-        observe(viewModel.operateName) {
-            sp_selectopera.text = it
-        }
-
-
     }
 
     private fun initListener() {
@@ -157,6 +144,8 @@ class QueryFragment : Fragment() {
         mLayerSelectAdapter.setOnItemClickListener { adapter, _, position ->
             val item = adapter.data[position] as Layer
             sp_layerlist.text = item.layerName
+            selectLayer = item
+            reset()
             observe(viewModel.dltbDao.getAll()) {
                 viewModel.whenLayerSelected(item, it)
 
@@ -176,43 +165,67 @@ class QueryFragment : Fragment() {
             }
             val item = adapter.data[position] as IField
             if (item.checked == 0) {
-                viewModel.showFields.setNext {
-                    if (it.size >= 6) {
-                        Toast.makeText(requireContext(), getString(R.string.tip_multiselect_up_to_6), Toast.LENGTH_SHORT).show()
-                        return@setOnItemChildClickListener
-                    }
-                    // 如果选中了
-                    item.checked = 1
-                    it.add(item)
-                    return@setNext it
+                // 如果选中了
+                if (showFieldSelect.size >= 6) {
+                    ToastUtils.showShort(getString(R.string.tip_multiselect_up_to_6))
+                    return@setOnItemChildClickListener
                 }
+                item.checked = 1
+                showFieldSelect.add(item.field)
             } else {
-               viewModel.showFields.setNext {
-                   item.checked = 0
-                   it.remove(item)
-                   return@setNext it
-               }
+                item.checked = 0
+                showFieldSelect.remove(item.field)
             }
+            val sb = StringBuilder()
+            for (field in showFieldSelect) {
+                sb.append(field.name)
+                    .append(",")
+            }
+            sp_selectfield.text = sb.toString()
             adapter.notifyItemChanged(position)
         }
 
         mFieldAdapter.setOnItemClickListener { adapter, view, position ->
-            val item = adapter.data[position] as IField
-            viewModel.field.setNext {
-                it.clear()
-                it.add(item)
-                return@setNext it
+            if (position == 0) {
+                sp_field.text = ""
+                mFieldPopupWindow?.dismiss()
+                return@setOnItemClickListener
             }
+            val item = adapter.data[position] as IField
+            sp_field.text = item.field.name
+            field = item.field
             mFieldPopupWindow?.dismiss()
         }
 
         mOperationAdapter.setOnItemClickListener { adapter, view, position ->
             val item = adapter.data[position] as String
-            viewModel.operateName.postValue(item)
+            sp_selectopera.text = item
             mOperationPopupWindow?.dismiss()
+        }
+
+        // 查询
+        btn_search.setOnClickListener {
+            if (validate()) {
+                doSearch()
+            }
         }
     }
 
+    private fun validate(): Boolean {
+        if (selectLayer == null) {
+            ToastUtils.showShort(getString(R.string.please_select_layer))
+            return false
+        }
+        if (showFieldSelect.isEmpty()) {
+            ToastUtils.showShort(getString(R.string.please_select_visible_fields))
+            return false
+        }
+        if (field == null) {
+            ToastUtils.showShort(getString(R.string.please_select_fields))
+            return false
+        }
+        return true
+    }
 
     private fun initRecyclerView() {
         rcvLayerSelect = RecyclerView(requireContext()).apply {
@@ -234,6 +247,59 @@ class QueryFragment : Fragment() {
                 layoutManager = LinearLayoutManager(requireContext())
                 adapter = mOperationAdapter
             }
+    }
+
+
+    private fun reset() {
+        showFieldSelect.clear()
+        field = null
+    }
+
+    private fun initResult() {
+        mResultAdapter = QueryResultAdapter(showFieldSelect)
+        rcv_search_result.layoutManager = LinearLayoutManager(requireContext())
+        rcv_search_result.adapter = mResultAdapter
+        mResultAdapter.setEmptyView(R.layout.empty_view)
+        mResultAdapter.isUseEmpty = true
+    }
+
+    private fun doSearch() {
+        nextRequestPage = 0
+        initResult()
+        swipe_refresh.isRefreshing = true
+        swipe_refresh.isEnabled = true
+        swipe_refresh.setOnRefreshListener {
+            viewModel.getSearchResult(selectLayer!!.layerUrl)
+        }
+        mResultAdapter.loadMoreModule.setOnLoadMoreListener {
+            nextRequestPage++
+            if (nextRequestPage > 0) {
+                val data = CopyOnWriteArrayList<Feature>()
+                if (nextRequestPage * pageSize + 20 < mResultList.size) {
+                    data.addAll(mResultList.subList(nextRequestPage * pageSize, nextRequestPage * pageSize + 20))
+                    mResultAdapter.addData(data)
+                    mResultAdapter.loadMoreModule.loadMoreComplete()
+                } else {
+                    data.addAll(mResultList.subList(nextRequestPage * pageSize, mResultList.size))
+                    mResultAdapter.addData(data)
+                    mResultAdapter.loadMoreModule.loadMoreComplete()
+                    mResultAdapter.loadMoreModule.loadMoreEnd()
+                }
+            }
+        }
+        observe(viewModel.mResultList) { it ->
+            mResultList = it
+            swipe_refresh.isRefreshing = false
+            if (mResultList.size > pageSize) {
+                mResultAdapter.setNewInstance(mResultList.subList(0, pageSize))
+                mResultAdapter.loadMoreModule.loadMoreComplete()
+            } else {
+                mResultAdapter.setNewInstance(mResultList)
+                mResultAdapter.loadMoreModule.loadMoreEnd()
+            }
+           
+        }
+        viewModel.getSearchResult(selectLayer!!.layerUrl)
     }
 
 }

@@ -358,9 +358,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcv_result"
+            android:id="@+id/rcv_search_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:listitem="@layout/item_query_result"/>
+            android:background="@drawable/shape_corner_rvbg" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </LinearLayout>
