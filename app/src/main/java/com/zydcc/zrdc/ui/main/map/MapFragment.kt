@@ -40,6 +40,7 @@ import com.zydcc.zrdc.ui.main.MainFragmentDirections
 import com.zydcc.zrdc.utils.MyLocationDataSource
 import com.zydcc.zrdc.widget.DrawLayerDialog
 import com.zydcc.zrdc.widget.ProjectManagerDialog
+import kotlinx.android.synthetic.main.actionbar_common.*
 import kotlinx.android.synthetic.main.dialog_layer_opacity.*
 import kotlinx.android.synthetic.main.fragment_map.*
 import java.io.File
@@ -103,7 +104,7 @@ class MapFragment: Fragment() {
             projectManagerDialog()
         }
 
-        opacity_cancel.setOnClickListener {
+        btn_back.setOnClickListener {
             opacity_list.visibility = View.GONE
         }
 

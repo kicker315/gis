@@ -7,6 +7,7 @@ import android.view.View
 import com.zydcc.zrdc.R
 import com.zydcc.zrdc.entity.dic.Layer
 import com.zydcc.zrdc.entity.dic.Project
+import kotlinx.android.synthetic.main.actionbar_common.view.*
 import kotlinx.android.synthetic.main.dialog_layer_render.view.*
 
 /**
@@ -34,7 +35,8 @@ class RenderDialog(
     }
 
     private fun initData(view: View) {
-        view.tool_bar.setNavigationOnClickListener {
+        view.tv_title.text = context.getString(R.string.txt_render)
+        view.btn_back.setOnClickListener {
             dialog.dismiss()
         }
     }

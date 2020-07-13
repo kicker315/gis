@@ -4,10 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tool_bar"
-        style="@style/toolbar_style"
-        app:title="@string/txt_project_info" />
+    <include
+        layout="@layout/actionbar_common"/>
 
     <RelativeLayout
         android:layout_width="wrap_content"

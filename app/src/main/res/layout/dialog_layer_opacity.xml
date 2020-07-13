@@ -6,10 +6,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
     android:orientation="vertical">
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/opacity_cancel"
-        style="@style/toolbar_style"
-        app:title="@string/txt_layer_opacity" />
+    <include
+        layout="@layout/actionbar_common"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_layer"
         android:layout_width="match_parent"

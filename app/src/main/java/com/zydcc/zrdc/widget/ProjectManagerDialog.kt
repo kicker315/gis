@@ -16,6 +16,7 @@ import com.zydcc.zrdc.db.AppDatabase
 import com.zydcc.zrdc.entity.dic.Project
 import com.zydcc.zrdc.widget.adapters.ProjectListAdapter
 import com.zydcc.zrdc.utils.DimenUtils
+import kotlinx.android.synthetic.main.actionbar_common.view.*
 import kotlinx.android.synthetic.main.dialog_project_manager.view.*
 import kotlinx.android.synthetic.main.headerview_project_manager.view.*
 
@@ -51,7 +52,8 @@ class ProjectManagerDialog(
             window?.setGravity(Gravity.CENTER)
         }
         initData(view)
-        view.tool_bar.setNavigationOnClickListener {
+        view.tv_title.text = context.getString(R.string.txt_project_manager)
+        view.btn_back.setOnClickListener {
             alertDialog.dismiss()
         }
     }

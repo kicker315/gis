@@ -5,10 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
+    <include
         android:id="@+id/tool_bar"
-        style="@style/toolbar_style"
-        app:title="@string/txt_draw_free" />
+        layout="@layout/actionbar_common"/>
 
     <com.rm.freedrawview.FreeDrawView
         android:id="@+id/free_draw_view"

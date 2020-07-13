@@ -6,10 +6,8 @@
     android:background="@color/background"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tool_bar"
-        style="@style/toolbar_style"
-        app:title="@string/txt_render" />
+    <include
+        layout="@layout/actionbar_common"/>
 
 
     <RelativeLayout

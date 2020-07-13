@@ -12,6 +12,7 @@ import com.zydcc.zrdc.R
 import com.zydcc.zrdc.entity.dic.Project
 import com.zydcc.zrdc.widget.adapters.ProjectLayerListAdapter
 import com.zydcc.zrdc.utils.DimenUtils
+import kotlinx.android.synthetic.main.actionbar_common.view.*
 import kotlinx.android.synthetic.main.dialog_project_info.view.*
 import kotlinx.android.synthetic.main.headerview_project_layer_info.view.*
 
@@ -52,9 +53,10 @@ class ProjectInfoDialog(
     }
 
     private fun initData(view: View) {
-        view.tool_bar.setNavigationOnClickListener {
+        view.btn_back.setOnClickListener {
             dialog.dismiss()
         }
+        view.tv_title.text = context.getString(R.string.txt_project_info)
         val mAdapter = ProjectLayerListAdapter()
         mAdapter.setHeaderView(getHeaderView(view.rv_project_manager))
         view.rv_project_manager.adapter = mAdapter

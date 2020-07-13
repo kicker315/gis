@@ -4,14 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tool_bar"
-        style="@style/toolbar_style"
-        app:title="@string/txt_project_manager" />
+    <include
+        layout="@layout/actionbar_common"/>
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="?actionBarSize"
+        android:layout_height="@dimen/toolbar_small_height"
         android:elevation="5dp">
 
         <TextView

@@ -14,6 +14,7 @@ import com.flask.colorpicker.ColorPickerView
 import com.flask.colorpicker.builder.ColorPickerDialogBuilder
 import com.zydcc.zrdc.R
 import com.zydcc.zrdc.core.ext.observe
+import kotlinx.android.synthetic.main.actionbar_common.*
 import kotlinx.android.synthetic.main.fragment_draw.*
 
 /**
@@ -42,6 +43,7 @@ class DrawFragment: Fragment() {
     }
 
     private fun initData() {
+        tv_title.text = getString(R.string.txt_draw_layer)
         initListener()
         slider_thickness.max = ((THICKNESS_MAX - THICKNESS_MIN) / THICKNESS_STEP)
         slider_thickness.progress = ((free_draw_view.paintWidth - THICKNESS_MIN) / THICKNESS_STEP).toInt()
@@ -54,7 +56,7 @@ class DrawFragment: Fragment() {
 
 
     private fun initListener() {
-        tool_bar.setNavigationOnClickListener {
+        btn_back.setOnClickListener {
             findNavController().navigateUp()
         }
         tv_color.setOnClickListener {

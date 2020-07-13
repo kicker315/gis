@@ -9,6 +9,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.zydcc.zrdc.R
 import com.zydcc.zrdc.widget.adapters.*
+import kotlinx.android.synthetic.main.actionbar_common.*
 import kotlinx.android.synthetic.main.fragment_sys.*
 
 /**
@@ -33,9 +34,10 @@ class SysFragment: Fragment() {
     }
 
     private fun initData() {
-        tool_bar.setNavigationOnClickListener {
+        btn_back.setOnClickListener {
             findNavController().navigateUp()
         }
+        tv_title.text = getString(R.string.txt_setting)
         view_pager.isUserInputEnabled = false
         view_pager.adapter = SysPageAdapter(this@SysFragment)
         setting_gps.setOnClickListener { view_pager.currentItem = GPS_SETTING_SETTING_PAGE_INDEX }

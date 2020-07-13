@@ -5,10 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tool_bar"
-        style="@style/toolbar_style"
-        app:title="@string/txt_screenshot_manager"/>
+    <include
+        layout="@layout/actionbar_common"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_pics"
         android:layout_width="match_parent"

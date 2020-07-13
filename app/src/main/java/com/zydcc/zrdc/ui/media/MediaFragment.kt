@@ -13,6 +13,7 @@ import com.zydcc.zrdc.R
 
 import com.zydcc.zrdc.utils.IntentConstants
 import com.zydcc.zrdc.widget.RecordAudioDialogFragment
+import kotlinx.android.synthetic.main.actionbar_common.*
 import kotlinx.android.synthetic.main.fragment_media.*
 
 /**
@@ -39,6 +40,7 @@ class MediaFragment: Fragment() {
     }
 
     private fun initData() {
+        tv_title.text = getString(R.string.txt_media)
         vp.adapter = MediaPageAdapter(this)
         // set the icon and text for each tab
         TabLayoutMediator(title_tab, vp) { tab, position ->
@@ -47,7 +49,7 @@ class MediaFragment: Fragment() {
     }
 
     private fun initListener() {
-        tool_bar.setNavigationOnClickListener {
+        btn_back.setOnClickListener {
             findNavController().navigateUp()
         }
         rb_media_camera.setOnClickListener {

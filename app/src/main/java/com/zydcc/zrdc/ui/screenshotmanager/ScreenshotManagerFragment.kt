@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.zydcc.zrdc.R
+import kotlinx.android.synthetic.main.actionbar_common.*
 import kotlinx.android.synthetic.main.fragment_screenshot_manager.*
 
 /**
@@ -26,9 +27,10 @@ class ScreenshotManagerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tool_bar.setNavigationOnClickListener {
+        btn_back.setOnClickListener {
             it.findNavController().navigateUp()
         }
+        tv_title.text = getString(R.string.txt_screenshot_manager)
     }
 
 }

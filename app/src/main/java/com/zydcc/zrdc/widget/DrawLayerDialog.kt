@@ -5,9 +5,11 @@ import android.content.Context
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.ListPopupWindow
+import androidx.core.content.ContextCompat
 
 import com.zydcc.zrdc.R
 import com.zydcc.zrdc.entity.dic.Layer
+import kotlinx.android.synthetic.main.actionbar_common.view.*
 import kotlinx.android.synthetic.main.dialog_draw_layer.view.*
 
 /**
@@ -37,9 +39,13 @@ class DrawLayerDialog(
             show()
             window?.setGravity(Gravity.CENTER)
         }
-        view.tool_bar.setOnClickListener {
+
+        view.tv_title.text = context.getString(R.string.txt_draw_layer)
+
+        view.btn_back.setOnClickListener {
             alertDialog?.dismiss()
         }
+
     }
 
     companion object {

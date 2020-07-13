@@ -19,6 +19,7 @@ import com.zydcc.zrdc.entity.dic.Layer
 import com.zydcc.zrdc.widget.adapters.FeatureAttrFieldAdapter
 import com.zydcc.zrdc.utils.BundleConstants
 import com.zydcc.zrdc.utils.DimenUtils
+import kotlinx.android.synthetic.main.actionbar_common.*
 import kotlinx.android.synthetic.main.dialog_feature_attr.*
 import kotlinx.android.synthetic.main.dialog_feature_attr.view.*
 import java.util.*
@@ -49,9 +50,10 @@ class FeatureAttrDialogFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         dataBase = AppDatabase.getInstance(requireContext().applicationContext)
-        tool_bar.setNavigationOnClickListener {
+        btn_back.setOnClickListener {
             dismiss()
         }
+        tv_title.text = getString(R.string.txt_layer_attr_info)
         val dltbDao = dataBase.dltbDao()
         observe(dltbDao.getAll()) {
             initData(it, view)

@@ -5,10 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tool_bar"
-        style="@style/toolbar_style"
-        app:title="@string/txt_media" />
+   <include
+       android:id="@+id/tool_bar"
+       layout="@layout/actionbar_common"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/title_tab"

@@ -17,6 +17,7 @@ import com.zydcc.zrdc.widget.adapters.FileListAdapter
 import com.zydcc.zrdc.entity.bean.FileItem
 import com.zydcc.zrdc.utils.DimenUtils
 import com.zydcc.zrdc.utils.IntentConstants
+import kotlinx.android.synthetic.main.actionbar_common.*
 import kotlinx.android.synthetic.main.dialog_datasource_choose.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -56,10 +57,12 @@ class DatasourceChooseDialog : DialogFragment() {
    private fun binds() {
 
 
-
-       tool_bar.setNavigationOnClickListener {
+       btn_back.setOnClickListener {
            dismiss()
        }
+
+       tv_title.text = getString(R.string.txt_choose_file)
+
        suffix = arguments?.getString(IntentConstants.SUFFIX) ?: "shp"
        swipe_refresh.setOnRefreshListener {
            refreshDatasource()
