@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +21,7 @@ import com.zydcc.zrdc.ui.main.query.adapter.QueryLayerSelectAdapter
 import com.zydcc.zrdc.ui.main.query.adapter.QueryOperationAdapter
 import com.zydcc.zrdc.widget.ClassicPopupWindow
 import kotlinx.android.synthetic.main.fragment_query.*
+import java.lang.StringBuilder
 
 /**
  * =======================================
@@ -83,11 +85,27 @@ class QueryFragment : Fragment() {
                 mLayerSelectAdapter.setNewInstance(it.toMutableList())
             }
         }
-        observe(viewModel.viewStateLiveData) {
-            sp_layerlist.text = it.layer?.layerName
-            sp_field.text = it.field?.name
-            sp_selectopera.text = it.operaName
+
+        // 当显示字段变更时
+        observe(viewModel.showFields) {
+            val sb = StringBuilder()
+            for (iField in it) {
+                sb.append(iField.field.name)
+                    .append(",")
+            }
+            sp_selectfield.text = sb.toString()
         }
+
+        // 当字段变更时
+        observe(viewModel.fields) {
+            sp_field.text = it.field.name
+        }
+        // 当操作符变更时
+        observe(viewModel.operateName) {
+            sp_selectopera.text = it
+        }
+
+
     }
 
     private fun initListener() {
@@ -148,16 +166,40 @@ class QueryFragment : Fragment() {
 
         mShowFieldAdpter.addChildClickViewIds(R.id.rv_layerselect)
         mShowFieldAdpter.setOnItemChildClickListener { adapter, view, position ->
+            if (view.id != R.id.rv_layerselect) {
+                return@setOnItemChildClickListener
+            }
             val item = adapter.data[position] as IField
+            if (item.checked == 0) {
+                viewModel.showFields.setNext {
+                    if (it.size >= 6) {
+                        Toast.makeText(requireContext(), getString(R.string.tip_multiselect_up_to_6), Toast.LENGTH_SHORT).show()
+                        return@setOnItemChildClickListener
+                    }
+                    // 如果选中了
+                    item.checked = 1
+                    it.add(item)
+                    return@setNext it
+                }
+            } else {
+               viewModel.showFields.setNext {
+                   item.checked = 0
+                   it.remove(item)
+                   return@setNext it
+               }
+            }
+            adapter.notifyItemChanged(position)
+        }
+
+        mFieldAdapter.setOnItemClickListener { adapter, view, position ->
+            val item = adapter.data[position] as IField
+            viewModel.fields.postValue(item)
+            mFieldPopupWindow?.dismiss()
         }
 
         mOperationAdapter.setOnItemClickListener { adapter, view, position ->
             val item = adapter.data[position] as String
-            viewModel._viewStateLiveData.postNext {
-                it.copy(
-                    operaName = "呵呵"
-                )
-            }
+            viewModel.operateName.postValue(item)
             mOperationPopupWindow?.dismiss()
         }
     }

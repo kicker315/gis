@@ -30,13 +30,13 @@
     <!-- ToolBar菜单样式 -->
     <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="actionMenuTextColor">@color/white</item> <!--  颜色-->
-        <item name="android:textSize">18sp</item> <!--  字体大小-->
+        <item name="android:textSize">@dimen/toolbar_size</item> <!--  字体大小-->
     </style>
 
     <!-- toolbar -->
     <style name="toolbar_style" parent="ToolbarTheme">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:layout_height">@dimen/toolbar_small_height</item>
         <item name="android:background">@color/white</item>
         <item name="android:elevation">@dimen/toolbar_elevation</item>
         <item name="navigationIcon">@drawable/btn_back</item>

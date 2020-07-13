@@ -23,13 +23,17 @@ class QueryStaticsViewModel(application: Application) : AndroidViewModel(applica
 
     private val dataBase = AppDatabase.getInstance(application)
     val dltbDao = dataBase.dltbDao()
-    var _viewStateLiveData = MutableLiveData<QueryViewState>()
-    val viewStateLiveData: LiveData<QueryViewState> = _viewStateLiveData
 
     val shpDatasourceList: LiveData<List<Layer>> =
         dataBase.layerDao().getShpDatasourceList()
     private var _iFieldList = MutableLiveData<List<IField>>()
     var iFieldList: LiveData<List<IField>> = _iFieldList
+    val currentLayer:MutableLiveData<Layer> = MutableLiveData()
+    val showFields: MutableLiveData<MutableList<IField>> = MutableLiveData(
+        mutableListOf()
+    )
+    val fields: MutableLiveData<IField> = MutableLiveData()
+    val operateName: MutableLiveData<String> = MutableLiveData()
 
     fun whenLayerSelected(currentLayer: Layer, dltbList: List<Dltb>){
 
@@ -62,6 +66,9 @@ class QueryStaticsViewModel(application: Application) : AndroidViewModel(applica
             _iFieldList.value = layerFieldList
         }
     }
+
+
+
 
     var operateMap = hashMapOf<String, String>().also {
         it["大于"] = " > "
