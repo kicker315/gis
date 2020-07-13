@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -27,6 +28,7 @@ import com.esri.arcgisruntime.mapping.view.WrapAroundMode
 import com.zydcc.zrdc.App
 import com.zydcc.zrdc.R
 import com.zydcc.zrdc.core.ext.observe
+import com.zydcc.zrdc.db.AppDatabase
 
 import com.zydcc.zrdc.entity.dic.Layer
 import com.zydcc.zrdc.entity.dic.Project
@@ -80,6 +82,9 @@ class MapFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sharePreferences = requireActivity().getSharedPreferences("zydcc", MODE_PRIVATE)
+        observe(viewModel.currentProject) {
+            currentProject = it
+        }
         initListener()
         initLayerOpacity()
         initMap()
@@ -320,7 +325,7 @@ class MapFragment: Fragment() {
     }
 
     private fun projectManagerDialog() {
-        ProjectManagerDialog(requireActivity(),sharePreferences, currentProject).showDialog()
+        ProjectManagerDialog(requireActivity() as AppCompatActivity,sharePreferences, currentProject).showDialog()
     }
 
     private fun fullMap() {

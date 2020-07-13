@@ -7,6 +7,8 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.blankj.utilcode.util.TimeUtils
 import com.zydcc.zrdc.R
@@ -24,7 +26,7 @@ import kotlinx.android.synthetic.main.headerview_project_manager.view.*
  * ========================================
  */
 class ProjectManagerDialog(
-    var context: Activity,
+    var context: AppCompatActivity,
     var sharedPreferences: SharedPreferences,
     var currentProject: Project
 ) {
@@ -56,15 +58,18 @@ class ProjectManagerDialog(
 
 
     private fun initData(view: View) {
-        val projects = dataBase.projectDao().getProjectList().value!!
-        val mAdapter = ProjectListAdapter()
-        mAdapter.setNewInstance(projects.toMutableList())
-        mAdapter.setHeaderView(getHeaderView(view.rv_project_manager))
-        view.rv_project_manager.adapter = mAdapter
-        mAdapter.setOnItemClickListener { adapter, _, position ->
-            val item = adapter.data[position] as Project
-            ProjectInfoDialog(context, alertDialog, project = item, sharedPreferences = sharedPreferences).showDialog()
-        }
+        dataBase.projectDao().getProjectList().observe(context, Observer {
+            val projects = it
+            val mAdapter = ProjectListAdapter()
+            mAdapter.setNewInstance(projects.toMutableList())
+            mAdapter.setHeaderView(getHeaderView(view.rv_project_manager))
+            view.rv_project_manager.adapter = mAdapter
+            mAdapter.setOnItemClickListener { adapter, _, position ->
+                val item = adapter.data[position] as Project
+                ProjectInfoDialog(context, alertDialog, project = item, sharedPreferences = sharedPreferences).showDialog()
+            }
+        })
+
     }
 
     private fun getHeaderView(view: RecyclerView): View {

@@ -29,6 +29,9 @@ class MapViewModel internal constructor(
     var layerCode = 0
     // 当前坐标
     var currentPt: Point? = null
+    var currentProject = AppDatabase.getInstance(application)
+    .projectDao().getCurrentProject(1)
+
 
     private val dataBase = AppDatabase.getInstance(application)
 

@@ -20,4 +20,8 @@ interface ProjectDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(data: Project):Long
+
+    @Query("SELECT * from PROJECT where id = :currentId")
+    fun getCurrentProject(currentId: Int): LiveData<Project>
+
 }
