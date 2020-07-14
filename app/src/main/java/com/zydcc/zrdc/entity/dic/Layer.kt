@@ -17,13 +17,12 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Layer(
     var fillColor: String,
-    var isBaseMap: Int,
-    var isEdit: Int,
+    var isBaseMap: Int, // 0 操作图层 1 底图
+    var isEdit: Int, // 0 不可编辑 1 可编辑
     var isLabel: Int?,
-    var isSelect: Int,
-    var isShow: Int,
+    var isSelect: Int, // 0 未选中 1 选中
+    var isShow: Int, // 0 显示 1 隐藏
     var labelColor: String = "",
-    var labelField: String = "",
     var layerId: Long,
     var layerIndex: Int = -1,
     var layerName: String,

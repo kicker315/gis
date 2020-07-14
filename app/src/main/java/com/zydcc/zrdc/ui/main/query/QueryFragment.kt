@@ -92,6 +92,8 @@ class QueryFragment : Fragment() {
     private fun initData() {
         initListener()
         initRecyclerView()
+
+        initResult()
         mOperationAdapter.setNewInstance(viewModel.operateList)
         observe(viewModel.shpDatasourceList) {
             if (it.isNotEmpty()) {
@@ -297,7 +299,7 @@ class QueryFragment : Fragment() {
                 mResultAdapter.setNewInstance(mResultList)
                 mResultAdapter.loadMoreModule.loadMoreEnd()
             }
-           
+
         }
         viewModel.getSearchResult(selectLayer!!.layerUrl)
     }

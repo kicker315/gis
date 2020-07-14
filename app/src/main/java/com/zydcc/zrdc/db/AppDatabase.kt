@@ -6,9 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.zydcc.zrdc.entity.dic.Dltb
-import com.zydcc.zrdc.entity.dic.Layer
-import com.zydcc.zrdc.entity.dic.Project
+import com.zydcc.zrdc.entity.dic.*
 import com.zydcc.zrdc.utils.DATABASE_NAME
 import com.zydcc.zrdc.utils.DATABASE_PATH
 
@@ -18,11 +16,13 @@ import com.zydcc.zrdc.utils.DATABASE_PATH
  * Create by ningsikai 2020/7/1:8:31 AM
  * ========================================
  */
-@Database(entities = [Dltb::class, Layer::class, Project::class], version = 1, exportSchema = false)
+@Database(entities = [Dltb::class, Layer::class, LabelField::class, ShowField::class, Project::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase: RoomDatabase() {
     abstract fun dltbDao(): DltbDao
     abstract fun layerDao(): LayerDao
+    abstract fun layerFieldDao(): LabelFieldDao
+    abstract fun showFieldDao(): ShowFieldDao
     abstract fun projectDao(): ProjectDao
 
     companion object {
