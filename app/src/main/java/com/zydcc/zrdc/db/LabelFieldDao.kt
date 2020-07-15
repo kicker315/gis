@@ -9,6 +9,7 @@ import com.zydcc.zrdc.entity.dic.LabelField
  * Create by ningsikai 2020/7/14:9:22 AM
  * ========================================
  */
+@Dao
 interface LabelFieldDao {
 
     @Query("select * from labelfield where layerId = :layerId")

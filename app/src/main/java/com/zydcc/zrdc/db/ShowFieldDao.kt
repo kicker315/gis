@@ -9,6 +9,7 @@ import com.zydcc.zrdc.entity.dic.ShowField
  * Create by ningsikai 2020/7/14:9:17 AM
  * ========================================
  */
+@Dao
 interface ShowFieldDao {
 
     @Query("select * from showfield where layerId = :layerId")
