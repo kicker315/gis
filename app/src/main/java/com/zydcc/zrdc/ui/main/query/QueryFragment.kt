@@ -23,6 +23,8 @@ import com.zydcc.zrdc.entity.dic.Layer
 import com.zydcc.zrdc.ui.main.query.adapter.*
 import com.zydcc.zrdc.widget.ClassicPopupWindow
 import kotlinx.android.synthetic.main.fragment_query.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.lang.StringBuilder
 import java.util.concurrent.CopyOnWriteArrayList
 

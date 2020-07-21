@@ -14,6 +14,10 @@ import com.zydcc.zrdc.db.AppDatabase
 import com.zydcc.zrdc.entity.bean.IField
 import com.zydcc.zrdc.entity.dic.Dltb
 import com.zydcc.zrdc.entity.dic.Layer
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import java.util.*
 
 /**
@@ -69,26 +73,32 @@ class QueryStaticsViewModel(application: Application) : AndroidViewModel(applica
         }
     }
 
+    
 
     fun getSearchResult(shpPath: String) {
         val shapefileFeatureTable = ShapefileFeatureTable(shpPath)
         val params = QueryParameters()
         params.isReturnGeometry = true
         params.outSpatialReference = SpatialReference.create(4326)
-        val listenableFuture = shapefileFeatureTable.queryFeaturesAsync(params)
-        listenableFuture.addDoneListener {
-            val data = mutableListOf<Feature>()
-            val featureQueryResult = listenableFuture.get()
-            val iterator = featureQueryResult.iterator()
-            while (iterator.hasNext()) {
-                data.add(iterator.next())
-            }
-            mResultList.setNext { last ->
-                last.clear()
-                last.addAll(data)
-                return@setNext last
+
+        GlobalScope.launch {
+            val listenableFuture = shapefileFeatureTable.queryFeaturesAsync(params)
+            listenableFuture.addDoneListener {
+                val data = mutableListOf<Feature>()
+                val featureQueryResult = listenableFuture.get()
+                val iterator = featureQueryResult.iterator()
+                while (iterator.hasNext()) {
+                    data.add(iterator.next())
+                }
+                mResultList.postNext { last ->
+                    last.clear()
+                    last.addAll(data)
+//                    job!!.cancel()
+                    return@postNext last
+                }
             }
         }
+
 
     }
 
