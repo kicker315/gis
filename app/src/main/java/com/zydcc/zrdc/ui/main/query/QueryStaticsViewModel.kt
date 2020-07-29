@@ -73,7 +73,7 @@ class QueryStaticsViewModel(application: Application) : AndroidViewModel(applica
         }
     }
 
-    
+
 
     fun getSearchResult(shpPath: String) {
         val shapefileFeatureTable = ShapefileFeatureTable(shpPath)
