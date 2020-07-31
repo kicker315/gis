@@ -16,7 +16,7 @@ import kotlinx.android.parcel.Parcelize
 @Entity(tableName = "LAYER")
 @Parcelize
 data class Layer(
-    var fillColor: String,
+    var fillColor: String = "",
     var isBaseMap: Int, // 0 操作图层 1 底图
     var isEdit: Int, // 0 不可编辑 1 可编辑
     var isLabel: Int = 1, // 0 不显示标注 1 显示标注

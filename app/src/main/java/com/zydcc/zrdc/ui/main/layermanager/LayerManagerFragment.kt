@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
@@ -93,7 +94,8 @@ class LayerManagerFragment : Fragment() {
                         isEdit = 0,
                         isSelect = 1,
                         isLabel = 1,
-                        fillColor = "255,0,210,200",
+                        fillColor = ContextCompat.getColor(requireContext(), R.color.fill_color).toString(),
+                        lineColor = ContextCompat.getColor(requireContext(), R.color.line_color).toString(),
                         isShow = 1,
                         projectId = 0
                     )
@@ -121,7 +123,8 @@ class LayerManagerFragment : Fragment() {
                         isEdit = 0,
                         isSelect = 1,
                         isLabel = 1,
-                        fillColor = "255,0,210,200",
+                        fillColor = ContextCompat.getColor(requireContext(), R.color.fill_color).toString(),
+                        lineColor = ContextCompat.getColor(requireContext(), R.color.line_color).toString(),
                         isShow = 1,
                         projectId = 0
                     )

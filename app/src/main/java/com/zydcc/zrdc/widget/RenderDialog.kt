@@ -2,6 +2,7 @@ package com.zydcc.zrdc.widget
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import androidx.core.content.ContextCompat
@@ -13,6 +14,8 @@ import com.zydcc.zrdc.entity.dic.Layer
 import com.zydcc.zrdc.entity.dic.Project
 import kotlinx.android.synthetic.main.actionbar_common.view.*
 import kotlinx.android.synthetic.main.dialog_layer_render.view.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 /**
  * =======================================
@@ -44,7 +47,20 @@ class RenderDialog(
 
     private fun initData(view: View) {
         view.tv_title.text = context.getString(R.string.txt_render)
+        if (layer.fillColor != "") {
+           fillColorBackground = layer.fillColor.toInt()
+           view.fill_color.setBackgroundColor(fillColorBackground)
+        }
+        if (layer.lineColor != "") {
+            lineColorBackground = layer.lineColor.toInt()
+            view.line_color.setBackgroundColor(lineColorBackground)
+        }
         view.btn_back.setOnClickListener {
+            layer.fillColor = fillColorBackground.toString()
+            layer.lineColor = lineColorBackground.toString()
+            GlobalScope.launch {
+                dataBase.layerDao().update(layer)
+            }
             dialog.dismiss()
         }
         // 如果是未标注
@@ -56,9 +72,7 @@ class RenderDialog(
             } else {
                 layer.isLabel = 0
             }
-            suspend {
-                dataBase.layerDao().update(layer)
-            }
+
         }
 
         view.line_color.setOnClickListener {
