@@ -209,6 +209,7 @@
     <string name="txt_fill_color">填充颜色</string>
     <string name="txt_show_label">显示标注</string>
     <string name="txt_label_color">标注颜色</string>
+    <string name="hint_default_show_label">默认（点击选择标注）</string>
 
 
 </resources>

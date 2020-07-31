@@ -84,6 +84,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
+            android:hint="@string/hint_default_show_label"
             android:padding="5.0dip"
             android:textSize="@dimen/textsize_normal" />
     </RelativeLayout>
@@ -138,9 +139,8 @@
             android:layout_width="36.0dip"
             android:layout_height="20.0dip"
             android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/dp_10"
-            android:background="#ff00d2c8"
+            android:background="@color/fill_color"
             android:paddingVertical="@dimen/dp_10"
             android:paddingTop="@dimen/dp_10"
             android:paddingBottom="@dimen/dp_10" />

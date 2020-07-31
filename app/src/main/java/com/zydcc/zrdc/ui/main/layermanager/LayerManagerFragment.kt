@@ -73,6 +73,9 @@ class LayerManagerFragment : Fragment() {
 
 
     private fun binds() {
+        observe(viewModel.currentProject) {
+            currentProject = it
+        }
 
         sp = requireActivity().getSharedPreferences("zydcc", Context.MODE_PRIVATE)
         btn_add_shp.setOnClickListener {

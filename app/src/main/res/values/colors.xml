@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#000</color>
     <color name="colorPrimaryDark">#000</color>
-    <color name="colorAccent">#000</color>
+    <color name="colorAccent">#ED5E32</color>
     <color name="scrim">#99323232</color>
     <color name="light_scrim">#11323232</color>
     <color name="black_scrim">#C0000000</color>
@@ -11,6 +11,8 @@
     <color name="stroke_color">#ff385990</color>
     <color name="background">#ffebeef2</color>
     <color name="btn_color">#ff6cb134</color>
+
+    <color name="fill_color">#ff00d2c8</color>
 
     <color name="white">#FFFFFF</color>
     <color name="black">#000</color>
@@ -30,7 +32,6 @@
     <color name="rcv_background">#ffe0edff</color>
 
     <color name="orange_button">#FF9B07</color>
-    <color name="liked">#ED5E32</color>
     <color name="ripple_light">#77ffffff</color>
     <color name="ripple_light_grey">#77555555</color>
     <color name="ripple_dark_grey">#77555555</color>

@@ -18,5 +18,6 @@
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="@dimen/textsize_normal"
         tools:text="@string/app_name"/>
 </LinearLayout>

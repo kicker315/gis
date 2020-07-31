@@ -67,7 +67,7 @@ class DatasourceChooseDialog : DialogFragment() {
        swipe_refresh.setOnRefreshListener {
            refreshDatasource()
        }
-       mAdapter.setOnItemClickListener { adapter, view, position ->
+       mAdapter.setOnItemClickListener { adapter, _, position ->
            val data = adapter.data[position] as FileItem
            onDatasourceSelector.invoke(data)
            dismiss()
@@ -118,8 +118,8 @@ class DatasourceChooseDialog : DialogFragment() {
         val sb = StringBuilder()
             .append(Environment.getExternalStorageDirectory().absolutePath)
             .append("/")
-            .append(getString(R.string.app_name))
-            .append("/")
+//            .append(getString(R.string.app_name))
+//            .append("/")
         val files = FileUtils.listFilesInDirWithFilter(File(sb.toString()),
             FileFilter {
                 return@FileFilter it.name.toUpperCase(Locale.CHINA).endsWith(suffix.toUpperCase(Locale.CHINA))

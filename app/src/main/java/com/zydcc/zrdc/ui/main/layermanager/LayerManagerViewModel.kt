@@ -25,7 +25,8 @@ class LayerManagerViewModel(application: Application
     val tpkDatasourceList: LiveData<List<Layer>> =
         dataBase.layerDao().getTpkDatasourceList()
 
-
+    var currentProject = AppDatabase.getInstance(application)
+        .projectDao().getCurrentProject(1)
 
 
     // 添加数据源
