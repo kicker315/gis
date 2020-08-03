@@ -1,5 +1,6 @@
 package com.zydcc.zrdc.ui.main.query.adapter
 
+import android.widget.CheckBox
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
@@ -23,6 +24,7 @@ class QueryResultAdapter(
     private var key4 = ""
     private var key5 = ""
     private var key6 = ""
+    private var map = hashMapOf<Int, Boolean>()
     init {
         if (showFieldList.isNotEmpty()) {
             key1 = showFieldList[0].name
@@ -69,7 +71,25 @@ class QueryResultAdapter(
             holder.setText(R.id.tv_attr6, item.attributes[key6].toString())
                 .setVisible(R.id.tv_attr6,true)
         }
+
+        val checkBox = holder.getView<CheckBox>(R.id.checkbox)
+        checkBox.setOnCheckedChangeListener { _, isChecked ->
+            map[holder.adapterPosition] = isChecked
+            if (isChecked) {
+                updateMapOnChecked.invoke(holder.adapterPosition)
+            } else {
+                updateMapOnUnChecked.invoke(holder.adapterPosition)
+            }
+        }
     }
+
+    fun setMap(map: HashMap<Int, Boolean>) {
+        this.map = map
+        notifyDataSetChanged()
+    }
+
+    var updateMapOnChecked:(Int) -> Unit = {}
+    var updateMapOnUnChecked: (Int) -> Unit = {}
 
 
 }

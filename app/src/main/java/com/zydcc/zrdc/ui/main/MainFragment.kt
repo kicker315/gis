@@ -9,7 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.zydcc.zrdc.R
+import com.zydcc.zrdc.event.Location2Map
 import kotlinx.android.synthetic.main.fragment_main.*
+import org.simple.eventbus.EventBus
+import org.simple.eventbus.Subscriber
 
 /**
  * =======================================
@@ -31,7 +34,13 @@ class MainFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        EventBus.getDefault().register(this)
         initData()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        EventBus.getDefault().unregister(this)
     }
 
     private fun initData() {
@@ -68,5 +77,9 @@ class MainFragment: Fragment() {
         }
     }
 
+    @Subscriber
+    private fun reInitMap(event: Location2Map) {
+        rb_map.isChecked = true
+    }
 
 }

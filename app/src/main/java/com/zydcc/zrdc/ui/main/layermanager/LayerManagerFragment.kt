@@ -19,6 +19,7 @@ import com.zydcc.zrdc.R
 import com.zydcc.zrdc.core.ext.observe
 import com.zydcc.zrdc.entity.dic.Layer
 import com.zydcc.zrdc.entity.dic.Project
+import com.zydcc.zrdc.event.Location2Map
 
 import com.zydcc.zrdc.utils.IntentConstants
 import com.zydcc.zrdc.widget.DatasourceChooseDialog
@@ -26,6 +27,7 @@ import com.zydcc.zrdc.widget.FeatureAttrDialogFragment
 import com.zydcc.zrdc.widget.RenderDialog
 import com.zydcc.zrdc.utils.BundleConstants
 import kotlinx.android.synthetic.main.fragment_layer.*
+import org.simple.eventbus.EventBus
 
 /**
  * =======================================
@@ -123,6 +125,7 @@ class LayerManagerFragment : Fragment() {
                         isEdit = 0,
                         isSelect = 1,
                         isLabel = 1,
+                        labelField = ContextCompat.getColor(requireContext(), R.color.line_color).toString(),
                         fillColor = ContextCompat.getColor(requireContext(), R.color.fill_color).toString(),
                         lineColor = ContextCompat.getColor(requireContext(), R.color.line_color).toString(),
                         isShow = 1,
@@ -134,11 +137,16 @@ class LayerManagerFragment : Fragment() {
             mTpkChooseDialog!!.show(requireActivity().supportFragmentManager, "tpk")
         }
 
-        mShpManagerAdapter.addChildClickViewIds(R.id.rb_feature_attr, R.id.rb_layer_render, R.id.rb_layer_remove)
+        mShpManagerAdapter.addChildClickViewIds(R.id.rb_zoom, R.id.rb_feature_attr, R.id.rb_layer_render, R.id.rb_layer_remove)
 
         mShpManagerAdapter.setOnItemChildClickListener { adapter, view, position ->
             val data = adapter.data[position] as Layer
             when (view.id) {
+                R.id.rb_zoom -> {
+                    val event = Location2Map()
+                    event.layer = data
+                    EventBus.getDefault().post(event)
+                }
                 R.id.rb_feature_attr -> {
                     val featureAttrDialog = FeatureAttrDialogFragment()
                     val bundle = Bundle()

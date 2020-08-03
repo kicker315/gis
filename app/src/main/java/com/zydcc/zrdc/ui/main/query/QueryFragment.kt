@@ -20,11 +20,13 @@ import com.zydcc.zrdc.core.ext.postNext
 import com.zydcc.zrdc.core.ext.setNext
 import com.zydcc.zrdc.entity.bean.IField
 import com.zydcc.zrdc.entity.dic.Layer
+import com.zydcc.zrdc.event.Location2Map
 import com.zydcc.zrdc.ui.main.query.adapter.*
 import com.zydcc.zrdc.widget.ClassicPopupWindow
 import kotlinx.android.synthetic.main.fragment_query.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import org.simple.eventbus.EventBus
 import java.lang.StringBuilder
 import java.util.concurrent.CopyOnWriteArrayList
 
@@ -77,6 +79,8 @@ class QueryFragment : Fragment() {
     private var mResultList = mutableListOf<Feature>()
 
     private val viewModel by viewModels<QueryStaticsViewModel>()
+
+    private var map = hashMapOf<Int, Boolean>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -213,6 +217,20 @@ class QueryFragment : Fragment() {
                 doSearch()
             }
         }
+
+        tv_data_loc.setOnClickListener {
+            val data = getCheckedList()
+            if (data.isEmpty()) {
+                ToastUtils.showShort(getString(R.string.tip_min_1_result))
+                return@setOnClickListener
+            }
+            EventBus.getDefault().post(
+                Location2Map(
+                featureList = data,
+                showField = showFieldSelect.toList()
+            )
+            )
+        }
     }
 
     private fun validate(): Boolean {
@@ -224,11 +242,29 @@ class QueryFragment : Fragment() {
             ToastUtils.showShort(getString(R.string.please_select_visible_fields))
             return false
         }
-        if (field == null) {
-            ToastUtils.showShort(getString(R.string.please_select_fields))
+        if (field != null && sp_selectopera.text.isNullOrEmpty()) {
+            ToastUtils.showShort(getString(R.string.please_select_operate))
+            return false
+        }
+        if (field != null && sp_selectopera.text.isNotEmpty() && sp_selectvalue.text.isNullOrEmpty()) {
+            ToastUtils.showShort(getString(R.string.tip_range_cant_be_null))
             return false
         }
         return true
+    }
+
+    private fun getCheckedList(): MutableList<Feature> {
+        val data = mutableListOf<Feature>()
+        if (map.isNotEmpty()) {
+            val iterator = map.entries.iterator()
+            while (iterator.hasNext()) {
+                val entity = iterator.next()
+                if (entity.value) {
+                    data.add(mResultList[entity.key])
+                }
+            }
+        }
+        return data
     }
 
     private fun initRecyclerView() {
@@ -265,6 +301,12 @@ class QueryFragment : Fragment() {
         rcv_search_result.adapter = mResultAdapter
         mResultAdapter.setEmptyView(R.layout.empty_view)
         mResultAdapter.isUseEmpty = true
+        mResultAdapter.updateMapOnChecked = {
+            map[it] = true
+        }
+        mResultAdapter.updateMapOnUnChecked = {
+            map[it] = false
+        }
     }
 
     private fun doSearch() {
@@ -273,7 +315,9 @@ class QueryFragment : Fragment() {
         swipe_refresh.isRefreshing = true
         swipe_refresh.isEnabled = true
         swipe_refresh.setOnRefreshListener {
-            viewModel.getSearchResult(selectLayer!!.layerUrl)
+            GlobalScope.launch {
+                viewModel.getSearchResult(selectLayer!!.layerUrl)
+            }
         }
         mResultAdapter.loadMoreModule.setOnLoadMoreListener {
             nextRequestPage++
@@ -303,7 +347,10 @@ class QueryFragment : Fragment() {
             }
 
         }
-        viewModel.getSearchResult(selectLayer!!.layerUrl)
+        GlobalScope.launch {
+            viewModel.getSearchResult(selectLayer!!.layerUrl)
+        }
+
     }
 
 }

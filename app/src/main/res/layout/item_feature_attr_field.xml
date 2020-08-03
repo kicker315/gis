@@ -67,6 +67,7 @@
                 android:layout_gravity="center|end"
                 android:layout_weight="1"
                 android:checked="false"
+                android:clickable="false"
                 android:gravity="center|end" />
         </LinearLayout>
     </RelativeLayout>

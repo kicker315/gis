@@ -81,24 +81,21 @@ class QueryStaticsViewModel(application: Application) : AndroidViewModel(applica
         params.isReturnGeometry = true
         params.outSpatialReference = SpatialReference.create(4326)
 
-        GlobalScope.launch {
-            val listenableFuture = shapefileFeatureTable.queryFeaturesAsync(params)
-            listenableFuture.addDoneListener {
-                val data = mutableListOf<Feature>()
-                val featureQueryResult = listenableFuture.get()
-                val iterator = featureQueryResult.iterator()
-                while (iterator.hasNext()) {
-                    data.add(iterator.next())
-                }
-                mResultList.postNext { last ->
-                    last.clear()
-                    last.addAll(data)
+        val listenableFuture = shapefileFeatureTable.queryFeaturesAsync(params)
+        listenableFuture.addDoneListener {
+            val data = mutableListOf<Feature>()
+            val featureQueryResult = listenableFuture.get()
+            val iterator = featureQueryResult.iterator()
+            while (iterator.hasNext()) {
+                data.add(iterator.next())
+            }
+            mResultList.postNext { last ->
+                last.clear()
+                last.addAll(data)
 //                    job!!.cancel()
-                    return@postNext last
-                }
+                return@postNext last
             }
         }
-
 
     }
 
