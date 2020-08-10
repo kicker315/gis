@@ -1,0 +1,31 @@
+package com.ningsk.zrdc.entity.dic
+
+import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.Index
+import kotlinx.android.parcel.Parcelize
+
+/**
+ * =======================================
+ * 地图标识
+ * Create by ningsikai 2020/7/14:9:05 AM
+ * ========================================
+ */
+@Parcelize
+@Entity(foreignKeys = [(
+        ForeignKey(entity = Layer::class,
+            parentColumns = ["id"],
+            childColumns = ["layerId"],
+            onUpdate = ForeignKey.CASCADE,
+            onDelete = ForeignKey.CASCADE
+        )
+        )],
+    primaryKeys = ["id", "layerId"],
+    indices = [Index(value=["layerId"], unique = false)]
+)
+data class LabelField(
+    var id: Int,
+    var fieldName: String,
+    var layerId: Int
+): Parcelable
